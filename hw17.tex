@@ -1,0 +1,339 @@
+\documentclass{article}
+\usepackage{style}
+
+\title{LADR, 6.A}
+\date{21 Mar 2024}
+
+\begin{document}
+\maketitle
+
+\section*{Problem 4}
+Suppose $V$ is a real inner product space.
+
+\subsection*{Solution}
+(a) Show that $\langle u+v,u-v\rangle=\|u\|^2-\|v\|^2$ for every $u,v\in V$.
+
+\begin{align*}
+    \langle u+v,u-v\rangle&=\langle u,u-v\rangle+\langle v, u-v\rangle\\
+    &=\langle u,u\rangle-\langle u,v\rangle+\langle v,u\rangle-\langle v,v\rangle\\
+    &=\langle u,u\rangle-\langle u,v\rangle+\overline{\langle u,v\rangle}-\langle v,v\rangle\\
+    &=\langle u,u\rangle-\langle u,v\rangle+\langle u,v\rangle-\langle v,v\rangle\\
+    &=\langle u,u\rangle-\langle v,v\rangle\\
+    &=\|u\|^2-\|v\|^2
+\end{align*}
+
+Note that $\overline{\langle u,v\rangle}=\langle u,v\rangle$ because $V$ is a real space.
+
+\vs
+
+(b) Show that if $u,v\in V$ have the same norm, then $u+v$ is orthogonal to $u-v$.
+
+Suppose $\|u\|=\|v\|$. We know from (a) that $\langle u+v,u-v\rangle=\|u\|^2-\|v\|^2$. Therefore $\langle u+v,u-v\rangle=0$ and $u+v$ is orthogonal to $u-v$ as desired.
+
+\vs
+
+(c) Use part (b) to show that the diagonals of a rhombus are perpendicular to each other.
+
+Pick a vertex on the rhombus and let the vectors that share that vertex be labeled $a$ and $b$. Then One of the diagonals of the rhombus is $a+b$, and the other diagonal is $a-b$. We know from (b) that $\langle a+b,a-b\rangle=0$, therefore the diagonals of a rhombus are orthogonal as desired.
+
+\section*{Problem 5}
+Suppose $T\in\mathcal{L}(V)$ is such that $\|Tv\|\leq\|v\|$ for every $v\in V$. Prove that $T-\sqrt{2}I$ is invertible.
+
+\subsection*{Solution}
+Suppose $T-\sqrt{2}I$ is not invertible. Then $\sqrt{2}$ is an eigenvalue of $T$, and thus there exists $u\in V$ such that $Tu=\sqrt{2}u$. Taking the norm of both sides, $\|Tu\|=\|\sqrt{2}u\|=\sqrt{2}\|u\|$. Since $\sqrt{2}>1$, it follows $\|Tu\|>\|u\|$. This is a contradiction, therefore $T-\sqrt{2}I$ is invertible as desired.
+
+\section*{Problem 6}
+Suppose $u,v\in V$. Prove that $\langle u,v\rangle=0$ if and only if $\|u\|\leq\|u+av\|$ for all $a\in \F$.
+
+\subsection*{Solution}
+Suppose $\langle u,v\rangle=0$. Then:
+\begin{align*}
+    \langle u+av, u+av \rangle&=\langle u,u+av\rangle+\langle av,u+av\rangle\\
+    &=\langle u,u\rangle+\langle u,av\rangle+\langle av,u\rangle+\langle av,av\rangle\\
+    &=\langle u,u\rangle+\overline{a}\langle u,v\rangle+a\langle v,u\rangle+a\overline{a}\langle v,v\rangle\\
+    &=\langle u,u\rangle+|a|^2\langle v,v\rangle
+\end{align*}
+
+Therefore $\langle u,u\rangle=\langle u+av, u+av \rangle-|a|^2\langle v,v\rangle$. Observe that $|a|^2\langle v,v\rangle$ must be non-negative, and thus $\langle u,u\rangle\leq\langle u+av, u+av \rangle$. Taking a square root of both sides we get $\|u\|\leq\|u+av\|$ for all $a\in \F$ as desired.
+
+\vs
+
+Conversely suppose $\|u\|\leq\|u+av\|$ for all $a\in \F$. Taking a square of both sides and expanding as above, we get:
+\begin{align*}
+    \langle u,u\rangle &\leq \langle u,u\rangle+\overline{a}\langle u,v\rangle+a\langle v,u\rangle+a\overline{a}\langle v,v\rangle\\
+    0 &\leq \overline{a}\langle u,v\rangle+a\langle v,u\rangle+a\overline{a}\langle v,v\rangle\\
+    0 &\leq \langle u,av\rangle+\langle av,u\rangle+\langle av,av\rangle\\
+    0 &\leq \overline{\langle av,u\rangle}+\langle av,u\rangle+\langle av,av\rangle\\
+    0 &\leq 2a\text{Re} \langle v,u\rangle+|a|^2\langle v,v\rangle\\
+    a(-2\text{Re} \langle v,u\rangle) &\leq |a|^2\langle v,v\rangle\\
+\end{align*}
+
+Observe that the right side of the inequality is always non-negative. Since $a$ can take on arbitrary values, the only way to satisfy the inequality is for $\langle v,u\rangle=0$ as desired. (\textbf{Note:} I'm not sure I believe the last part of the proof. ChatGPT uses similar reasoning to prove this, but I'm not sure I believe that either.)
+
+\section*{Problem 8}
+Suppose $u,v\in V$ and $\|u\|=\|v\|=1$ and $\langle u,v\rangle=1$. Prove that $u=v$.
+
+\subsection*{Solution}
+Consider:
+\begin{align*}
+    &\langle u-v,u-v\rangle\\
+    &=\langle u, u-v\rangle-\langle v, u-v\rangle\\
+    &=\langle u,u\rangle-\langle u,v\rangle-\langle v,u\rangle+\langle v,v\rangle\\
+    &=\langle u,u\rangle-\langle u,v\rangle-\overline{\langle u,v\rangle}+\langle v,v\rangle\\
+    &=1-1-1+1=0
+\end{align*}
+
+Thus $u-v$ is orthogonal to itself. It follows by definiteness property that $u-v=0$, and that $u=v$ as desired.
+
+\section*{Problem 10}
+Find vectors $u,v\in\R^2$ such that $u$ is a scalar multiple of $(1,3)$, $v$ is orthogonal to $(1,3)$, and $(1,2)=u+v$.
+
+\subsection*{Solution}
+Let $u=a(1,3)$ for $a\in\F$, and let $v=(x,y)$ for $x,y\in\F$. We have the following system of equations:
+\begin{align*}
+    \langle (1,3), (x,y) \rangle&=0\\
+    (1,2)&=a(1,3)+(x,y)
+\end{align*}
+
+Rewriting:
+\begin{align*}
+    x+3y&=0\\
+    (a+x-1,3a+y-2)&=0
+\end{align*}
+
+Rewriting again:
+\begin{align*}
+    x+3y&=0\\
+    a+x-1&=0\\
+    3a+y-2&=0
+\end{align*}
+
+Thus $a=1-x$. Therefore:
+\begin{align*}
+    x+3y&=0\\
+    -3x+y+1&=0
+\end{align*}
+
+Thus $y=-\frac{x}{3}$ and $-3x-\frac{x}{3}+1=0$. Therefore $x=3/10$, $a=7/10$, and $y=-1/10$. Therefore $u=(\frac{7}{10}, \frac{21}{10})$ and $v=(\frac{3}{10}, -\frac{1}{10})$.
+
+\vs
+
+Verifying, $u+v=(\frac{7}{10}, \frac{21}{10})+(\frac{3}{10}, -\frac{1}{10})=(1, 2)$ as desired, and $\langle (1,3), (\frac{3}{10}, -\frac{1}{10})\rangle=0$ as desired.
+
+\section*{Problem 12}
+Prove that
+\[(x_1+\ldots+x_n)^2\leq n(x_1^2+\ldots+x_n^2)\]
+for all positive integers $n$ and all real numbers $x_1,\ldots,x_n$.
+
+\subsection*{Solution}
+Observe that $(x_1,\ldots,x_n)\in\R^n$. By Cauchy-Schwarz inequality:
+\[|\langle(x_1,\ldots,x_n),(1,\ldots,1)\rangle|\leq\|(x_1,\ldots,x_n)\|\|(1,\ldots,1)\|\]
+
+Therefore
+\[|x_1+\ldots+x_n|\leq \sqrt{n(x_1^2+\ldots+x_n^2)}\]
+
+Squaring both sides, $(x_1+\ldots+x_n)^2\leq n(x_1^2+\ldots+x_n^2)$ as desired.
+
+\section*{Problem 11*}
+Prove that
+\[16\leq(a+b+c+d)\left(\frac{1}{a}+\frac{1}{b}+\frac{1}{c}+\frac{1}{d}\right)\]
+for all positive numbers $a,b,c,d$.
+
+\subsection*{Solution}
+Let $a'=\sqrt{a}, b'=\sqrt{b}, c'=\sqrt{c}$, and $d'=\sqrt{d}$. Then by Cauchy-Schwarz inequality:
+\[|a'\frac{1}{a'}+b'\frac{1}{b'}+c'\frac{1}{c'}+d'\frac{1}{d'}|^2\leq(a'^2+b'^2+c'^2+d'^2)(\frac{1}{a'}^2+\frac{1}{b'}^2+\frac{1}{c'}^2+\frac{1}{d'}^2)\]
+
+This equation simplifies to
+\[16\leq(a+b+c+d)\left(\frac{1}{a}+\frac{1}{b}+\frac{1}{c}+\frac{1}{d}\right)\]
+as desired.
+
+\section*{Problem 13*}
+Suppose $u,v$ are nonzero vectors in $\R^2$. Prove that
+\[\langle u,v\rangle=\|u\|\|v\|\cos\theta\]
+where $\theta$ is the angle between $u$ and $v$ (thinking of $u$ and $v$ as arrows with initial point at the origin).
+
+\vs
+
+Hint: draw the triangle formed by $u,v$, and $u-v$; then use the law of cosines.
+
+\subsection*{Solution}
+Thinking of $u$ and $v$ as arrows with initial point at the origin, $\theta$ as the angle between them, and $u-v$ as the remaining side of the triangle:
+\[\|u-v\|^2=\|u\|^2+\|v\|^2-2\|u\|\|v\|\cos\theta\]
+
+Expanding $\|u-v\|^2$ we get:
+\[\langle u,u\rangle-\langle u,v\rangle-\langle v,u\rangle+\langle v,v\rangle=\langle u,u\rangle+\langle v,v\rangle-2\|u\|\|v\|\cos\theta\]
+
+Therefore:
+\[-\langle u,v\rangle-\langle v,u\rangle=-2\|u\|\|v\|\cos\theta\]
+
+In the real space $\langle u,v\rangle=\langle v,u\rangle$ and so:
+\[-2\langle u,v\rangle=-2\|u\|\|v\|\cos\theta\]
+
+Dividing both sides by $-2$ we get $\langle u,v\rangle=\|u\|\|v\|\cos\theta$ as desired.
+
+
+\section*{Problem 16*}
+Suppose $u,v\in V$ are such that $\|u\|=3$, $\|u+v\|=4$, $\|u-v\|=6$. What number does $\|v\|$ equal?
+
+\subsection*{Solution}
+Squaring each equation we get $\langle u,u\rangle=9, \langle u+v,u+v\rangle=16, \langle u-v,u-v\rangle=36$. Therefore:
+\begin{align*}
+    \langle u+v,u+v\rangle&=\langle u,u+v\rangle+\langle v,u+v\rangle\\
+    &=\langle u,u\rangle+\langle u,v\rangle+\langle v,u\rangle+\langle v,v\rangle\\
+    &=9+\langle u,v\rangle+\langle v,u\rangle+\langle v,v\rangle=16\\
+    \langle u-v,u-v\rangle&=\langle u,u-v\rangle-\langle v,u-v\rangle\\
+    &=\langle u,u\rangle-\langle u,v\rangle-\langle v,u\rangle+\langle v,v\rangle\\
+    &=9-\langle u,v\rangle-\langle v,u\rangle+\langle v,v\rangle=36
+\end{align*}
+
+Therefore:
+\begin{align*}
+    \langle u,v\rangle+\langle v,u\rangle+\langle v,v\rangle&=7\\
+    -\langle u,v\rangle-\langle v,u\rangle+\langle v,v\rangle&=27
+\end{align*}
+
+Adding the two equations, $2\langle v,v\rangle=34$ and thus $\|v\|=\sqrt{17}$.
+
+\section*{Problem 19}
+Suppose $V$ is a real inner product space. Prove that
+\[\langle u,v\rangle=\frac{\|u+v\|^2-\|u-v\|^2}{4}\]
+for all $u,v\in V$.
+
+\subsection*{Solution}
+\begin{align*}
+    &\|u+v\|^2-\|u-v\|^2\\
+    &=\langle u+v,u+v\rangle-\langle u-v,u-v\rangle\\
+    &=\langle u, u+v\rangle + \langle v, u+v\rangle-\langle u, u-v\rangle+\langle v,u-v\rangle\\
+    &=\langle u, u\rangle+\langle u,v\rangle+\langle v,u\rangle+\langle v,v\rangle-\langle u,u\rangle+\langle u,v\rangle+\langle v,u\rangle-\langle v,v\rangle\\
+    &=\langle u,v\rangle+\langle v,u\rangle+\langle u,v\rangle+\langle v,u\rangle
+\end{align*}
+
+Note that in real inner product spaces $\langle v,u\rangle=\overline{\langle u,v\rangle}=\langle u,v\rangle$. Therefore:
+\begin{align*}
+    \langle u,v\rangle+\langle v,u\rangle+\langle u,v\rangle+\langle v,u\rangle=4\langle u,v\rangle
+\end{align*}
+
+Therefore:
+\begin{align*}
+    \frac{\|u+v\|^2-\|u-v\|^2}{4}=\frac{4\langle u,v\rangle}{4}=\langle u,v\rangle
+\end{align*}
+as desired.
+
+\section*{Problem 24}
+Suppose $S\in\mathcal{L}(V)$ is an injective operator on $V$. Define $\langle \cdot,\cdot \rangle_1$ by
+\[\langle u,v\rangle_1=\langle Su,Sv\rangle\]
+for $u,v\in V$. Show that $\langle\cdot,\cdot\rangle_1$ is an inner product on $V$.
+
+\subsection*{Solution}
+Let's prove each of the five inner product properties hold for $\langle \cdot,\cdot \rangle_1$.
+
+\vs
+
+\textbf{Positivity:} $\langle v,v\rangle_1=\langle Sv, Sv\rangle\geq 0$
+
+\vs
+
+\textbf{Definiteness:} Suppose $\langle v,v\rangle_1=\langle Sv, Sv\rangle=0$. Therefore $Sv=0$. Since $S$ is injective, $v=0$ as desired. Conversely, suppose $v=0$. Linear maps map $0$ to $0$, therefore $\langle 0,0\rangle_1=\langle S0, S0\rangle=\langle 0,0\rangle=0$ as desired.
+
+\vs
+
+\textbf{Additivity in first slot:}
+\begin{align*}
+\langle u+v,w\rangle_1&=\langle S(u+v), S(w)\rangle\\
+&=\langle S(u)+S(v), S(w)\rangle\\
+&=\langle S(u), S(w)\rangle+\langle S(v), S(w)\rangle\\
+&=\langle u,w\rangle_1+\langle v,w\rangle_1
+\end{align*}
+
+\vs
+
+\textbf{Homogeneity in first slot:}
+\begin{align*}
+    \langle \lambda u, v\rangle_1&=\langle S(\lambda u), S(v)\rangle\\
+    &=\langle \lambda S(u), S(v)\rangle\\
+    &=\lambda\langle S(u), S(v)\rangle\\
+    &=\lambda \langle u, v\rangle_1
+\end{align*}
+
+\vs
+
+\textbf{Conjugate symmetry:}
+\begin{align*}
+    \langle u,v \rangle_1&=\langle S(u), S(v)\rangle\\
+    &=\overline{\langle S(v), S(u)\rangle}=\overline{\langle v,u\rangle_1}
+\end{align*}
+
+\section*{Problem 25}
+Suppose $S\in\mathcal{L}(V)$ is not injective. Define $\langle\cdot,\cdot\rangle_1$ as in the exercise above. Explain why $\langle\cdot,\cdot\rangle_1$ is not an inner product on $V$.
+
+\subsection*{Solution}
+The definiteness property doesn't hold. Since $S$ is not injective, $Sv=0$ doesn't imply $v=0$.
+
+\section*{Problem 20*}
+Suppose $V$ is a complex inner product space. Prove that
+\[\langle u,v\rangle=\frac{\|u+v\|^2-\|u-v\|^2+\|u+iv\|^2i-\|u-iv\|^2i}{4}\]
+for all $u,v\in V$.
+
+\subsection*{Solution}
+Unpacking each term,
+\begin{align*}
+    \|u+v\|^2&=\langle u,u\rangle+\langle u,v\rangle+\langle v,u\rangle+\langle v,v\rangle\\
+    \|u-v\|^2&=\langle u,u\rangle-\langle u,v\rangle-\langle v,u\rangle+\langle v,v\rangle\\
+    \|u+iv\|^2i&=\langle u+iv,u+iv\rangle i\\
+               &=(\langle u, u+iv\rangle+\langle iv,u+iv\rangle)i\\
+               &=\langle u,u\rangle i+\langle u, iv\rangle i+\langle iv,u\rangle i+\langle iv,iv\rangle i\\
+    \|u-iv\|^2i&=\langle u-iv,u-iv\rangle i\\
+               &=(\langle u, u-iv\rangle-\langle iv,u-iv\rangle)i\\
+               &=\langle u,u\rangle i-\langle u,iv\rangle i-\langle iv,u\rangle i+\langle iv,iv\rangle i
+\end{align*}
+
+Thus
+\begin{align*}
+    \|u+v\|^2-\|u-v\|^2&=2\langle u,v\rangle+2\langle v,u\rangle\\
+    \|u+iv\|^2i-\|u-iv\|^2i&=2\langle u,iv\rangle i+2\langle iv, u\rangle i\\
+      &=2\langle u,v\rangle-2\langle v,u\rangle
+\end{align*}
+
+The result of adding the two expressions is $4\langle u,v\rangle$. Thus $\langle u,v\rangle=\frac{4\langle u,v\rangle}{4}$ as desired.
+
+\section*{Problem 21*}
+A norm on a vector space $U$ is a function $\|\|:U\to[0,\infty)$ such that $\|u\|=0$ if and only if $u=0,\|\alpha u\|=|\alpha|\|u\|$ for all $\alpha\in\F$ and all $u\in U$, and $\|u+v\|\leq\|u\|+\|v\|$ for all $u,v\in U$.
+
+\vs
+
+Prove that a norm satisfying the parallelogram equality comes from an inner product (in other words, show that if $\|\|$ is a norm on $U$ satisfying the parallelogram equality, then there is an inner product $\langle,\rangle$ on $U$ such that $\|u\|=\langle u,u\rangle^{1/2}$ for all $u\in U$).
+
+\subsection*{Solution}
+
+\section*{Problem 26*}
+$\textbf{TODO}$: involves calculus, come back later.
+
+\subsection*{Solution}
+
+\section*{Problem 31*}
+Use inner products to prove Apollonius's Identity: in a triangle with sides of length $a,b$, and $c$, let $d$ be the length of the line segment from the midpoint of the side of length $c$ to the opposite vertex. Then
+\[a^2+b^2=\frac{1}{2}c^2+2d^2\].
+
+\subsection*{Solution}
+Let $u,v\in\R^2$ (thinking of $u$ and $v$ as arrows with initial point at the origin). Then $a=\|u\|, c=\|v\|, b=\|u-v\|, d=\|u-\frac{1}{2}c\|$. We can then rewrite Apollonius's identity as follows:
+
+\[\langle u,u\rangle+\langle u-v,u-v\rangle=\frac{1}{2}\langle v,v\rangle+2\langle u-\frac{1}{2}v,u-\frac{1}{2}v\rangle\]
+
+Simplifying the left side (note that in $\R^2$ $\langle u,v\rangle=\langle v,u\rangle$):
+\begin{align*}
+\langle u,u\rangle+&\langle u-v,u-v\rangle\\
+&=\langle u,u\rangle+\langle u,u\rangle-\langle u,v\rangle-\langle v,u\rangle+\langle v,v\rangle\\
+&=2\langle u,u\rangle-2\langle v,u\rangle+\langle v,v\rangle
+\end{align*}
+
+Simplifying the right side
+\begin{align*}
+\frac{1}{2}\langle v,v&\rangle+2\langle u-\frac{1}{2}v,u-\frac{1}{2}v\rangle\\
+&=\frac{1}{2}\langle v,v\rangle+2(\langle u,u\rangle-\frac{1}{2}\langle u,v\rangle-\frac{1}{2}\langle v,u\rangle+\frac{1}{4}\langle v,v\rangle)\\
+&=\frac{1}{2}\langle v,v\rangle+2\langle u,u\rangle-\langle u,v\rangle-\langle v,u\rangle+\frac{1}{2}\langle v,v\rangle\\
+&=\langle v,v\rangle+2\langle u,u\rangle-2\langle v,u\rangle
+\end{align*}
+
+Thus both sides are equal and Appolonius's identity holds as desired.
+
+\end{document}

@@ -1,0 +1,206 @@
+\documentclass{article}
+\usepackage{style}
+
+\title{LADR, 5.A}
+\date{14 Feb 2024}
+
+\begin{document}
+\maketitle
+
+\section*{Problem 2}
+Suppose $S, T\in\mathcal{L}(V)$ are such that $ST=TS$. Prove that $\nil S$ is invariant under $T$.
+
+\subsection*{Solution}
+Let $v\in\nil S$. Then $TSv=T0=0$. Because $ST=TS$, $STv=S(Tv)=0$. Therefore $Tv\in\nil S$. Since $v\in\nil S$ implies $Tv\in\nil S$, $\nil S$ is invariant under $T$ as desired.
+
+\section*{Problem 5}
+Suppose $T\in\mathcal{L}(V)$. Prove that the intersection of every collection of subspaces of $V$ invariant under $T$ is invariant under $T$.
+
+\subsection*{Solution}
+Let $U_1,\ldots,U_m$ be a collection of subspaces of $V$ invariant under $T$. Let $v\in U_1\cap\ldots\cap U_m$. Therefore $v\in U_1,\ldots,v\in U_m$. Since $U_i$ is invariant under $T$ for $i=1,\ldots,m$, it follows $Tv\in U_1,\ldots,Tv\in U_m$, i.e. $Tv$ is in every $U_i$. Therefore $Tv\in U_1\cap\ldots\cap U_m$, and thus $U_1\cap\ldots\cap U_m$ is invariant under $T$ as desired.
+
+\section*{Problem 8}
+Define $T\in\mathcal{L}(\F^2)$ by $T(w,z)=(z,w)$. Find all eigenvalues and eigenvectors of $T$.
+
+\subsection*{Solution}
+We need to solve the equation
+\[T(w,z)=\lambda(w,z)=(z,w)\]
+
+I.e. $z=\lambda w$ and $w=\lambda z$. Substituting, $z=\lambda^2z$, thus $\lambda=1$ or $\lambda=-1$. Thus eigenvalues are $1$ and $-1$.
+\begin{itemize}
+    \item for $\lambda=1$, the eigenvectors are all vectors where $w=z$, i.e. vectors of the form $(w,w)$.
+    \item for $\lambda=-1$, the eigenvectors are all vectors where $z=-w$, i.e. vectors of the form $(w,-w)$.
+\end{itemize}
+
+\section*{Problem 10}
+Define $T\in\mathcal{L}(\F^n)$ by
+\[T(x_1,x_2,x_3,\ldots,x_n)=(x_1, 2x_2, 3x_3, \ldots,nx_n)\]
+
+\subsection*{Solution}
+(a) Find all eigenvalues and eigenvectors of $T$.
+
+We must solve the equation
+\[\lambda(x_1,x_2,x_3,\ldots,x_n)=(x_1, 2x_2, 3x_3, \ldots,nx_n)\]
+
+This gives us a system of equations:
+\begin{align*}
+    \lambda x_1&=x_1\\
+    \lambda x_2&=2x_2\\
+    \lambda x_3&=3x_3\\
+    \ldots\\
+    \lambda x_n&=nx_n
+\end{align*}
+
+Thus the following are the eigenvalues of $T$ and their corresponding eigenvectors:
+\begin{itemize}
+    \item $\lambda=1$ with the corresponding eigenvectors of the form $(x_1,0,0,\ldots,0)$
+    \item $\lambda=2$ with the corresponding eigenvectors of the form $(0,x_2,0,\ldots,0)$
+    \item $\lambda=3$ with the corresponding eigenvectors of the form $(0,0,x_3,\ldots,0)$
+    \item \ldots
+    \item $\lambda=n$ with the corresponding eigenvectors of the form $(0,0,0,\ldots,x_n)$
+\end{itemize}
+
+(b) Find all invariant subspaces of $T$.
+
+Let $v_1,\ldots,v_n$ be the standard basis of $\F^n$. Let $v$ equal a linear combination of any subset of $v_1,\ldots,v_n$. Then $Tv$ can also be expressed as a linear combination of that subset as it further multiplies each component by a scalar. Therefore all subspaces of $\F^n$ are invariant under $T$.
+
+
+\newpage
+\section*{Problem 15}
+Suppose $T\in\mathcal{L}(V)$. Suppose $S\in\mathcal{L}(V)$ is invertible.
+
+\subsection*{Solution}
+(a) Prove that $T$ and $S^{-1}TS$ have the same eigenvalues.
+
+Suppose $\lambda\in\F$ is an eigenvalue of $T$ and $v\in V$ is a corresponding eigenvector. Since $S$ is surjective, there exists $w\in V$ such that $Sw=v$. Consider:
+\[S^{-1}TSw=S^{-1}Tv=S^{-1}\lambda v=\lambda S^{-1}v=\lambda w\]
+
+I.e. $S^{-1}TSw=\lambda w$, and so $\lambda$ is an eigenvalue of $S^{-1}TS$, as desired.
+
+\vs
+
+(b) What is the relationship between the eigenvectors of $T$ and the eigenvectors of $S^{-1}TS$?
+
+\vs
+
+If $w\in V$ is an eigenvector of $S^{-1}TS$, there exists an eigenvector $v\in V$ of $T$ such that $w=S^{-1}v$.
+
+\section*{Problem 21}
+Suppose $T\in\mathcal{L}(V)$ is invertible.
+
+\subsection*{Solution}
+(a) Suppose $\lambda\in\F$ with $\lambda\neq0$. Prove that $\lambda$ is an eigenvalue of $T$ if and only if $\frac{1}{\lambda}$ is an eigenvalue of $T^{-1}$.
+
+\vs
+
+Suppose $\lambda$ is an eigenvalue of $T$. Then there exists $v\in V$ such that $Tv=\lambda v$. Applying $T^{-1}$ to both sides we get $v=\lambda T^{-1} v$. Multiplying both sides by $\frac{1}{\lambda}$ we get $\frac{1}{\lambda}v=T^{-1}v$ (or more familiarly, $T^{-1}v=\frac{1}{\lambda}v)$. Thus $\frac{1}{\lambda}$ is an eigenvalue of $T^{-1}$.
+
+\vs
+
+Conversely, suppose $\frac{1}{\lambda}$ is an eigenvalue of $T^{-1}$. Then there exists $v\in V$ such that $T^{-1}v=\frac{1}{\lambda}v$. Applying $T$ to both sides we get $v=\frac{1}{\lambda}Tv$. Multiplying both sides by $\lambda$ we get $\lambda v=Tv$ (or more familiarly, $Tv=\lambda v$). Thus $\lambda$ is an eigenvalue of $T$.
+
+\vs
+
+Therefore $\lambda$ is an eigenvalue of $T$ if and only if $\frac{1}{\lambda}$ is an eigenvalue of $T^{-1}$, as desired.
+
+\vs
+
+(b) Prove that $T$ and $T^{-1}$ have the same eigenvectors.
+
+In part (a) we've already seen that if $\lambda\in\F$ is an eigenvalue of $T$, and $v\in V$ is a corresponding eigenvector, then $T^{-1}v=\frac{1}{\lambda}v$. Thus every eigenvector of $T$ is also an eigenvector of $T^{-1}$. Similarly we've seen that if $\frac{1}{\lambda}$ is an eigenvalue of $T^{-1}$ and $v\in V$ is a corresponding eigenvector, then $Tv=\lambda v$. Thus every eigenvector of $T^{-1}$ is also an eigenvector of $T$. Therefore $T$ and $T^{-1}$ have the same eigenvectors as desired.
+
+\section*{Problem 25}
+Suppose $T\in\mathcal{L}(V)$ and $u,v$ are eigenvectors of $T$ such that $u+v$ is also an eigenvector of $T$. Prove that $u$ and $v$ are eigenvectors of $T$ corresponding to the same eigenvalue.
+
+\subsection*{Solution}
+Let $\alpha\in\F$ be an eigenvalue of $T$ with the corresponding eigenvector $u$, and let $\beta\in\F$ be an eigenvalue of $T$ with the corresponding eigenvector $v$. Then $Tu=\alpha u$ and $Tv=\beta v$.
+
+\vs
+
+Since $u+v$ is an eigenvector, there exists a corresponding eigenvalue $\lambda\in\F$ such that $T(u+v)=\lambda(u+v)$. By linearity, $T(u)+T(v)=\lambda u + \lambda v$. Therefore
+\[\lambda u+\lambda v=\alpha u+\beta v\]
+
+Reordering
+\[u(\lambda-\alpha)=v(\beta-\lambda)\]
+
+Suppose for contradiction $u$ and $v$ are eigenvectors that correspond to different eigenvalues. Then $u$ and $v$ are linearly independent (see lemma 5.10), and cannot be expressed as multiples of each other. Given the equation above this implies $\lambda-\alpha=\beta-\lambda=0$ and $\lambda=\alpha=\beta$. However, that is a contradiction, and thus $u$ and $v$ correspond to the same eigenvalue, as desired.
+
+\section*{Problem 6*}
+Prove or give a counterexample: if $V$ is a finite-dimensional and $U$ is a subspace of $V$ that is invariant under every operator of $V$, then $U=\{0\}$ or $U=V$.
+
+\subsection*{Solution}
+
+Suppose $V$ is a finite-dimensional and $U$ is a subspace of $V$ that is invariant under every operator of $V$. Suppose for contradiction $U\neq\{0\}$ and $U\neq V$. Since $U\neq \{0\}$ it has a non-empty basis. Let $u_1,\ldots,u_m$ be that basis. We can extend it to $u_1,\ldots,u_m, v_1,\ldots,v_n$, a basis of $V$. Since $U\neq V$ the extension is also non-empty.
+
+\vs
+
+Let $T\in\mathcal{L}(V)$. Define $T$ such that it maps $u_i$ to $v_1$ for all $i=1,\ldots,m$, and linearly extend $T$ to the remaining vectors in $U$. Observe that $T$ is linear and $U$ is not invariant under $T$ since each $u_i\in U$ but $u_i\not\in Tu_i$. We have a contradiction, therefore $U=\{0\}$ or $U=V$.
+
+\section*{Problem 11*}
+Define $T:\mathcal{P}(\R)\to\mathcal{P}(\R)$ by $Tp=p'$. Find all eigenvalues and eigenvectors of $T$.
+
+\subsection*{Solution}
+
+\section*{Problem 12*}
+Define $T\in\mathcal{L}(\mathcal{P}_4(\R))$ by
+\[(Tp)(x)=xp'(x)\]
+
+for all $x\in\R$. Find all eigenvalues and eigenvectors of $T$.
+
+\subsection*{Solution}
+
+\section*{Problem 16*}
+Suppose $V$ is a complex vector space, $T\in\mathcal{L}(V)$, and the matrix of $T$ with respect to some basis of $V$ contains only real entries. Show that if $\lambda$ is an eigenvalue of $T$, then so is $\bar{\lambda}$.
+
+\subsection*{Solution}
+My *suspicion* (I need to prove this) is that if $Tx=\lambda x$ and $\mathcal{M}(T)_{i,j}\in\R$ for all $i,j$, then $\lambda\in\R$. I.e. if $T$ scales the eigenvector and $\mathcal{M}(T)$ has all real elements, obviously the scaling factor is a real. So $\lambda=a+0i$, hence $a-0i$ is also an eigenvalue.
+
+\section*{Problem 18*}
+Show that the operator $T\in\mathcal{L}(\C^{\infty})$ defines by
+\[T(z_1,z_2,\ldots)=(0,z_1,z_2,\ldots)\]
+has no eigenvalues.
+
+\subsection*{Solution}
+
+Suppose there exists an eigenvalue of $T$, i.e. for some $\lambda\in\F$ there exists a vector $v\in\F^\infty, v=(x_1, x_2, x_3,\ldots)$ such that $Tv=\lambda v$. Since eigenvectors cannot be zero, $v$ has at least one non-zero element. Let this element be $x_i$. I.e. $v=(0,0,0,\ldots,x_i, x_{i+1}, \ldots)$. To satisfy the equation $Tv=\lambda v$, the $i^{th}$ element of $Tv$ must equal $\lambda x_i$. However, $T$ represents a right shift, and the $i^{th}$ element of $Tv$ must equal zero (as $T$ shifts $x_{i-1}=0$ one element to the right). We have a contradiction, therefore $T$ has no eigenvalues as desired.
+
+
+
+\section*{Problem 19*}
+Suppose $n$ is a positive integer and $T\in\mathcal{L}(\F^n)$ is defined by
+\[T(x_1,\ldots,x_n)=(x_1+\ldots+x_n,\ldots,x_1+\ldots+x_n)\]
+In other words, $T$ is the operator whose matrix (with respect to the standard basis) consists of all $1$'s. Find all eigenvalues and eigenvectors of $T$.
+
+\subsection*{Solution}
+
+We must solve the equation
+\[(\lambda x_1,\ldots,\lambda x_n)=(x_1+\ldots+x_n,\ldots,x_1+\ldots+x_n)\]
+
+for $\lambda\in\F$. This breaks down into:
+\begin{align*}
+    x_1&=\frac{x_1+\ldots+x_n}{\lambda}\\
+    \ldots\\
+    x_n&=\frac{x_1+\ldots+x_n}{\lambda}
+\end{align*}
+
+So there is one eigenvalue $\lambda=n$, and the corresponding eigenvectors are of the form $(x,\ldots,x)$.
+
+\section*{Problem 20*}
+Find all eigenvalues and eigenvectors of the backward shift operator $T\in\mathcal{L}(\F^\infty)$ defined by
+\[T(z_1,z_2,z_3,\ldots)=(z_2,z_3,\ldots)\]
+
+\subsection*{Solution}
+
+We must solve the equation
+\[\lambda(z_1,z_2,z_3,\ldots)=(z_2,z_3,\ldots)\]
+for $\lambda\in\F$. This breaks down to
+
+\begin{align*}
+    \lambda z_1&=z_2\\
+    \lambda z_2&=z_3\\
+    \ldots\\
+\end{align*}
+
+So there is an infinite number of eigenvalues, and the corresponding eigenvectors are of the form $(z_1,\lambda^1z_1, \lambda^2z_1, \ldots)$.
+
+\end{document}

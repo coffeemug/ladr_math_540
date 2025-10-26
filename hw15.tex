@@ -1,0 +1,28 @@
+\documentclass{article}
+\usepackage{style}
+
+\title{LADW, 3.1-3.3}
+\date{3 Mar 2024}
+
+\begin{document}
+\maketitle
+
+\section*{Problem 3.4}
+A square $(n\times n)$ matrix is called skew-symmetric (or antisymmetric) if $A^T=-A$. Prove that if $A$ is skew-symmetric and $n$ is odd, then $\det A = 0$. Is this true for even $n$?
+
+\subsection*{Solution}
+We know $\det A^T=\det A$ (see lemma 3.6.10). Further $\det aA=a^n\det A$ (see lemma 3.6.12), and thus $\det (-A)=(-1)^n\det A$. Suppose $n$ is odd. Then $-\det A=\det A$, which is only possible if $\det A=0$ as desired. Further, suppose $n$ is even. Then $\det A=\det A$ and thus $\det A$ may take on values other than zero.
+
+\section*{Problem 3.5}
+A square matrix is called nilpotent if $A^k=0$ for some positive integer $k$. Show that for a nilpotent matrix $A$, $\det A=0$.
+
+\subsection*{Solution}
+Since $A^k=0$, $A^k$ is not injective and therefore not invertible. Thus $\det A^k=0$ (see lemma 3.6.7). Further $\det A^k=0=(\det A)\ldots(\det A)$ (see lemma 3.6.11), and thus $\det A=0$ as desired.
+
+\section*{Problem 3.7}
+A square matrix $Q$ is called orthogonal if $Q^TQ=I$. Prove that if $Q$ is orthogonal then $\det Q=\pm1$.
+
+\subsection*{Solution}
+Observe that $\det(Q^TQ)=\det I=1=\det Q^T\det Q$. Let $k=\det Q$. Recall that $\det Q^T=\det Q$, and thus $k^2=1$. Therefore $k=\pm 1=\det Q$ as desired.
+
+\end{document}

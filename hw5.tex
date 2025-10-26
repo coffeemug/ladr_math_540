@@ -1,0 +1,95 @@
+\documentclass{article}
+\usepackage{style}
+
+\title{LADR, 2.B}
+\date{14 Jan 2024}
+
+\begin{document}
+\maketitle
+
+\section*{Problem 1}
+Find all vector spaces that have exactly one basis.
+
+\subsection*{Solution}
+Since a scaled or rotated basis is a basis, any vector space where scalar multiplication or rotation is an identity operation has one basis. For example $\{0\}$. I don't understand fields, so there may be others (e.g. one dimensional vector space over a binary field), but not vector spaces over $\C$ or $\R$.
+
+\section*{Problem 3}
+Let $U$ be the subspace of $\R^5$ defined by
+\[U=\{ (x_1, x_2, x_3, x_4, x_5)\in\R^5 : x_1=3x_2 \text{ and } x_3=7x_4 \}\]
+
+\subsection*{Solution}
+(a) Find a basis of $U$.
+\begin{align*}
+(3, 1, 0, 0, 0)\\
+(0, 0, 7, 1, 0)\\
+(0, 0, 0, 0, 1)
+\end{align*}
+
+(b) Extend the basis in part (a) to a basis of $\R^5$.
+
+Extending the basis in the previous part with the following two vectors gives us a basis for $\R^5$.
+\begin{align*}
+(1, 0, 0, 0, 0)\\
+(0, 0, 1, 0, 0)
+\end{align*}
+
+(c) Find a subspace $W$ of $\R^5$ such that $\R^5=U\oplus W$.
+
+\[W=\spn((1, 0, 0, 0, 0), (0, 0, 1, 0, 0))\]
+
+\section*{Problem 4}
+Let $U$ be the subspace of $\C^5$ defined by
+\[U=\{ (z_1, z_2, z_3, z_4, z_5)\in\C^5 : 6z_1=z_2 \text{ and } z_3+2z_4+3z_5=0 \}\]
+
+\subsection*{Solution}
+(a) Find a basis of $U$.
+\begin{align*}
+(6, 1, 0, 0, 0)\\
+(0, 0, -2, 1, 0)\\
+(0, 0, -3, 0, 1)\\
+\end{align*}
+
+(b) Extend the basis in part (a) to a basis of $\C^5$.
+
+Extending the basis in the previous part with the following two vectors gives us a basis for $\C^5$.
+\begin{align*}
+(1, 0, 0, 0, 0)\\
+(0, 0, 1, 0, 0)
+\end{align*}
+
+(c) Find a subspace $W$ of $\C^5$ such that $\C^5=U\oplus W$.
+\[W=\spn((1, 0, 0, 0, 0), (0, 0, 1, 0, 0))\]
+
+\section*{Problem 6}
+Suppose $v_1, v_2, v_3, v_4$ is a basis of $V$. Prove that
+\[v_1+v_2, v_2+v_3, v_3+v_4, v_4\]
+is also a basis of $V$.
+
+\subsection*{Solution}
+Let $\alpha_1, \alpha_2, \alpha_3, \alpha_4\in\F$.
+\begin{align*}
+    &\alpha_1(v_1+v_2) + \alpha_2(v_2+v_3) + \alpha_3(v_3+v_4) + \alpha_4 v_4\\
+    =&\alpha_1 v_1 + \alpha_1 v_2 + \alpha_2 v_2 + \alpha_2 v_3 + \alpha_3 v_3 + \alpha_3 v_4 + \alpha_4 v_4\\
+    =&\alpha_1 v_1 + (\alpha_1+\alpha_2)v_2 + (\alpha_2+\alpha_3)v_3 + (\alpha_3+\alpha_4)v_4
+\end{align*}
+
+Thus any vector $u\in\spn(v_1, v_2, v_3, v_4)$ is also in $\spn(v_1+v_2, v_2+v_3, v_3+v_4, v_4)$, therefore $v_1+v_2, v_2+v_3, v_3+v_4, v_4$ spans $V$. Further suppose for contradiction
+\[0=\alpha_1(v_1+v_2) + \alpha_2(v_2+v_3) + \alpha_3(v_3+v_4) + \alpha_4 v_4\]
+
+such that at least some of $\alpha_1, \alpha_2, \alpha_3, \alpha_4$ are non-zero. By the same series of equations as above, zero could be expressed as a linear combination of $v_1, v_2, v_3, v_4$ such that at least one of the coefficients is non-zero. But that is a contradiction as $v_1, v_2, v_3, v_4$ are linearly independent. Therefore $v_1+v_2, v_2+v_3, v_3+v_4, v_4$ are linearly independent. And since $v_1+v_2, v_2+v_3, v_3+v_4, v_4$ span $V$ and are linearly independent, they form a basis of $V$.
+
+\section*{Problem 8}
+Suppose $U$ and $W$ are subspaces of $V$ such that $V=U\oplus W$. Suppose also that $u_1,\ldots,u_m$ is a basis of $U$ and $w_1\ldots w_n$ is a basis of $W$. Prove that
+\[u_1,\ldots,u_m, w_1\ldots w_n\]
+is a basis of $V$.
+
+\subsection*{Solution}
+The book proves a list $v_1,\ldots,v_n$ of vectors in $V$ is a basis of $V$ if and only if every $v\in V$ can be written uniquely in the form
+\[v=\alpha_1 v_1+\ldots+\alpha_n v_n,\]
+where $a_1,\ldots,a_n\in\F$ (proof 2.29).
+
+\vs
+
+By definition of direct sum each vector in $V$ can be written in only one way as a sum of vectors in $U$ and $W$. Let $\hat{v}\in V, \hat{u}\in U, \hat{w}\in W$, and let $\hat{v}=\hat{u}+\hat{w}$. Since $u_1,\ldots,u_m$ is a basis for $U$, by proof 2.29 $\hat{u}$ has a unique representation $\alpha_1 u_1+\ldots+\alpha_m u_m$. Similarly $\hat{w}$ has a unique representation $\beta_1 w_1+\ldots+\beta_n w_n$. Thus $\hat{v}$ has a unique representation $\alpha_1 u_1+\ldots+\alpha_m u_m+\beta_1 w_1+\ldots+\beta_n w_n$, and thus, again by proof 2.29 (but in the other direction), $u_1,\ldots,u_m, w_1\ldots w_n$ is a basis for $V$.
+
+\end{document}

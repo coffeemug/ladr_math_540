@@ -1,0 +1,126 @@
+\documentclass{article}
+\usepackage{style}
+
+\title{LADR, 5.C}
+\date{26 Feb 2024}
+
+\begin{document}
+\maketitle
+
+\section*{Problem 1}
+Suppose $T\in\mathcal{L}(V)$ is diagonalizable. Prove that $V=\nil T\oplus\range T$.
+
+\subsection*{Solution}
+Because $T$ is diagonalizable, there exists a basis $v_1,\ldots,v_n\in V$ and $\lambda_1,\ldots,\lambda_n\in\F$ such that $Tv_i=\lambda_i v_i$ for $i=1,\ldots,n$. Partition the basis into two sets $A=\{v\in v_1,\ldots,v_n:Tv=0\}$ and $B=\{v\in v_1,\ldots,v_n:Tv\neq0\}$. Observe that vectors in $A$ are a basis for $\nil T$, and vectors in $B$ are a basis for $\range T$.
+
+\vs
+
+Any $u\in V$ can be expressed as a unique linear combination of $v_1,\ldots,v_n$ since it is a basis of $V$. We can trivially reorder the terms such that $u$ is uniquely expressed as a sum of a linear combination of vectors in $A$ and vectors in $B$. Thus $\spn A+\spn B$ are a direct sum, and $V=\nil T\oplus\range T$ as desired.
+
+\section*{Problem 3}
+Suppose $V$ is finite-dimensional and $T\in\mathcal{L}(V)$. Prove that the following are equivalent:
+
+\vs
+
+(a) $V=\nil T\oplus \range T$
+
+(b) $V=\nil T + \range T$
+
+(c) $\nil T\cap\range T=\{0\}$
+
+\subsection*{Solution}
+Suppose (a) holds, i.e. $V=\nil T\oplus \range T$. Then (b) and (c) is implied by the properties of direct sums.
+
+\vs
+
+Suppose (b) holds, i.e. $V=\nil T + \range T$. Let $u_1,\ldots,u_m$ be a basis of $\nil T$, and let $v_1,\ldots,v_n$ be a basis of $\range T$. Any $v\in V$ can be expressed as $\alpha_1u_1+\ldots+\alpha_m u_m+\beta_1v_1+\ldots+\beta_n v_n$ where $\alpha,\beta\in\F$. By rank-nullity theorem $\dim V=n+m$, and thus vectors $u_1,\ldots,u_m, v_1,\ldots,v_n$ are linearly independent. Therefore $\nil T\cap\range T=\{0\}$, and $V=\nil T\oplus \range T$ as desired.
+
+\vs
+
+Suppose (c) holds, i.e. $\nil T\cap\range T=\{0\}$. Let $u_1,\ldots,u_m$ be a basis of $\nil T$, and let $v_1,\ldots,v_n$ be a basis of $\range T$. Because $\nil T\cap\range T=\{0\}$, $u_1,\ldots,u_m, v_1,\ldots,v_n$ is linearly independent. By rank-nullity theorem $\dim V=n+m$. Recall that the right number of linearly independent vectors in a space form a basis for that space. Thus $u_1,\ldots,u_m, v_1,\ldots,v_n$ is a basis of $V$. Therefore $V=\nil T + \range T$. Thus by properties of direct sum $V=\nil T\oplus \range T$ as desired. 
+
+\section*{Problem 6}
+Suppose $V$ is finite-dimensional, $T\in\mathcal{L}(V)$ has $\dim V$ distinct eigenvalues, and $S\in\mathcal{L}(V)$ has the same eigenvectors as $T$ (not necessarily with the same eigenvectors). Prove that $ST=TS$.
+
+\subsection*{Solution}
+Suppose $v_1,\ldots,v_n\in V$ where $n=\dim V$ are eigenvectors corresponding to the eigenvalues of $T$. Then $v_1,\ldots,v_n$ are linearly independent, and thus form a basis of $V$. Let $\lambda_1,\ldots,\lambda_n$ be the corresponding eigenvalues of $T$, and let $\gamma_1,\ldots,\gamma_n$ be the corresponding eigenvalues of $S$. Any $v\in V$ can be expressed as $\alpha_1v_1+\ldots+\alpha_n v_n$ where $\alpha_1,\ldots,\alpha_n\in\F$. Then
+\begin{align*}
+    STv&=ST(\alpha_1v_1+\ldots+\alpha_n v_n)\\
+       &=S(\alpha_1\lambda_1v_1+\ldots+\alpha_n \lambda_n v_n)\\
+       &=\alpha_1\lambda_1\gamma_1v_1+\ldots+\alpha_n \lambda_n \gamma_n v_n
+\end{align*}
+
+And
+\begin{align*}
+    TSv&=TS(\alpha_1v_1+\ldots+\alpha_n v_n)\\
+       &=T(\alpha_1\gamma_1v_1+\ldots+\alpha_n \gamma_n v_n)\\
+       &=\alpha_1\gamma_1\lambda_1v_1+\ldots+\alpha_n \gamma_n \lambda_n v_n
+\end{align*}
+
+Thus $ST=TS$ as desired.
+
+\section*{Problem 4*}
+Give an example to show that the exercise 3 is false without the hypothesis that $V$ is finite-dimensional.
+
+\subsection*{Solution}
+Consider a left shift operator $T$ on $\F^\infty$:
+\begin{align*}
+    T(1,0,0,\ldots)&=(0,0,0,\ldots)\\
+    T(0,1,0,\ldots)&=(1,0,0,\ldots)
+\end{align*}
+
+Thus $(1,0,0,\ldots)\in\nil T$ and $(1,0,0,\ldots)\in\range T$, which contradicts condition (c) (and therefore also contradicts condition (a)).
+
+\section*{Problem 7}
+Suppose $T\in\mathcal{L}(V)$ has a diagonal matrix $A$ with respect to some basis of $V$ and that $\lambda\in\F$. Prove that $\lambda$ appears on the diagonal of $A$ precisely $\dim E(\lambda, T)$ times.
+
+\subsection*{Solution}
+Let $v_1,\ldots,v_m$ be a basis of $E(\lambda, T)$. Then by definition $Tv_i=\lambda v_i$ for $i=1,\ldots,m$. The operator $T$ can have a diagonal matrix with respect to a basis if and only if that basis consists of eigenvectors of $T$. Therefore $v_1,\ldots,v_m$ are a subset of the basis of $V$ with respect to which the matrix representation of $T$ is $A$.
+
+\vs
+
+Recall that a diagonal entry $\lambda_i$ in $A$'s column $i$ is such that $Tv_i=\lambda_i v_i$. Thus for each $v_1,\ldots,v_m$ the matrix $A$ has a diagonal entry $\lambda$, as desired.
+
+\section*{Problem 8}
+Suppose $T\in\mathcal{L}(\F^5)$ and $\dim E(8,T)=4$. Prove that $T-2I$ or $T-6I$ is invertible.
+
+\subsection*{Solution}
+Notice that $E(8,T)$ already has four linearly independent eigenvectors, and $T\in\mathcal{L}(\F^5)$ can have no more than five linearly independent vectors. Each distinct eigenvalue has linearly independent eigenvectors, and thus $2$ and $6$ cannot both be eigenvalues. Therefore at least one of $T-2I$ or $T-6I$ is invertible, as desired.
+
+\section*{Problem 10}
+Suppose that $V$ is finite-dimensional and $T\in\mathcal{L}(V)$. Let $\lambda_1,\ldots,\lambda_m$ denote the distinct nonzero eigenvalues of $T$. Prove that
+\[\dim E(\lambda_1,T)+\ldots+\dim E(\lambda_m, T)\leq \dim\range T\]
+
+\subsection*{Solution}
+Consider $E(\lambda_i, T)$ where $1\leq i\leq m$. Let $\dim E(\lambda_i, T)=n$, and let $v_1,\ldots,v_n$ be a basis of $E(\lambda_i, T)$. Then $Tv_j=\lambda_i v_j$ for $j=1,\ldots,n$. Since each $\lambda_i v_j\in\range T$ is linearly independent, it follows $\dim\range T\geq n$. This is true for each eigenspace, and since eigenvectors corresponding to distinct eigenvalues are linearly independent, it follows that $\dim\range T\geq\sum_{i=1}^m \dim E(\lambda_i, T)$ as desired.
+
+\section*{Problem 14}
+Find $T\in\mathcal{L}(C^3)$ such that $6$ and $7$ are eigenvalues of $T$ and such that $T$ does not have a diagonal matrix with respect to any basis of $\C^3$.
+
+\subsection*{Solution}
+Let $T(x,y,z)=(6x, 7y, x+y+z)$. Then $6$ is an eigenvalue of $T$ for vectors of the form $(x, 0, 0)$, and $7$ is an eigenvalue of $T$ for vectors of the form $(0, y, 0)$. Since $C^3$ has three dimensions and $T$ has two eigenvalues (and thus two linearly independent eigenvectors), $C^3$ does not have a basis consisting of eigenvectors of $T$. Since this condition fails, $T$ is not diagonalizable (see lemma 5.41, condition b).
+
+\section*{Problem 16*}
+The Fibonacci sequence $F_1,F_2,\ldots$ is defined by
+\[F_1=1, F_2=1, \text{ and } F_n=F_{n-2}+F_{n-1}\text{ for }n\geq 3\]
+
+Define $T\in\mathcal{L}(\R^2)$ by $T(x, y)=(y, x+y)$
+
+\subsection*{Solution}
+
+(a) Show that $T^n(0,1)=(F_n,F_{n+1})$ for each positive integer $n$.
+
+(b) Find the eigenvalues of $T$.
+
+(c) Find a basis of $\R^2$ consisting of eigenvectors of $T$.
+
+(d) Use the solution to part (c) to compute $T^n(0,1)$. Conclude that
+\[F_n = \frac{1}{\sqrt{5}} \left[ \left( \frac{1 + \sqrt{5}}{2} \right)^n - \left( \frac{1 - \sqrt{5}}{2} \right)^n \right]
+\]
+for each positive integer $n$.
+
+(e) Use part (d) to conclude that for each positive integer $n$, the Fibonacci number $F_n$ is the integer that is closest to
+\[\frac{1}{\sqrt{5}} \left( \frac{1 + \sqrt{5}}{2} \right)^n
+\]
+
+\end{document}

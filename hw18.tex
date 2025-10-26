@@ -1,0 +1,160 @@
+\documentclass{article}
+\usepackage{style}
+
+\title{LADR, 6.B}
+\date{25 Mar 2024}
+
+\begin{document}
+\maketitle
+
+\section*{Problem 1}
+(a) Suppose $\theta\in\R$. Show that $(\cos\theta,\sin\theta),(-\sin\theta,\cos\theta)$ and $(\cos\theta,\sin\theta),(\sin\theta,-\cos\theta)$ are orthonormal bases of $\R^2$.
+
+\vs
+
+First we show the norm of each vector is one:
+\begin{align*}
+\|(\cos\theta,\sin\theta)\|&=\langle (\cos\theta,\sin\theta),(\cos\theta,\sin\theta)\rangle\\
+&=\cos^2\theta+\sin^2\theta=1
+\end{align*}
+
+It's easy to see the norms of all the other vectors are $1$ by similar logic. Second, we show the vectors in each basis are orthogonal:
+\[\langle(\cos\theta,\sin\theta),(-\sin\theta,\cos\theta)\rangle=\cos\theta(-\sin\theta)+\sin\theta\cos\theta=0\]
+
+It's easy to see $(\cos\theta,\sin\theta),(\sin\theta,-\cos\theta)$ are orthogonal by the same logic. Finally, since the vectors in each list are orthogonal, they are linearly independent, and since each list has length $2$, they span $\R^2$. Thus the lists are orthonormal bases of $\R^2$.
+
+\vs
+
+(b) Show that each orthonormal basis of $\R^2$ is of the form given by one of the two possibilities of part (a).
+
+\vs
+
+Suppose $(x_1, y_1), (x_2, y_2)$ is an orthonormal basis of $\R^2$. Thus
+\[\|(x_1, y_1)\|=\|(x_2, y_2)\|=1,\ \ \langle(x_1, y_1), (x_2, y_2)\rangle=0\]
+
+Let $\theta$ be the angle between $(x_1, y_1)$ and $(1, 0)$. Thus $(x_1, y_1)$ can be expressed as $(\cos\theta,\sin\theta)$. Summarizing what we know about the vectors, we have the following system of equations:
+\begin{align*}
+&\langle(\cos\theta,\sin\theta),(x_2, y_2)\rangle=x_2\cos\theta+y_2\sin\theta=0\\
+&x_2^2+y_2^2=1
+\end{align*}
+
+This equation has two solutions: $x_2=-\sin\theta, y_2=\cos\theta$ and $x_2=\sin\theta, y_2=-\cos\theta$, as desired. (I admittedly solved this through sympy).
+
+\section*{Problem 2}
+Suppose $e_1,\ldots,e_m$ is an orthonormal list of vectors in $V$. Let $v\in V$. Prove that
+\[\|v\|^2=|\langle v,e_1\rangle|^2 + \ldots + |\langle v,e_m\rangle|^2\]
+if and only if $v\in\spn(e_1,\ldots,e_m)$.
+
+\subsection*{Solution}
+Suppose $\|v\|^2=|\langle v,e_1\rangle|^2 + \ldots + |\langle v,e_m\rangle|^2$, and suppose for contradiction $v\not\in\spn(e_1,\ldots,e_m)$. Thus $e_1,\ldots,e_m$ is a linearly independent list in $V$ that isn't a basis. Extend it to an orthonormal basis $e_1,\ldots,e_m, e_{m+1}, \ldots, e_n$. Let $v=a_1e_1+\ldots+a_m e_m+a_{m+1}e_{m+1}+\ldots+a_n e_n$ such that $a_1,\ldots,a_n\in\F$ and $a_i\neq0$. Then by lemma 6.30:
+\[\|v\|^2=|\langle v, e_1\rangle|^2+\ldots+|\langle v, e_m\rangle|^2+|\langle v, e_{m+1}\rangle|^2+\ldots+|\langle v, e_n\rangle|^2\]
+
+But we also know $\|v\|^2=|\langle v,e_1\rangle|^2 + \ldots + |\langle v,e_m\rangle|^2$, and thus
+\[|\langle v, e_{m+1}\rangle|^2+\ldots+|\langle v, e_n\rangle|^2=0\]
+
+Therefore $\langle v, e_{m+1}\rangle=0,\ldots,\langle v, e_n\rangle=0$. That is a contradiction. Therefore $v\in\spn(e_1,\ldots,e_m)$ as desired.
+
+\vs
+
+Conversely, suppose $v\in\spn(e_1,\ldots,e_m)$. Because $e_1,\ldots,e_m$ is an orthonormal list, it is also linearly independent (by lemma 6.26). Therefore $e_1,\ldots,e_m$ is a basis of $V$ and $\|v\|^2=|\langle v,e_1\rangle|^2 + \ldots + |\langle v,e_m\rangle|^2$ by lemma 6.30 as desired.
+
+
+\section*{Problem 3}
+Suppose $T\in\mathcal{L}(\R^3)$ has an upper-triangular matrix with respect to the basis $(1,0,0), (1,1,1), (1,1,2)$. Find an orthonormal basis of $\R^3$ (use the usual inner product of $\R^3$) with respect to which $T$ has an upper-triangular matrix.
+
+\subsection*{Solution}
+We apply Gram-Schmidt procedure to $(1,0,0), (1,1,1), (1,1,2)$. Let $e_1=(1,0,0)$. Then
+\begin{align*}
+e_2&=\frac{(1,1,1)-\langle(1,1,1),(1,0,0)\rangle(1,0,0)}{\|(1,1,1)-\langle(1,1,1),(1,0,0)\rangle(1,0,0)\|}\\
+&=\frac{(0,1,1)}{\|(0,1,1)\|}=(0,\frac{1}{\sqrt{2}}, \frac{1}{\sqrt{2}})
+\end{align*}
+
+Similarly
+\begin{align*}
+    e_3&=\frac{(1,1,2)-\langle(1,1,2),(1,0,0)\rangle(1,0,0)-\langle(1,1,2),(0,\frac{1}{\sqrt{2}}, \frac{1}{\sqrt{2}})\rangle(0,\frac{1}{\sqrt{2}}, \frac{1}{\sqrt{2}})}{(1,1,2)-\langle(1,1,2),(1,0,0)\rangle(1,0,0)-\langle(1,1,2),(0,\frac{1}{\sqrt{2}}, \frac{1}{\sqrt{2}})\rangle(0,\frac{1}{\sqrt{2}}, \frac{1}{\sqrt{2}})}\\
+    &=\frac{(0,-\frac{1}{2},\frac{1}{2})}{\|(0,-\frac{1}{2},\frac{1}{2})\|}=(0,-\frac{\sqrt{2}}{2}, \frac{\sqrt{2}}{2})
+\end{align*}
+
+\vs
+
+By lemma 6.37, $T$ has an upper-triangular matrix with respect to
+\[(1,0,0), (0,\frac{1}{\sqrt{2}}, \frac{1}{\sqrt{2}}), (0,-\frac{\sqrt{2}}{2}, \frac{\sqrt{2}}{2})\]
+
+\section*{Problem 4*}
+$\mathbf{TODO:}$ involves calculus, do later.
+
+\subsection*{Solution}
+
+\section*{Problem 6*}
+$\mathbf{TODO:}$ involves calculus, do later.
+
+\subsection*{Solution}
+
+\section*{Problem 9*}
+What happens if the Gram-Schmidt procedure is applied to a list of vectors that is not linearly independent?
+
+\subsection*{Solution}
+The Gram-Schmidt procedure outputs $0$ for vectors that are linearly dependent with the vectors prior to them in the list. This is easy to see because a vector $v_j$ projected on a span $e_1,\ldots,e_k$ is itself when $v_j\in\spn(e_1,\ldots,e_k)$. Thus the Gram-Schmidt equation for vector $e_j$ is $e_j=\frac{v_j-v_j}{\ldots}=0$.
+
+\section*{Problem 12*}
+Suppose $V$ is finite-dimensional and $\langle\cdot,\cdot\rangle_1,\langle\cdot,\cdot\rangle_2$ are inner products on $V$ with corresponding norms $\|\cdot\|_1$ and $\|\cdot\|_2$. Prove that there exists a positive number $c$ such that
+\[\|v\|_1\leq c\|v\|_2\]
+for every $v\in V$.
+
+\subsection*{Solution}
+
+\section*{Problem 5}
+$\mathbf{TODO:}$ involves calculus, do later.
+
+\subsection*{Solution}
+
+\section*{Problem 8}
+$\mathbf{TODO:}$ involves calculus, do later.
+
+\subsection*{Solution}
+
+\section*{Problem 11}
+Suppose $\langle \cdot,\cdot\rangle_1$ and $\langle \cdot,\cdot\rangle_2$ are inner products on $V$ such that $\langle v, w\rangle_1=0$ if and only if $\langle v,w\rangle_2=0$. Prove that there is a positive number $c$ such that $\langle v,w\rangle_1=c\langle v,w\rangle_2$ for every $v,w\in V$.
+
+\subsection*{Solution}
+Observe that any orthonormal basis of $V$ with respect to $\langle \cdot,\cdot\rangle_1$ is also an orthogonal basis with respect to $\langle \cdot,\cdot\rangle_2$. Let $e_1,\ldots,e_n$ be such a basis. Let $v=a_1e_1+\ldots+a_n e_n$ and let $w=b_1e_1+\ldots+b_n e_n$. Then
+\begin{align*}
+    \langle v,w\rangle_1&=\langle a_1e_1+\ldots+a_n e_n, b_1e_1+\ldots+b_n e_n\rangle_1\\
+    &=a_1\langle e_1, b_1e_1+\ldots+b_n e_n\rangle_1\\
+    &+\ldots +\\
+    &a_n\langle e_n, b_1e_1+\ldots+b_n e_n\rangle_1\\
+    &=a_1b_1\langle e_1, e_1 \rangle_1+\ldots+a_n b_n\langle e_n, e_n \rangle_1\\
+    &=a_1b_1+\ldots+a_n b_n
+\end{align*}
+
+Similarly $\langle v,w\rangle_2=a_1b_1\langle e_1, e_1 \rangle_2+\ldots+a_n b_n\langle e_n, e_n \rangle_2$. Note that since $e_1,\ldots,e_n$ is merely orthogonal and not necessarily orthonormal with respect to $\langle \cdot,\cdot\rangle_2$, we cannot simplify $\langle e_i,e_i\rangle_2$ to $1$. Thus we must prove $\langle e_i,e_i\rangle_2=\langle e_j,e_j\rangle_2=c$ for $i,j=1,\ldots,n$ and $i\neq j$.
+
+\vs
+\textbf{TODO}
+
+\section*{Problem 14}
+Suppose $e_1,\ldots,e_n$ is an orthonormal basis of $V$ and $v_1,\ldots,v_n$ are vectors in $V$ such that
+\[\|e_j-v_j\|<\frac{1}{\sqrt{n}}\]
+
+for each $j$. Prove that $v_1,\ldots,v_n$ is a basis of $V$.
+
+\subsection*{Solution}
+Suppose for contradiction $v_1,\ldots,v_n$ is not linearly independent.
+
+\vs
+\textbf{TODO}
+
+\section*{Problem 16}
+Suppose $\F=\C$, $V$ is finite-dimensional, $T\in\mathcal{L}(V)$, all the eigenvalues of $T$ have absolute values less than $1$, and $\epsilon>0$. Prove that there exists a positive integer $m$ such that $\|T^mv\|\leq\epsilon\|v\|$ for every $v\in V$.
+
+\subsection*{Solution}
+By Schur's theorem $T$ has an upper triangular matrix with respect to some orthonormal basis, and its diagonal entries are eigenvalues (5.32). Let $e_1,\ldots,e_n$ be such a basis.
+
+\vs
+
+$\textbf{Note:}$ I struggled with this a lot, eventually \href{https://math.stackexchange.com/questions/4759025/linear-algebra-done-right-exercise-6-b-16}{looked it up} on stack overflow. This is hard and I'm abandoning it here.
+
+\vs
+\textbf{TODO}
+
+\end{document}

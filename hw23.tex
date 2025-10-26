@@ -1,0 +1,61 @@
+\documentclass{article}
+\usepackage{style}
+
+\title{LADR, 8.B}
+\date{3 May 2024}
+
+\begin{document}
+\maketitle
+
+\section*{Problem 2}
+Give an example of an operator $T$ on a finite-dimensional real vector space such that $0$ is the only eigenvalue of $T$ but $T$ is not nilpotent.
+
+\subsection*{Solution}
+Consider $T(x, y, z=)=(0,-z,y)$. The only eigenvalue is $0$ (with the corresponding eigenvector $(1,0,0)$. However, there is no positive number $k$ such that $T^k=0$ thus $T$ is not nilpotent as desired.
+
+\section*{Problem 4}
+Suppose $V$ is an $n$-dimensional complex vector space and $T$ is an operator on $V$ such that $\nil T^{n-2}\neq \nil T^{n-1}$. Prove that $T$ has at most two distinct eigenvalues.
+
+\subsection*{Solution}
+Since $\nil T^{n-2}\neq \nil T^{n-1}$, with each power increase, $\dim\nil T^k$ increases by at least $1$ (lemma 8.4). Thus $\dim T^{n-1}=\dim G(0, T^{n-1})\geq n-1$. Since multiplicities of eigenvalues must sum to $n$ (lemma 8.26) and $0$ is an eigenvalue with a multiplicity greater than or equal to $n-1$, there can only be space left for one more eigenvalue of multiplicity $1$. Thus $T$ has at most two distinct eigenvalues as desired.
+
+\section*{Problem 5}
+Suppose $V$ is a complex vector space and $T\in\mathcal{L}(V)$. Prove that $V$ has a basis consisting of eigenvectors of $T$ if and only if every generalized eigenvector of $T$ is an eigenvector of $T$.
+
+[\textit{For $\F=\C$}, the exercise above adds an equivalence to the list in 5.41.]
+
+\subsection*{Solution}
+Suppose $V$ has a basis consisting of eigenvectors of $T$. Let $v_1,\ldots,v_m$ be such a basis, and let $\lambda_1,\ldots,\lambda_n$ be distinct eigenvalues of $T$.  Recall that
+\[V=G(\lambda_1, T)\oplus\ldots\oplus G(\lambda_n, T)\]
+
+Therefore
+\[m=\sum_{i=1}^n \dim G(\lambda_i, T)\]
+
+Recall further that every eigenvector of $T$ is a generalized eigenvector of $T$. Suppose for contradiction there exists a generalized eigenvector of $T$ that is not an eigenvector of $T$. Then $\sum_{i=1}^n \dim G(\lambda_i, T)=m+1$. We have a contradiction, therefore every generalized eigenvector of $T$ is an eigenvector of $T$ as desired.
+
+\vs
+
+Conversely suppose every generalized eigenvector of $T$ is an eigenvector of $T$. Take a basis of $G(\lambda_1, T)$ consisting of eigenvectors of $T\in G(\lambda_1, T)$. Extend it with a basis of $G(\lambda_2, T)$ consisting of eigenvectors of $T\in G(\lambda_2, T)$. Continue extending it in this fashion until we reach $n$. Observe that the resulting basis is a basis of $T$ consisting of eigenvectors of $T$ as desired.
+
+\section*{Problem 10}
+Suppose $\F=\C$ and $T\in\mathcal{L}(V)$. Prove that there exist $D, N\in\mathcal{L}(V)$ such that $T=D+N$, the operator $D$ is diagonalizable, $N$ is nilpotent, and $DN=ND$.
+
+\subsection*{Solution}
+Let $\lambda_1,\ldots,\lambda_n$ be distinct eigenvalues of $T$. For each $j$ choose a basis for $G(\lambda_j, T)$. The matrix of $T|_{G(\lambda_j, T)}$ with respect to this basis equals $T|_{G(\lambda_j, T)}+\lambda_j I|_{G(\lambda_j, T)}$. Observe that the first term is nilpotent, and the second term is diagonal with every non-zero element equal to $\lambda_j$ (lemma 8.29). 
+
+\vs
+
+Every $v\in V$ can be expressed as a linear combination of the bases of $G(\lambda_1, T)$. Observe that $Tv$ can be obtained via the application of $T|_{G(\lambda_j, T)}+\lambda_j I|_{G(\lambda_j, T)}$ for all $j$ to the relevant part of the linear combination. Grouping together the nilpotent terms we get the operator $N$, and grouping together the diagonal terms we get the operator $D$ such that $T=N+D$. Further $ND$ and $DN$ can be modeled by multiplying each upper triangular and diagonal block in the block diagonal matrix, and since each element on the diagonal of any given block diagonal matrix is the same, $ND=DN$ as desired.
+
+\vs
+
+\textbf{TODO:} this proof is correct but sloppy, specifically the commutativity part. It would be good to come back and make it clean and rigorous. Lemmas 8.29 and especially 8.33 have good templates for how to do this.
+
+\section*{Problem 11}
+Suppose $T\in\mathcal{L}(V)$ and $\lambda\in\F$. Prove that for every basis of $V$ with respect to which $T$ has an upper-triangular matrix, the number of times that $\lambda$ appears on the diagonal of the matrix of $T$ equals the multiplicity of $\lambda$ as an eigenvalue of $T$.
+
+\subsection*{Solution}
+\textbf{TODO}
+
+
+\end{document}

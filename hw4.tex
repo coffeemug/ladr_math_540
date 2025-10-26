@@ -1,0 +1,176 @@
+\documentclass{article}
+\usepackage{style}
+
+\title{LADR, 2.A}
+\date{11 Jan 2024}
+
+\begin{document}
+\maketitle
+
+\section*{Problem 1}
+Suppose $v_1, v_2, v_3, v_4$ spans $V$. Prove that the list
+\begin{align*}
+    v_1-v_2, v_2-v_3, v_3-v_4, v_4
+\end{align*}
+also spans $V$.
+
+\subsection*{Solution}
+Let $u\in V$. By definition of span, $u\in\spn(v_1, v_2, v_3, v_4)$, and thus can be expressed as a linear combination of $v_1, v_2, v_3, v_4$. We now show that if a vector can be expressed as a linear combination of $v_1-v_2, v_2-v_3, v_3-v_4, v_4$ it also can be expressed as a linear combination of $v_1, v_2, v_3, v_4$.
+
+\begin{align*}
+    u&=\alpha_1(v_1-v_2) + \alpha_2(v_2-v_3) + \alpha_3(v_3-v_4) + \alpha_4 v_4 \\
+    &= \alpha_1 v_1 - \alpha_1 v_2 + \alpha_2 v_2 - \alpha_2 v_3 + \alpha_3 v_3 - \alpha_3 v_4 - \alpha_4 v_4 \\
+    &= \alpha_1 v_1 + (\alpha_2 - \alpha_1) v_2  + (\alpha_3 - \alpha_2) v_3 - (\alpha_3 + \alpha_4) v_4
+\end{align*}
+
+Therefore $u\in\spn(v_1-v_2, v_2-v_3, v_3-v_4, v_4)$, and thus the list $v_1-v_2, v_2-v_3, v_3-v_4, v_4$ spans $V$.
+
+\section*{Problem 3}
+Find a number $t$ such that
+\begin{align*}
+    (3, 1, 4), (2, -3, 5), (5, 9, t)
+\end{align*}
+is not linearly independent in $\R^3$.
+
+\subsection*{Solution}
+We must find $\alpha$ and $\beta$ such that
+\begin{align*}
+    \alpha&(3,1,4)\\
+    + \beta&(2, -3, 5)\\
+    = &(5, 9, t)
+\end{align*}
+
+This gives us two equations:
+\begin{align*}
+    \alpha 3 + \beta 2 &= 5\\
+    \alpha 1 + \beta (-3) &= 9
+\end{align*}
+
+Thus:
+\begin{align*}
+    \alpha=9+3\beta\\
+    (9+3\beta)3 +\beta2 = 5\\  
+    27+9\beta + \beta 2 = 5\\
+    11\beta=-22\\
+    \beta=-2\\
+    \alpha=3
+\end{align*}
+
+Thus:
+\begin{align*}
+    3&(3,1,4)\\
+    -2&(2, -3, 5)\\
+    = &(5, 9, t)
+\end{align*}
+
+Thus $t=2$.
+
+\section*{Problem 6}
+Suppose $v_1, v_2, v_3, v_4$ is linearly independent in $V$. Prove that the list
+\begin{align*}
+    v_1-v_2, v_2-v_3, v_3-v_4, v_4
+\end{align*}
+is also linearly independent.
+
+\subsection*{Solution}
+Suppose $v_1-v_2, v_2-v_3, v_3-v_4, v_4$ is not linearly independent. Then
+\begin{align*}
+    0=\alpha1(v_1-v_2) + \alpha_2(v_2-v_3) +\alpha_3(v_3-v_4)+\alpha_4 v_4
+\end{align*}
+
+such that at least some of $\alpha_1, \alpha_2, \alpha_3, \alpha_4$ aren't equal to zero. It follows that
+
+\begin{align*}
+    0&= \alpha_1 v_1 - \alpha_1 v_2 + \alpha_2 v_2 - \alpha_2 v_3 + \alpha_3 v_3 - \alpha_3 v_4 - \alpha_4 v_4 \\
+    &= \alpha_1 v_1 + (\alpha_2 - \alpha_1) v_2  + (\alpha_3 - \alpha_2) v_3 - (\alpha_3 + \alpha_4) v_4
+\end{align*}
+
+We know $v_1, v_2, v_3, v_4$ are linearly independent, therefore
+
+\begin{align*}
+\alpha_1=0\\
+\alpha_2-\alpha_1=0\\
+\alpha_3-\alpha_2=0\\
+\alpha3+\alpha4=0
+\end{align*}
+
+Substituting top to bottom it's easy to see $\alpha_2=0, \alpha_3=0$, and $\alpha_4=0$. We have a contradiction, and therefore $v_1-v_2, v_2-v_3, v_3-v_4, v_4$ is linearly independent.
+
+\section*{Problem 8}
+Prove or give a counterexample: If $v_1, v_2, \ldots, v_m$ is a linearly independent list of vectors in $V$ and $\lambda\in\F$ with $\lambda\neq 0$, then $\lambda v_1, \lambda v_2, \ldots, \lambda v_m$ is linearly independent.
+
+\subsection*{Solution}
+Suppose $\lambda v_1, \lambda v_2, \ldots, \lambda v_m$ is linearly dependent. Then for $\alpha_1, \alpha_2, \ldots, \alpha_m\in\F$
+
+\begin{align*}
+    0=\alpha_1\lambda v_1 + \alpha_2\lambda v_2 + \ldots + \alpha_m\lambda v_m    
+\end{align*}
+
+such that at least some of $\alpha_i\neq 0$ for $i\in\{1\ldots m\}$. Dividing both sides by $\lambda$ we get
+
+\begin{align*}
+    0=\alpha_1 v_1 + \alpha_2 v_2 + \ldots + \alpha_m v_m    
+\end{align*}
+
+But $v_1, v_2, \ldots, v_m$ is linearly independent and thus $\alpha_i$ must equal zero for $i\in\{1\ldots m\}$. This is a contradiction, therefore $\lambda v_1, \lambda v_2, \ldots, \lambda v_m$ is linearly independent.
+
+\section*{Problem 11}
+Suppose $v_1, v_2, \ldots, v_m$ is linearly independent in $V$ and $w\in V$. Show that $v_1, v_2, \ldots, v_m, w$ is linearly independent if and only if
+
+\begin{align*}
+    w\not\in\spn(v_1, v_2, \ldots, v_m)
+\end{align*}
+
+\subsection*{Solution}
+Assume $v_1, v_2, \ldots, v_m, w$ is linearly independent. Suppose for contradiction
+
+$w\in\spn(v_1, v_2, \ldots, v_m)$. By span definition we can express $w$ as a linear combination $w=\alpha_1 v_1 + \alpha_2 v_2 + \ldots + \alpha_m v_m$. Therefore:
+\begin{align*}
+0=\alpha_1 v_1 + \alpha_2 v_2 + \ldots + \alpha_m v_m -1w
+\end{align*}
+
+But the $-1$ coefficient violates the definition of linear independence. We have a contradiction, and therefore $w\not\in\spn(v_1, v_2, \ldots, v_m)$.
+
+\vs
+
+Conversely, assume $w\not\in\spn(v_1, v_2, \ldots, v_m)$. Suppose for contradiction
+
+$v_1, v_2, \ldots, v_m, w$ is linearly dependent. Then $0=\alpha_1 v_1 + \alpha_2 v_2 + \ldots + \alpha_m v_m +\beta w$ such that at least one coefficient is non-zero. Suppose that's $\beta$. Then
+\begin{align*}
+    w=\frac{\alpha_1}{\beta} v_1 + \frac{\alpha_2}{\beta} v_2 + \ldots + \frac{\alpha_m}{\beta} v_m
+\end{align*}
+
+but that is a contradiction since $w\not\in\spn(v_1, v_2, \ldots, v_m)$. Thus $\beta=0$ and the non-zero coefficient must be one of $a_i$ for $1 <= i <= m$. But that is a contradiction as well since $v_1, v_2, \ldots, v_m$ is linearly independent. Thus $v_1, v_2, \ldots, v_m, w$ is linearly independent.
+
+\vs
+
+QED.
+
+\section*{Problem 14}
+Prove that $V$ is infinite-dimensional if and only if there is a sequence $v_1, v_2, \ldots$ of vectors in $V$ such that $v_1,\ldots,v_m$ is linearly independent for every positive integer $m$.
+
+\subsection*{Solution}
+Assume $V$ is infinite dimensional. Suppose for contradiction there exists a positive integer $m$ such that no sequence of vectors $v_1,\ldots,v_m$ in $V$ is linearly independent. I.e. the largest linearly independent sequence of vectors one can construct in $V$ is $v_1,\ldots,v_{m-1}$. Thus for every $u\in V$ there exist $\alpha_{1}\dots\alpha_{m-1}$ such that $u=\alpha_{1}v_1+\dots+\alpha_{m-1}v_{m-1}$ (otherwise $v_1,\ldots,v_{m-1}, u$ would be linearly independent). In other words, $u\in\spn(v_1, \ldots,v_{m-1})$, which is a contradiction as no list of vectors in an infinite-dimensional vector space can span that space. Thus there is a sequence $v_1, v_2, \ldots$ of vectors in $V$ such that $v_1,\ldots,v_m$ is linearly independent for every positive integer $m$.
+
+
+\vs
+
+Conversely, assume there is a sequence $v_1, v_2, \ldots$ of vectors in $V$ such that $v_1,\ldots,v_m$ is linearly independent for every positive integer $m$. Suppose for contradiction $V$ is finite dimensional. Then there is a positive integer $n$ such that there exists an $n$-sized list of vectors in $V$ that spans $V$, and an $n+1$-sized list of linearly independent vectors in $V$. But by lemma 2.23 no linearly independent list in $V$ can be longer than the spanning list. We have a contradiction, therefore $V$ is infinite-dimensional.
+
+\vs
+
+QED.
+
+\section*{Problem 16*}
+Prove that the real vector space of all continuous real-valued functions on the interval [0,1] is infinite-dimensional.
+
+\subsection*{Solution}
+Let $V$ be the real vector space of all continuous real-valued functions on the interval [0,1]. We already know $\mathcal{P}$ is infinite dimensional, and it's easy to see $\mathcal{P}$ is a subspace of $V$. No list of vectors spans $\mathcal{P}$, therefore no list of vectors spans $V$. Thus $V$ is infinite dimensional.
+
+\section*{Problem 17*}
+Suppose $p_0, p_1, \ldots, p_m$ are polynomials in $\mathcal{P}_m(\F)$ such that $p_j(2)=0$ for each $j$. Prove that $p_0, p_1, \ldots, p_m$ is not linearly independent in $\mathcal{P}_m(\F)$.
+
+\subsection*{Solution}
+TODO: come back and solve this. Too hard for now.
+
+\end{document}

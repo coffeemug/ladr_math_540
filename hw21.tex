@@ -1,0 +1,98 @@
+\documentclass{article}
+\usepackage{style}
+
+\title{LADR, 7.C}
+\date{27 Apr 2024}
+
+\begin{document}
+\maketitle
+
+\section*{Problem 1}
+Prove or give a counterexample: if $T\in\mathcal{L}(V)$ is self-adjoint and there exists an orthonormal basis $e_1,\ldots,e_n$ of $V$ such that $\langle Te_j,e_j\rangle\geq 0$ for each $j$, then $T$ is a positive operator.
+
+\subsection*{Solution}
+\textbf{TODO}
+
+\section*{Problem 2}
+Suppose $T$ is a positive operator on $V$. Suppose $v,w\in V$ are such that
+\[Tv=w\text{ and }Tw=v\]
+Prove that $v=w$.
+
+\subsection*{Solution}
+Because $T$ is a positive operator, $\langle T(v-w), v-w\rangle=\langle w-v, v-w\rangle\geq 0$. Multiplying both sides of the inequality by $-1$ we get $\langle v-w, v-w\rangle\leq 0$. By positivity property of inner products, $\langle v-w, v-w\rangle$ cannot be less than $0$, therefore $\langle v-w, v-w\rangle=0$. By definiteness property of inner products this can only be the case when $v-w=0$, therefore $v=w$ as desired.
+
+\section*{Problem 4}
+Suppose $T\in\mathcal{L}(V,W)$. Prove that $T^*T$ is a positive operator on $V$ and $TT^*$ is a positive operator on $W$.
+
+\subsection*{Solution}
+Observe that $\langle T^*Tv,v\rangle=\overline{\langle v, T^*Tv\rangle}=\overline{\langle Tv, Tv\rangle}\geq0$ by positivity property of inner products. Thus $\langle T^*Tv,v\rangle\geq0$. Further $(T^*T)*=T^*T$ by properties of adjoint operators, and thus $T$ is self-adjoint. Thus $T^*T$ is a positive operator on $V$ as desired.
+
+\vs
+
+Similarly $\langle TT^*v,v\rangle=\langle T^*v,T^*v\rangle\geq 0$. Further $(TT^*)^*=TT^*$. Thus $TT^*$ is a positive operator on $W$ as desired.
+
+\section*{Problem 7}
+Suppose $T$ is a positive operator on $V$. Prove that $T$ is invertible if and only if
+\[\langle Tv,v\rangle>0\]
+for every $v\in V$ with $v\neq 0$.
+
+\subsection*{Solution}
+Suppose $T$ is invertible. Let $\lambda$ be an eigenvalue of $T$. Because $T$ is positive, $\lambda\geq0$, and because $T$ is invertible, $\lambda\neq 0$. Thus $\lambda>0$ for all eigenvalues of $T$. Let $e_1,\ldots,e_n$ be an orthonormal basis of $V$ with respect to which $T$ is diagonalizable, and let $\lambda_1,\ldots,\lambda_n$ by the corresponding eigenvalues. Then
+\begin{align*}
+    \langle Tv, v\rangle&=\langle T(a_1e_1+\ldots+a_n e_n), a_1e_1+\ldots+a_n e_n\rangle\\
+    &=\langle a_1\lambda_1e_1+\ldots+a_n \lambda_n e_n, a_1e_1+\ldots+a_n e_n\rangle\\
+    &=\langle a_1\lambda_1e_1, a_1e_1\rangle+\ldots+\langle a_n\lambda_n e_n, a_n e_n\rangle\\
+    &=a_1\overline{a_1}\lambda_1\|e_1\|^2+\ldots+a_n\overline{a_n}\lambda_n\|e_n\|^2\\
+    &=a_1\overline{a_1}\lambda_1+\ldots+a_n\overline{a_n}\lambda_n
+\end{align*}
+Observe that $a_i\overline{a_i}\geq0$ and $\lambda_i>0$ for all $i$. Further since $v\neq0$, at least one $a_i\neq 0$. Thus $\langle Tv, v\rangle>0$ as desired.
+
+\vs
+
+Conversely, suppose $\langle Tv,v\rangle>0$ for every $v\in V$ with $v\neq 0$. Let $\lambda$ be an eigenvalue of $T$ with a corresponding eigenvector $u$. Then $0<\langle Tu,u\rangle=\lambda\|u\|^2$. Thus $\lambda > 0$ and no eigenvalue of $T$ equals $0$. Therefore $T$ is invertible as desired.
+
+\section*{Problem 8}
+Suppose $T\in\mathcal{L}(V)$. For $u,v\in V$, define $\langle u,v\rangle_T$ by
+\[\langle u,v\rangle_T=\langle Tu,v\rangle\]
+
+Prove that $\langle\cdot,\cdot\rangle_T$ is an inner product on $V$ if and only if $T$ is an invertible positive operator (with respect to the original inner product $\langle\cdot,\cdot\rangle$).
+
+\subsection*{Solution}
+Suppose $\langle\cdot,\cdot\rangle_T$ is an inner product on $V$. Let $v\in V$. By positivity property of inner products $\langle v,v\rangle_T=\langle Tv, v\rangle\geq 0$, and thus $T$ is a positive operator as desired. Further, by definiteness property of inner products $\langle v,v\rangle_T=\langle Tv, v\rangle=0$ if and only if $v=0$. Thus $\nil T=\{0\}$ and $T$ is invertible as desired.
+
+\vs
+
+Conversely, suppose $T$ is an invertible positive operator with respect to the original inner product $\langle\cdot,\cdot\rangle$. Then $\langle v,v\rangle_T=\langle Tv, v\rangle>0$ unless $v=0$, in which case $\langle v,v\rangle_T=\langle Tv, v\rangle=0$. Thus $\langle\cdot,\cdot\rangle_T$ possesses positivity and definiteness properties. Further:
+\begin{itemize}
+    \item $\langle u+v,w\rangle_T=\langle T(u+v), w\rangle=\langle T(u)+T(v), w\rangle=\langle T(u), w\rangle+\langle T(v), w\rangle=\langle u,w\rangle_T+\langle v,w\rangle_T$. Thus additivity in first slot is satisfied.
+    \item $\langle \lambda u,v\rangle_T=\langle T(\lambda u), v\rangle=\langle \lambda Tu, v\rangle=\lambda\langle Tu, v\rangle=\lambda\langle u,v\rangle_T$. Thus homogeneity in first slot is satisfied.
+    \item $\langle u,v\rangle_T=\langle Tu, v\rangle=\overline{\langle v, Tu\rangle}=\overline{\langle Tv, u\rangle}=\overline{\langle v,u\rangle_T}$. Thus conjugate symmetry property is satisfied.
+\end{itemize}
+Therefore $\langle\cdot,\cdot\rangle_T$ is an inner product on $V$ as desired.
+
+\section*{Problem 9}
+Prove or disprove: the identity operator on $\F^2$ has infinitely many self-adjoint square roots.
+
+\subsection*{Solution}
+\textbf{TODO}
+
+\section*{Problem 11}
+Suppose $T_1, T_2$ are normal operators on $\mathcal{L}(\F^3)$ and both operators have 2, 5, 7 as eigenvalues. Prove that there exists an isometry $S\in\mathcal{L}(\F^3)$ such that $T_1=S^*T_2S$.
+
+\subsection*{Solution}
+Because $T_1,T_2$ are normal, their eigenvectors corresponding to distinct eigenvalues are orthogonal (see lemma 7.22). Since both operators act on $\F^3$ and have three eigenvalues, their orthogonal eigenvectors form orthonormal bases for $\F^3$.
+
+\vs
+
+Let $e_1, e_2, e_3$ be the eigenvectors of $T_1$, let $e'_1, e'_2, e'_3$ be the eigenvectors of $T_2$, and let $\lambda_1=2, \lambda_2=5, \lambda_3=7$. To show there exists an isometry $S$ such that $T_1=S^*T_2S$ we must show that $(S^*T_2S)e_i=\lambda_i e_i$ for all $i$. Applying $S$ to both sides, this is equivalent to showing $T_2Se_i=\lambda_i S e_i$, which is equivalent to showing there exists an isometry $S$ such that $Se_i=e'_i$.
+
+\vs
+
+Let $S$ be an operator on $\F^3$ such that $Se_i=e'_i$ for all $i$. Since $e'_1, e'_2, e'_3$ is a basis, $S$ is uniquely determined, and since $e_1, e_2, e_3$ and $e'_1, e'_2, e'_3$ are both orthonormal, $S$ is an isometry (see lemma 7.42.d) as desired.
+
+\vs
+
+To check the proof observe that
+\[(S^*T_2S)e_i=S^*T_2e'_i=S^*\lambda_i e'_i=\lambda_i e_i\]
+
+\end{document}

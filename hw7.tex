@@ -1,0 +1,194 @@
+\documentclass{article}
+\usepackage{style}
+
+\title{LADR, 3.A}
+
+\begin{document}
+\maketitle
+
+\section*{Problem 1}
+Suppose $b,c\in\R$. Define $T: \R^3\to\R^2$ by
+
+\[T(x, y, z)=(2x-4y+3z+b, 6x+cxyz)\]
+
+Show that $T$ is linear if and only if $b=c=0$.
+
+\subsection*{Solution}
+Suppose $T$ is linear. Then for $\lambda\in\R$
+
+\[\lambda(2x-4y+3z+b, 6x+cxyz)=(2\lambda x-4\lambda y+3\lambda z+b, 6\lambda x+c\lambda x\lambda y\lambda z)\]
+
+Therefore:
+
+\[2\lambda x-4\lambda y+3\lambda z+\lambda b=2\lambda x-4\lambda y+3\lambda z+b\]
+
+Thus $\lambda b = b$ for all $\lambda\in\R$, and thus $b=0$. Similarly
+
+\[6\lambda x+ cxyz\lambda=6\lambda x + cxyz\lambda^3\]
+
+Thus $cxyz\lambda=cxyz\lambda^3$, or $c(xyz\lambda-xyz\lambda^3)=0$ for all $c, x, y, z\in\R$, and thus $c=0$.
+
+\vs
+
+Conversely, suppose $b=c=0$. Then
+
+\[T(x, y, z)=(2x-4y+3z, 6x)\]
+
+It's easy to see that $\lambda (2x-4y+3z, 6x)=(2\lambda x-4\lambda y+3\lambda z, 6\lambda x)$, and thus $T\lambda(x, y, z)=\lambda T(x, y, z)$.
+
+\vs
+
+Similarly, let $x', y', z'\in R$. It's easy to see that
+
+\[(2x-4y+3z, 6x)+(2x'-4y'+3z', 6x')=(2(x+x')-4(y+y')+3(z+z'), 6(x+x'))\]
+
+and thus $T((x, y, z) + (x', y', z'))=T(x, y, z)+T(x', y', z')$.
+
+\vs
+
+Therefore $T$ is linear, as desired.
+
+\section*{Problem 3}
+Suppose $T\in\mathcal{L}(\F^n, \F^m)$. Show that there exists scalars $A_{j,k}\in\F$ for $j=1,\ldots,m$ and $k=1,\ldots,n$ such that
+\begin{align*}
+T(x_1,\ldots,&x_n)=\\(&A_{1,1}x_1+\ldots+A_{1,n}x_n,\\
+&\ldots,\\
+&A_{m,1}x_1+\ldots+A_{m,n}x_n)
+\end{align*}
+
+for every $(x_1,\ldots,x_n)\in\F^n$.
+
+\subsection*{Solution}
+
+Let $v_1,\ldots,v_n$ be a basis of $\F^n$, and let $w_1,\ldots,w_m$ be a basis of $\F^m$. Let $v\in\F^n$. Then:
+\begin{align*}
+    Tv = &T(\alpha_1v_1+\ldots+\alpha_n v_n)\\
+    = &\alpha_1 T v_1+\ldots+\alpha_n T v_n\\
+    = &\alpha_1 (\beta_{1, 1}w_1+\ldots+\beta_{1,m}w_m)\\
+    &+\ldots+\\
+    &\alpha_n (\beta_{n, 1}w_1+\ldots+\beta_{n,m}w_m)\\
+    = &\alpha_1 \beta_{1, 1}w_1+\ldots+\alpha_1\beta_{1,m}w_m\\
+    &+\ldots+\\
+    &\alpha_n \beta_{n, 1}w_1+\ldots+\alpha_n\beta_{n,m}w_m
+\end{align*}
+
+where $\alpha_j,\beta_{j,k}\in\F$. Assign $A_{j,k}$ to $\beta_{j,k}$, and we get a $jk$ matrix for scalars that uniquely represents $T$ as desired.
+
+\section*{Problem 4}
+
+Suppose $T\in\mathcal{L}(V,W)$ and $v_1,\ldots,v_m$ is a list of vectors in $V$ such that
+\[Tv_1, \ldots, Tv_m\]
+is a linearly independent list in $W$. Prove that $v_1,\ldots,v_m$ is linearly independent.
+
+\subsection*{Solution}
+Suppose $v_1,\ldots,v_m$ is not linearly independent. Let $\alpha_1,\ldots,\alpha_m\in\F$. Then
+\[\alpha_1 v_1 + \ldots + \alpha_m v_m=0\]
+such that at least one $\alpha_j\neq 0$ for $j\in\{1,\ldots,m\}$. Applying $T$ to both sides of the equation
+\begin{align*}
+    T(\alpha_1 v_1 + \ldots + \alpha_m v_m)\\
+    = T\alpha_1 v_1 + \ldots + T\alpha_m v_m\\
+    = \alpha_1 Tv_1 + \ldots + \alpha_m Tv_m=0
+\end{align*}
+
+But $Tv_1, \ldots, Tv_m$ is linearly independent, and $\alpha_j$ must equal $0$ for all $j$. We have a contradiction, therefore $v_1,\ldots,v_m$ is linearly independent.
+
+\section*{Problem 8*}
+Give an example of a function $\phi:\R^2\to\R$ such that
+\[\phi(av)=a\phi(v)\]
+
+for all $a\in\R$ and all $v\in\R^2$ but $\phi$ is not linear.
+
+\subsection*{Solution}
+Consider $\phi(x, y)=\max(\lvert x\rvert, \lvert y\rvert)$. Clearly $\max(a\lvert x\rvert, a\lvert y\rvert)=a\max(\lvert x\rvert, \lvert y\rvert)$. However $\max(\lvert x\rvert, \lvert y\rvert) + \max(\lvert x'\rvert, \lvert y'\rvert)\neq \max(\lvert x+x'\rvert, \lvert y+y'\rvert)$. Thus $\phi$ is homogeneous but not linear as desired.
+
+\section*{Problem 9*}
+Give an example of a function $\phi:\C\to\C$ such that
+\[\phi(w+z)=\phi(w)+\phi(z)\]
+
+for all $w,z\in\C$, but $\phi$ is not linear.
+
+\subsection*{Solution}
+Let $\phi(a+bi)=b+ai$.
+
+\vs
+
+Then $\phi(a+bi + c+di)=\phi((a+c)+(b+d)i)=(b+d)+(a+c)i$. Also $\phi(a+bi) + \phi(c+di)=b+ai + d+ci=(b+d) + (a+c)i$. Thus $\phi$ satisfies the additivity property.
+
+\vs
+
+However $(a+bi)\phi(c+di)=(a+bi)(d+ci)=(ad-bc)+(ac+bd)i$. But $\phi((a+bi)(c+di))=\phi((ac-bd)+(ad+bc)i)=(ad+bc)+(ac-bd)i$.
+
+\vs
+
+Since $(ad-bc)+(ac+bd)i\neq (ad+bc)(ac-bd)i$, $\phi$ doesn't satisfy homogeneity property and is thus not a linear transformation.
+
+\section*{Problem 11}
+Suppose $V$ is finite-dimensional. Prove that every linear map on a subspace of $V$ can be extended to a linear map on $V$. In other words, show that if $U$ is a subspace of $V$ and $S\in\mathcal{L}(U, W)$, then there exists $T\in\mathcal{L}(V, W)$ such that $Tu=Su$ for all $u\in U$.
+
+\subsection*{Solution}
+Let $U$ be a subspace of $V$, and let $S\in\mathcal{L}(U, W)$. By lemma 3.5, $S$ is uniquely determined by how it maps the basis of $U$ to vectors in $W$. Suppose $u_1,\ldots,u_m$ is a basis of $U$ and $Su_j=w_j$ for all $j\in\{1,\ldots,m\}$ such that $w_j\in W$.
+
+\vs
+
+Since $u_1,\ldots,u_m$ is a basis of $U$, it is a linearly independent list in $U$. By lemma 2.33 this list can be extended to a basis of $V$. Let $u_1,\ldots,u_m, v_1,\ldots,v_n$ be such a basis. Invoking lemma 3.5 again, there exists a linear map $T\in\mathcal{L}(V, W)$ such that $Tu_j=w_j$ for all $j\in\{1,\ldots,m\}$ and $Tv_k=\hat{w}_k$ for all $k\in\{1,\ldots, n\}$ and $\hat{w}_k\in W$.
+
+\vs
+
+Since $T$ maps a basis of $V$ to $W$, $T\in\mathcal{L}(V, W)$. And since $Tu_j=w_j$, by lemma 3.5 $Tu=Su$ for all $u\in U$ as desired.
+
+\section*{Problem 12*}
+Suppose $V$ is finite-dimensional with $\dim V>0$, and suppose $W$ is infinite-dimensional. Prove that $\mathcal{L}(V, W)$ is infinite-dimensional.
+
+\subsection*{Solution}
+Suppose for contradiction $\mathcal{L}(V, W)$ is finite-dimensional. Then there exists a basis $T_1,\ldots,T_m$ where each $T_i\in\mathcal{L}(V, W)$ for $i\in\{1,\ldots,m\}$, and $m=\dim\mathcal{L}(V, W)$.
+
+\vs
+
+Let $v_1,\ldots,v_n\in V$ be a basis for $V$ (so $n=\dim V$), and let $j\in\{1,\ldots,n\}$. By lemma 3.5 each $T_i$ maps $v_1,\ldots,v_n$ to $w_{i,1},\ldots,w_{i,n}\in W$. By linearity, any $S\in\mathcal{L}(V, W)$ maps $\hat{v}\in V$ to $\hat{w}\in W$ such that
+\begin{align*}
+\hat{w}=\alpha_{1,1}w_{1, 1}+\ldots+\alpha_{1,n}w_{1, n}+\\
+\ldots\\
++\alpha_{m,1}w_{m,1}+\ldots,+\alpha_{m,n}w_{m, n}    
+\end{align*}
+for $\alpha_{i,j}\in\F$.
+
+\vs
+
+Let $M$ be the union of images of every transformation in $\mathcal{L}(V, W)$. Since $\mathcal{L}(V, W)$ denotes every linear map from $V$ to $W$, $M$ must equal to $W$. Therefore the linear combination above must be able to express any vector in $W$ (in other words, it must span $W$). But $W$ is infinite-dimensional and no finite list can span it. Thus we have a contradiction, and $\mathcal{L}(V, W)$ is infinite-dimensional as desired.
+
+\section*{Problem 14}
+Suppose $V$ is finite-dimensional with $\dim V\geq2$. Prove that there exist $S, T\in\mathcal{L}(V, V)$ such that $ST\neq TS$.
+
+\subsection*{Solution}
+Let $(x_1,\ldots,x_{\dim V})\in V$. Consider the following $S$:
+\[S(x_1,\ldots,x_{\dim V})=(x_1+\ldots+x_{\dim V}, \ldots, x_1+\ldots+x_{\dim V})\]
+
+I.e. $S$ maps $v\in V$ to a vector in which each element is a sum of every element of $v$.
+
+\vs
+
+Consider the following $T$:
+
+\[T(x_1,\ldots,x_{\dim V})=(x_1,\ldots,x_{(\dim V)-1}, 0)\]
+
+I.e. $T$ maps $v\in V$ to a vector in which every element is the same as a corresponding element in $v$ except the last one, which it maps to zero.
+
+\vs
+
+It's easy to see both $S$ and $T$ are linear as both satisfy the additivity and homogeneity properties. Applying $ST$ to a vector in $V$ we get:
+\begin{align*}
+&ST(x_1,\ldots,x_{\dim V})\\
+&=S(x_1,\ldots,x_{(\dim V)-1}, 0)\\
+&=(x_1+\ldots+x_{(\dim V)-1}+0, \ldots, x_1+\ldots+x_{(\dim V)-1}+0)    
+\end{align*}
+
+Applying $TS$ to a vector in $V$ we get:
+\begin{align*}
+&TS(x_1,\ldots,x_{\dim V})\\
+&=T(x_1+\ldots+x_{\dim V}, \ldots, x_1+\ldots+x_{\dim V})\\
+&=(x_1+\ldots+x_{\dim V}, \ldots, 0)
+\end{align*}
+
+Thus $ST\neq TS$, as desired.
+
+\end{document}

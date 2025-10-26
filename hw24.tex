@@ -1,0 +1,136 @@
+\documentclass{article}
+\usepackage{style}
+
+\title{LADR, 8.C}
+\date{7 May 2024}
+
+\begin{document}
+\maketitle
+
+\section*{Problem 1}
+Suppose $T\in\mathcal{L}(\C^4)$ is such that the eigenvalues of $T$ are 3,5,8. Prove that $(T-3I)^2(T-5I)^2(T-8I)^2=0$.
+
+\subsection*{Solution}
+Observe that $T$ has three eigenvalues and acts on a space of four dimensions. Thus one of the eigenvalues has a multiplicity of $2$, and the others have multiplicities of $1$. Let $q$ be the characteristic polynomial of $T$. Then
+\[q=(z-3)^a(z-5)^b(z-8)^c\]
+where $1\leq a,b,c\leq 2$ and $a+b+c=4$. There are three possible cases:
+\begin{itemize}
+    \item $q(T)=(T-3I)^2(T-5I)(T-8I)=0$
+    \item $q(T)=(T-3I)(T-5I)^2(T-8I)=0$
+    \item $q(T)=(T-3I)(T-5I)(T-8I)^2=0$
+\end{itemize}
+
+Observe that in each case $q(T)$ is a factor of $(T-3I)^2(T-5I)^2(T-8I)^2$. By Cayley-Hamilton theorem $q(T)=0$, thus $(T-3I)^2(T-5I)^2(T-8I)^2=0$ as desired.
+
+\section*{Problem 2}
+Suppose $V$ is a complex vector space. Suppose $T\in\mathcal{L}(V)$ is such that $5$ and $6$ are eigenvalues of $T$ and that $T$ has no other eigenvalues. Prove that $(T-5I)^{n-1}(T-6I)^{n-1}=0$ where $n=\dim V$.
+
+\subsection*{Solution}
+$T$ has two eigenvalues in an $n$-dimensional space, thus each eigenvalue has a multiplicity of at most $n-1$. Let $q$ be the characteristic polynomial of $T$. Then
+\[q=(z-5)^a(z-6)^b\]
+where $1\leq a,b\leq n-1$ and $a+b=n$. Observe that for any value of $a$ and $b$, $q(T)$ is a factor of $(T-5I)^{n-1}(T-6I)^{n-1}$. By Cayley-Hamilton theorem $q(T)=0$, thus $(T-5I)^{n-1}(T-6I)^{n-1}=0$ as desired.
+
+\section*{Problem 4}
+Give an example of an operator on $\C^4$ whose characteristic polynomial equals $(z-1)(z-5)^3$ and whose minimal polynomial equals $(z-1)(z-5)^2$.
+
+\subsection*{Solution}
+Let $T\in\mathcal{L}(\C^4)$ such that
+\[\mathcal{M}(T)=\begin{bmatrix}
+    1 & 0 & 0 & 0\\
+    0 & 5 & 0 & 0\\
+    0 & 0 & 5 & 0\\
+    0 & 0 & 0 & 5
+\end{bmatrix}\]
+
+It's easy to see the characteristic polynomial is $(z-1)(z-5)^3$. Computing $(T-I)(T-5I)^2$ we get
+\[\begin{bmatrix}
+    0 & 0 & 0 & 0\\
+    0 & 4 & 0 & 0\\
+    0 & 0 & 4 & 0\\
+    0 & 0 & 0 & 4
+\end{bmatrix}\begin{bmatrix}
+    16 & 0 & 0 & 0\\
+    0 & 0 & 0 & 0\\
+    0 & 0 & 0 & 0\\
+    0 & 0 & 0 & 0
+\end{bmatrix}=\begin{bmatrix}
+    0 & 0 & 0 & 0\\
+    0 & 0 & 0 & 0\\
+    0 & 0 & 0 & 0\\
+    0 & 0 & 0 & 0
+\end{bmatrix}\]
+
+Thus $(T-I)(T-5I)^2=0$ and $(z-1)(z-5)^2$ is the minimal polynomial of $T$ as desired.
+
+\section*{Problem 7}
+Suppose $V$ is a complex vector space. Suppose $T\in\mathcal{L}(V)$ is such that $P^2=P$. Prove that the characteristic polynomial of $P$ is $z^m(z-1)^n$, where $m=\dim\nil P$ and $n=\dim\range P$.
+
+\subsection*{Solution}
+Recall that any operator on a complex space has an upper triangular matrix. Let $A=\mathcal{M}(P)$ be such a matrix. Since $P^2=P$, $A^2=A$. By matrix multiplication definition diagonal elements of $A^2$ are squares of corresponding diagonal elements in $A$. Thus the only possible diagonal elements of $A$ (and therefore eigenvalues of $P$) are $0$ and $1$.
+
+\vs
+
+Since $P^2=P$ it follows $\nil P^2=\nil P$, thus $\nil P^k=\nil P$ for any positive integer $k$. Therefore (by lemma 8.11)
+\[G(0, T)=\nil(T-0I)^{\dim V}=\nil T^{\dim V}=\nil T\]
+and thus $m=\dim\nil P$ as desired. And since $V=G(0, T)\oplus G(1, T)$, by rank-nullity theorem $\dim G(1,T)=\dim \range P$, thus $n=\dim\range P$ as desired.
+
+\section*{Problem 10}
+Suppose $V$ is a complex vector space and $T\in\mathcal{L}(V)$ is invertible. Let $p$ denote the characteristic polynomial of $T$ and let $q$ denote the characteristic polynomial of $T^{-1}$. Prove that
+\[q(z)=\frac{1}{p(0)}z^{\dim V}p(\frac{1}{z})\]
+for all nonzero $z\in\C$.
+
+\subsection*{Solution}
+Let $\lambda_1,\ldots,\lambda_n$ be the eigenvalues of $T$, and let $d_1,\ldots,d_n$ be the corresponding multiplicities. Then
+\begin{align*}
+    q(z)&=(z-\frac{1}{\lambda_1})^{d_1}\cdot\ldots\cdot(z-\frac{1}{\lambda_n})^{d_n}\\
+    &=z^{d_1}(1-\frac{1}{z\lambda_1})^{d_1}\cdot\ldots\cdot z^{d_n}(1-\frac{1}{z\lambda_n})^{d_n}\\
+    &=z^{d_1}(\frac{-1}{\lambda_1})^{d_1}(\frac{1}{z}-\lambda_1)^{d_1}\cdot\ldots\cdot z^{d_n}(\frac{-1}{\lambda_n})^{d_n}(\frac{1}{z}-\lambda_n)^{d_n}\\
+    &=z^{d_1+\ldots+d^n}(\frac{-1}{\lambda_1})^{d_1}\cdot\ldots\cdot(\frac{-1}{\lambda_n})^{d_n}(\frac{1}{z}-\lambda_1)^{d_1}\cdot\ldots\cdot (\frac{1}{z}-\lambda_n)^{d_n}
+\end{align*}
+
+The characteristic polynomial of $T$ is
+\[p(z)=(z-\lambda_1)^{d_1}\cdot\ldots\cdot(z-\lambda_n)^{d_n}\]
+
+Thus
+\begin{align*}
+    q(z)&=z^{d_1}\cdot\ldots\cdot z^{d_n}(\frac{-1}{\lambda_1})^{d_1}\cdot\ldots\cdot(\frac{-1}{\lambda_n})^{d_n}(\frac{1}{z}-\lambda_1)^{d_1}\cdot\ldots\cdot (\frac{1}{z}-\lambda_n)^{d_n}\\
+    &=z^{\dim V}\frac{1}{p(0)}p(\frac{1}{z})
+\end{align*}
+
+as desired.
+
+\section*{Problem 11}
+Suppose $T\in\mathcal{L}(V)$ is invertible. Prove that there exists a polynomial $p\in\mathcal{P}(\F)$ such that $T^{-1}=p(T)$.
+
+\subsection*{Solution}
+Let $q$ be the minimal polynomial of $T$
+\[q(z)=z^n+a_{n-1}z^{n-1}+\ldots+a_1z+a_0\]
+By definition
+\[q(T)=0=T^n+a_{n-1}T^{n-1}+\ldots+a_1T+a_0I\]
+Thus
+\[a_0I=-T^n-a_{n-1}T^{n-1}-\ldots-a_1T\]
+Applying $\frac{1}{a_0}T^{-1}$ to both sides of the equation we get
+\[T^{-1}=-\frac{1}{a_0}T^{n-1}-\frac{a_{n-1}}{a_0}T^{n-2}-\ldots-\frac{a_1}{a_0}\]
+Thus
+\[p(z)=-\frac{1}{a_0}z^{n-1}-\frac{a_{n-1}}{a_0}z^{n-2}-\ldots-\frac{a_1}{a_0}\]
+is a polynomial such that $p(T)=T^{-1}$ as desired.
+
+\section*{Problem 12}
+Suppose $V$ is a complex vector space and $T\in\mathcal{L}(V)$. Prove that $V$ has a basis consisting of eigenvectors of $T$ if and only if the minimal polynomial of $T$ has no repeated zeros.
+
+[\textit{For complex vector spaces, the exercise above adds another equivalence to the list given by 5.41.}]
+
+\subsection*{Solution}
+
+\section*{Problem 15}
+Suppose $T\in\mathcal{L}(V)$ and $v\in V$.
+
+\subsection*{Solution}
+(a) Prove that there exists a unique monic polynomial $p$ of smallest degree such that $p(T)v=0$.
+
+\vs
+
+(b) Prove that $p$ divides the minimal polynomial of $T$.
+
+
+\end{document}

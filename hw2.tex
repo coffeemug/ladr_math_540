@@ -1,0 +1,76 @@
+\documentclass{article}
+\usepackage{style}
+
+\title{LADR, 1.B}
+
+\begin{document}
+\maketitle
+
+\section*{Problem 1}
+Prove that $-(-v)=v$ for every $v\in \mathbf{V}$.
+
+\subsection*{Solution}
+The book defines $-v$ as a unique vector such that $v+(-v)=0$. Let $u=-v$. By definition $u+(-u)=0$. Substituting $u$ with $-v$ we get $(-v)+(-(-v))$. Adding $v$ to both sides of the equation we get $-(-v)=v$. QED.
+
+\section*{Problem 2}
+Suppose $a\in\mathbf{F}, v\in V$, and $av=0$. Prove that $a=0$ or $v=0$.
+
+\subsection*{Solution}
+Suppose $a=0$. Then the condition in the proof is trivially satisfied.
+
+Now let's handle the other case. Suppose $a\neq 0$. The book defines fields as structures that have multiplicative inverse (see pages 10 and 3). Multiplying both sides of $av=0$ by $\frac{1}{a}$ we get $v=\frac{1}{a}0$. By lemma 1.30 (p 16), a scalar times the zero vectors is zero, thus $v=0$.
+
+\vs
+
+Thus either $a=0$ or $v=0$. QED.
+
+\section*{Problem 4}
+The empty set is not a vector space. The empty set fails to satisfy only one of the requirements listed in 1.19. Which one?
+
+\subsection*{Solution}
+Requirements in 1.19 necessitate the presence of the $\mathbf{0}$ vector. Thus the empty set is not a vector space as it's lacking the additive identity.
+
+\vs
+
+(Note that for multiplicative identity the requirement is wrt a relationship to a scalar, not a vector.)
+
+\section*{Problem 6*}
+Let $\infty$ and $-\infty$ denote two distinct objects, neither of which is in $\mathbf{R}$. Define an addition and scalar multiplication on $\mathbf{R}\cup\{\infty\}\cup\{-\infty\}$ as you could guess from the notation. Specifically, the sum and product of two real numbers is as usual, and for $t\in\mathbf{R}$ define
+
+\begin{multicols}{2}
+
+\[t\infty = \begin{cases} 
+-\infty & \text{if } t < 0, \\
+0 & \text{if } t = 0, \\
+\infty & \text{if } t > 0,
+\end{cases}\]\[\break\]
+\[t(-\infty) = \begin{cases} 
+\infty & \text{if } t < 0, \\
+0 & \text{if } t = 0, \\
+-\infty & \text{if } t > 0,
+\end{cases}\]
+
+\end{multicols}
+
+\begin{multicols}{2}
+\[t + \infty = \infty + t = \infty,\]\[\break\]
+\[t + (-\infty) = (-\infty) + t = -\infty,\]
+\end{multicols}
+
+\begin{multicols}{3}
+\[\infty + \infty = \infty,\]\[\break\]
+\[(-\infty) + (-\infty) = -\infty,\]\[\break\]
+\[\infty + (-\infty) = 0.\]
+\end{multicols}
+
+Is $\mathbf{R}\cup\{\infty\}\cup\{-\infty\}$ a vector space over $\mathbf{R}$? Explain.
+
+\subsection*{Solution}
+
+I sadly remember that this doesn't satisfy the distributive property, which narrows down the problem quite a lot. (But I don't remember how, so still have to work to find a counterexample!)
+
+\vs
+
+Ok, here is the counterexample: $(1-2)*\infty\neq1\infty-2\infty$. The left side evaluates to $-\infty$ and the right side evalutes to $0$. Thus $\mathbf{R}\cup\{\infty\}\cup\{-\infty\}$ is not a vector space over $\mathbf{R}$.
+
+\end{document}

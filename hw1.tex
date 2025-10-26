@@ -1,0 +1,182 @@
+\documentclass{article}
+\usepackage{style}
+
+\title{LADR, 1.A}
+\date{7 Jan 2024}
+
+\begin{document}
+\maketitle
+
+\section*{Problem 2}
+Show that
+\[\frac{-1 + \sqrt{3}i}{2}\]
+is a cube root of 1 (meaning that its cube equals 1).
+
+\subsection*{Solution}
+
+This is annoying. What kind of a psychopath would give his students this as their first problem in a theoretical linear algebra class?! We must calculate:
+
+\begin{align*}
+\left(\frac{-1 + \sqrt{3}i}{2} \right) ^ 3 &= \frac{-1 + \sqrt{3}i}{2} * \frac{-1 + \sqrt{3}i}{2} * \frac{-1 + \sqrt{3}i}{2}\\
+&= \frac{\left(-1 + \sqrt{3}i\right) * \left(-1 + \sqrt{3}i\right) * \left(-1 + \sqrt{3}i\right)}{8}\\
+\end{align*}
+
+The book defines complex number multiplication as follows: (easily re-derivable from the definition $i^2=-1$)
+
+\[\left(a+bi\right)\left(c+di\right)=\left(ac-bd\right)+\left(ad+bc\right)i\]
+
+Let's first compute
+
+\begin{align*}
+\left(-1 + \sqrt{3}i\right) * \left(-1 + \sqrt{3}i\right) &= 1 - \sqrt{3}i - \sqrt{3}i + \sqrt{3}i\sqrt{3}i\\
+&= 1 - 2\sqrt{3}i - 3\\
+&= -2 - 2\sqrt{3}i
+\end{align*}
+
+I'm using normal algebra rules here rather than the definition in the book, but the result is of course the same if you follow the definition. And now we multiply it again.
+
+\begin{align*}
+\left(-2 - 2\sqrt{3}i\right) * \left(-1 + \sqrt{3}i\right) &= 2 - 2\sqrt{3}i +2\sqrt{3}i - 2\sqrt{3}i\sqrt{3}i\\
+&= 2 + 6 = 8
+\end{align*}
+
+So:
+
+\[\left(-1 + \sqrt{3}i\right) * \left(-1 + \sqrt{3}i\right) *
+\left(-1 + \sqrt{3}i\right)=8\]
+
+And therefore
+
+\[\frac{\left(-1 + \sqrt{3}i\right) * \left(-1 + \sqrt{3}i\right) *
+\left(-1 + \sqrt{3}i\right)}{8}=\frac{8}{8}=1\]
+
+QED.
+
+\section*{Problem 3}
+
+Find two distinct square roots of $i$.
+
+\subsection*{Solution}
+
+By definition $\sqrt{x}=y\iff y^2=x$. So for example $\sqrt{9}=3$ and $\sqrt{9}=-3$ because both $3$ and $-3$ squared gives us $9$. So, what squared gives us $i$? The book defined complex number multiplication as follows:
+
+\[\left(a+bi\right)\left(c+di\right)=\left(ac-bd\right)+\left(ad+bc\right)i\]
+
+Since to square something we have to multiply it by itself we can write the equation like this:
+
+\begin{align*}
+  \left(a+bi\right)\left(a+bi\right) &= \left(a^2-b^2\right)+\left(ab+ba\right)i \\
+&= \left(a^2-b^2\right)+2abi
+\end{align*}
+
+To get $i$ the following two equations must be true:
+
+\begin{align*}
+  a^2-b^2=0 \\
+  2ab=1
+\end{align*}
+
+Note that the latter equation is equivalent to $ab=\frac{1}{2}$. Looking at this, $a=b=\frac{1}{\sqrt{2}}$ satisfies both equations. And so:
+
+\[\sqrt{i}=\left( \frac{1}{\sqrt{2}} + \frac{1}{\sqrt{2}}i \right)^2=\left( -\frac{1}{\sqrt{2}} - \frac{1}{\sqrt{2}}i \right)^2\]
+
+\newpage
+
+\section*{Problem 10}
+
+Find $x\in\mathbf{R}^{4}$ such that $(4, -3, 1, 7) + 2x = (5, 9, -6, 8)$.
+
+\subsection*{Solution}
+
+That's easy.
+\begin{align*}
+&2x=(5, 9, -6, 8)-(4, -3, 1, 7) \\
+&2x=(1,12,-7,1) \\
+&x=\frac{1}{2}(1,12,-7,1) \\
+&x=(\frac{1}{2}, 6, -\frac{7}{2}, \frac{1}{2}) \\
+\end{align*}
+
+\section*{Problem 11}
+
+Explain why there does not exist $\lambda\in \mathbf{C}$ such that
+
+\vs
+
+\begin{math}
+\lambda(2-3i,5+4i,-6+7i)=(12-5i, 7+22i, -32-9i)
+\end{math}.
+
+\subsection*{Solution}
+
+Lets assume there exists a $\lambda$ that satisfies the above equation. By definition of scalar multiplication (1.17):
+
+\begin{align*}
+\lambda(2-3i)&=12-5i \\
+\lambda(5+4i)&=7+22i \\
+\lambda(-6+7i)&=-32-9i \\
+\end{align*}
+
+Let $\lambda=a+bi$. Then:
+
+\begin{align*}
+(a+bi)(2-3i)&=12-5i \\
+(a+bi)(5+4i)&=7+22i \\
+(a+bi)(-6+7i)&=-32-9i \\
+\end{align*}
+
+The book mentions no algorithm for complex number division, but I'll use the conjugate anyway. Dividing $12-5i$ by $2-3i$ we get:
+
+\begin{align*}
+  \lambda &=\frac{12-5i}{2-3i} = \frac{12-5i}{2-3i}\cdot\frac{2+3i}{2+3i} \\
+    &= \frac{(12-5i)(2+3i)}{(2-3i)(2+3i)} \\
+    &=\frac{24 - 10i + 36i + 15}{4 -6i + 6i + 9} \\
+    &=\frac{39 + 26i}{13}=3+2i
+\end{align*}
+
+Similarly for the second equation:
+
+\begin{align*}
+  \lambda &=\frac{7+22i}{5+4i} = \frac{7+22i}{5+4i}\cdot\frac{5-4i}{5-4i} \\
+    &= \frac{(7+22i)(5-4i)}{(5+4i)(5-4i)} \\
+    &=\frac{35 +110i - 28i + 88}{25 + 20i -20i +16} \\
+    &=\frac{123 + 82i}{41}=3+2i
+\end{align*}
+
+This is very annoying, but similarly for the third equation:
+
+\begin{align*}
+  \lambda &=\frac{-32-9i}{-6+7i} = \frac{-32-9i}{-6+7i}\cdot\frac{-6-7i}{-6-7i} \\
+    &= \frac{(-32-9i)(-6-7i)}{(-6+7i)(-6-7i)} \\
+    &=\frac{192 + 54i + 224i -63}{36 -42i +42i + 49} \\
+    &=\frac{129 + 278i}{85}
+\end{align*}
+
+Thus we have a contradiction. QED.
+
+\newpage
+
+\section*{Problem 15}
+
+Show that $\lambda(x+y)=\lambda x+\lambda y$ for all $\lambda\in\mathbf{F}$ and all $x, y\in\mathbf{F}^{n}$
+
+\subsection*{Solution}
+
+Let $x=(x_1, \ldots,x_n)$ and let $y=(y_1, \ldots,y_n)$. Then by definition of addition in $\mathbf{F}^{n}$ (1.12), $x+y =(x_{1}+y_{1},\ldots,x_{n}+y_{n})$. Thus by definition of scalar multiplication:
+
+\begin{align*}
+\lambda(x+y)&=(\lambda(x_{1}+y_{1}),\ldots,\lambda(x_{n}+y_{n})) \\
+&=(\lambda x_1 + \lambda y_1, \ldots, \lambda x_n + \lambda y_n)
+\end{align*}
+
+Similarly, but definition of scalar multiplication:
+
+\begin{align*}
+\lambda x+\lambda y&=\lambda(x_1, \ldots,x_n)+\lambda(y_1, \ldots,y_n) \\
+&=(\lambda x_1, \ldots, \lambda x_n) + (\lambda y_1, \ldots, \lambda y_n)\\
+&=(\lambda x_1 + \lambda y_1, \ldots, \lambda x_n + \lambda y_n)
+\end{align*}
+
+QED.
+
+
+\end{document}

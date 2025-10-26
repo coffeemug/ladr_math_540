@@ -1,0 +1,78 @@
+\documentclass{article}
+\usepackage{style}
+
+\title{LADW, 3.4-3.7}
+\date{6 Mar 2024}
+
+\begin{document}
+\maketitle
+
+\section*{Problem 5.1}
+Evaluate the determinants using any method
+
+\subsection*{Solution}
+\[\begin{vmatrix}
+    0 & 1 & 1\\
+    1 & 2 & -5\\
+    6 & -4 & 3\\
+\end{vmatrix}\]
+
+\vs
+
+\[\begin{vmatrix}
+    1 & -2 & 3 & -12\\
+    -5 & 12 & -14 & 19\\
+    -9 & 22 & -20 & 31\\
+    -4 & 9 & -14 & 15
+\end{vmatrix}\]
+
+\section*{Problem 5.3}
+For the $n\times n$ matrix
+\[A=\begin{bmatrix}
+    0 & 0 & 0 & \ldots & 0 & a_0\\
+    -1 & 0 & 0 & \ldots & 0 & a_1\\
+    0 & -1 & 0 & \ldots & 0 & a_1\\
+    \vdots & \vdots & \vdots & \ddots & \vdots & \vdots\\
+    0 & 0 & 0 & \ldots & 0 & a_{n-2}\\
+    0 & 0 & 0 & \ldots & -1 & a_{n-1}\\
+\end{bmatrix}\]
+
+compute $\det(A+tI)$ where $I$ is an $n\times n$ identity matrix. You should get a nice expression involving $a_0, a_1, \ldots, a_{n-1}$ and $t$. Row expansion and induction is probably the best way to go.
+
+\subsection*{Solution}
+
+\section*{Problem 7.1}
+True or false
+
+\subsection*{Solution}
+a) Determinant is only defined for square matrices.
+
+b) If two rows or columns of $A$ are identical, then $\det A=0$.
+
+c) If $B$ is the matrix obtained from $A$ by interchanging two rows (or columns), then $\det B=\det A$.
+
+d) If $B$ is the matrix obtained from $A$ by multiplying a row (column) of $A$ by a scalar $\alpha$, then $\det B=\det A$.
+
+e) If $B$ is the matrix obtained from $A$ by adding a multiple of a row to some other row, then $\det B=\det A$.
+
+f) The determinant of a triangular matrix is the product of its diagonal entries.
+
+g) $\det(A^T)=-\det(A)$.
+
+h) $\det(AB)=\det(A)\det(B)$.
+
+i) A matrix $A$ is invertible if and only if $\det A\neq 0$.
+
+j) If $A$ is an invertible matrix, then $\det(A^-1)=1/\det(A)$.
+
+\section*{Problem 7.2}
+Let $A$ be an $n\times n$ matrix. How are $\det(3A)$, $\det(-A)$ and $\det(A^2)$ related to $\det A$.
+
+\subsection*{Solution}
+
+\section*{Problem 7.3}
+If the entries of both $A$ and $A^{-1}$ are integers, is it possible that $\det A=3$? \textbf{Hint:} what is $\det(A)\det(A^{-1})$?
+
+\subsection*{Solution}
+
+\end{document}

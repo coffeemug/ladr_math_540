@@ -1,0 +1,154 @@
+\documentclass{article}
+\usepackage{style}
+
+\title{LADR, 3.D}
+
+\begin{document}
+\maketitle
+
+\section*{Problem 1}
+Suppose $T\in\L(U,V)$ and $S\in\L(V,W)$ are both invertible linear maps. Prove that $ST\in\L(U,W)$ is invertible and that $(ST)^{-1}=T^{-1}S^{-1}$.
+
+\subsection*{Solution}
+First we prove that $ST$ is invertible. Let $u\in U$ such that $(ST)u=0$. Then $S(Tu)=0$. Since $S$ is invertible, it is injective, therefore its null space is $\{0\}$. Thus $Tu=0$, and since $T$ is injective $u=0$ by the same argument. Therefore $\nil (ST)=\{0\}$ and thus $ST$ is injective.
+
+\vs
+
+Since $S$ and $T$ are injective, their null space is zero-dimensional. Thus by rank-nullity theorem $\dim V=\dim\range S$ and $\dim U=\dim\range T$. Further because they are invertible, both $S$ and $T$ are surjective and thus $\range S=W$ and $\range T=V$. Therefore $\dim V=\dim U=\dim W$. Since $ST$ is injective, it's null space is also zero-dimensional, thus by rank-nullity theorem $\dim U=\dim\range ST=\dim W$. Therefore $ST$ is surjective, and is invertible as desired.
+
+\vs
+
+We now prove $(ST)^{-1}=T^{-1}S^{-1}$. Let $u\in U$ and $w\in W$ such that $(ST)u=S(Tu)=w$. Then $S^{-1}w=Tu$. Applying $T^{-1}$ to both sides of the equation, $T^{-1}S^{-1}w=T^{-1}Tu=u$. Since $(ST)^{-1}w=u=T^{-1}S^{-1}w$, it follows $(ST)^{-1}=T^{-1}S^{-1}$ as desired.
+
+\vs
+
+Alternatively:
+\[(ST)(T^{-1}S^{-1})=S(TT^{-1})S^{-1}=SS^{-1}=I\]
+\[(T^{-1}S^{-1})(ST)=T^{-1}(S^{-1}S)T=T^{-1}T=I\]
+
+\newpage
+\section*{Problem 4}
+Suppose $W$ is finite-dimensional and $T_1, T_2\in\L(V,W)$. Prove that $\nil T_1=\nil T_2$ if and only if there exists an invertible operator $S\in\Lo(W)$ such that $T_1=ST_2$.
+
+\subsection*{Solution}
+This problem is similar to hw 8, problem 24.
+
+\vs
+
+Suppose $\nil T_1=\nil T_2$. Let $v_1,\ldots,v_m$ be a basis of $\nil T_1$ and $\nil T_2$. Extend it to $v_1,\ldots,v_m,v_{m+1},\ldots,v_n$, a basis of $V$. Define $S$ as follows:
+\begin{itemize}
+    \item let $S(T_2v_i)=T_1v_i$ for $i>m$
+    \item linearly extend $S$ to all vectors in the span of $T_2v_{m+1},\ldots,T_2v_n$ (note that $T_2v_{m+1},\ldots,T_2v_n$ is linearly independent because $v_{m+1},\ldots,v_n\not\in\nil T$)
+    \item for all other $w\in W$ let $Sw=w$
+\end{itemize}
+
+Clearly $ T_1=ST_2$. Observe that $S$ is surjective, and because injectivity is equivalent to surjectivity for operators in final dimensions (lemma 3.69), $S$ is also injective. Thus $S$ is invertible, as desired.
+
+\vs
+
+Conversely, suppose there exists an invertible operator $S\in\Lo(W)$ such that $T_1=ST_2$. Suppose for contradiction $\nil T_1\neq \nil T_2$. Let $v\in V$ be in one of the two null spaces. Then either $v\in\nil T_2$ and $v\not\in\nil T_1$ or the other way around. Suppose $v\in\nil T_2$ and $v\not\in\nil T_1$. Then $T_1v\neq 0$ but $ST_2v=0$, and thus $T_1\neq ST_2$, a contradiction. Alternatively, suppose $v\in\nil T_1$ and $v\not\in\nil T_2$. Thus for $T_1$ to equal $ST_2$, $T_2v$ must be in $\nil S$. But $S$ is injective, and thus $\nil S=\{0\}$, a contradiction. Therefore $\nil T_1=\nil T_2$, as desired.
+
+\section*{Problem 7}
+Suppose $V$ and $W$ are finite-dimensional. Let $v\in V$. Let
+\[E=\{T\in\L(V,W):Tv=0\}\]
+
+\subsection*{Solution}
+(a) Show that $E$ is a subspace of $\L(V,W)$.
+\begin{itemize}
+    \item $0\in\L(V,W)$ satisfies the constraint $0v=0$, thus $0\in E$
+    \item Let $R, S\in E$. Then $(R+S)v=Rv+Sv=0+0=0$, thus $R+S\in E$
+    \item Let $R\in E,\alpha\in\F$. Then $(\alpha R)v=\alpha(Rv)=\alpha 0=0$. Thus $\alpha R\in E$
+\end{itemize}
+Therefore $E$ is a subspace of $\L(V,W)$.
+
+\vs
+
+(b) Suppose $v\neq 0$. What is $\dim E$?
+
+Start with a one element list of vector $v$ and extend it to $v, v_2,\ldots,v_n$, a basis of $V$, where $n=\dim V$. Similarly let $w_1,\ldots,w_m$ where $m=\dim W$ be a basis of $W$. Consider matrices that represent linear transformations in $E$. Since $Tv=0$ for any $T\in E$, the first column of any such matrix has every element set to zero. Thus $\dim E=(\dim V-1)\times\dim W$.
+
+\section*{Problem 10}
+Suppose $V$ is finite-dimensional and $S,T\in\mathcal{L}(V)$. Prove that $ST=I$ if and only if $TS=I$.
+
+\subsection*{Solution}
+Suppose $ST=I$. First we prove that $T$ is invertible. For all $v\in V$, $(ST)v=S(Tv)=v$. Suppose for contradiction $v\neq 0$ and $v\in\nil T$. Then $Tv=0$ and thus $S(Tv)=0$, which is a contradiction. Thus $\nil T=\{0\}$, therefore $T$ is injective. Injective operators on finite-dimensional spaces are also surjective, and thus $T$ is invertible. Right-multiplying $ST=I$ by $T^{-1}$ we get $S=T^{-1}$. Now left-multiplying by $T$ we get $TS=TT^{-1}=I$, as desired.
+
+\vs
+
+In the other direction, a symmetric argument applies if we suppose $TS=I$. Therefore $ST=I$ if and only if $TS=I$, as desired.
+
+\section*{Problem 16*}
+Suppose $V$ is finite-dimensional and $T\in\Lo(V)$. Prove that $T$ is a scalar multiple of the identity if and only if $ST=TS$ for every $S\in\Lo(V)$.
+
+\subsection*{Solution}
+Suppose $T$ is a scalar multiple of the identity, i.e. for some $\alpha\in\F, T=\alpha I$. Let $S\in\Lo(V)$. Then $ST=S\alpha I=\alpha S$. Similarly $TS=\alpha I S=\alpha S$. Thus $ST=TS$ for every $S\in\Lo(V)$ as desired.
+
+\vs
+
+Conversely, suppose $ST=TS$ for every $S\in\Lo(V)$. Let $A=\M(S)$, let $B=\M(T)$, and let $n=\dim V$. Observe that $AB$ and $BA$ are valid operations, and that both $A$ and $B$ act on $\mathcal{M}(v)$  for $v\in V$. Thus both $A$ and $B$ are square, with the number of rows and columns equal to $n$. Then:
+\begin{align*}
+(AB)_{j,k}&=\sum_{r=1}^{n}A_{j,r}B_{r,k}\\
+(BA)_{j,k}&=\sum_{r=1}^{n}B_{j,r}A_{r,k}
+\end{align*}
+
+Since $AB=BA$, it follows that:
+\[\sum_{r=1}^{n}A_{j,r}B_{r,k}=\sum_{r=1}^{n}A_{r,k}B_{j,r}\]
+
+We need to select a matrix $B$ such that for all possible $A$ the equation above is true... [Here we can show that the A parts are equal to each other for diagonal elements, thus we select the B matrix that filters out everything but the diagonals. But that feels really handwavy, and I'm not happy with this proof. I'm not sure how to make the proof rigorous without looking it up.]
+
+\section*{Problem 18*}
+Show that $V$ and $\mathcal{L}(\F,V)$ are isomorphic vector spaces.
+
+\subsection*{Solution}
+We know two final-dimensional spaces over $\F$ are isomorphic if and only if they have the same dimension (see lemma 3.59). We also know that $\dim\mathcal{L}(U,W)=\dim U\times\dim W$ (by lemma 3.61). Thus:
+\[\dim\mathcal{L}(\F,V)=\dim \F\times\dim V=1\times\dim V=\dim V\]
+
+Therefore $V$ and $\mathcal{L}(\F,V)$ are isomorphic vector spaces, as desired.
+
+\vs
+
+Note that the problem doesn't explicitly state $V$ is finite-dimensional. So to solve the problem precisely as stated we need to establish an isomorphism (i.e. define a mapping function, show that it's linear, and show that it's invertible). But I frankly spent enough time on this chapter, and I don't feel like doing this now.
+
+\newpage
+\section*{Problem 19*}
+Suppose $T\in\Lo(\mathcal{P}(\R))$ is such that $T$ is injective and $\text{deg}\ Tp\leq \text{deg}\ p$ for every nonzero polynomial $p\in\mathcal{P}(\R)$.
+
+\subsection*{Solution}
+(a) Prove that $T$ is surjective.
+
+Any given polynomial $p$ has a degree $m=\deg p$. Thus we can restrict ourselves to the space $\mathcal{P}_m(\R)$. We know that linear maps in finite-dimensional spaces that are injective or also surjective. Thus $\mathcal{P}_m(\R)$ is surjective, and since every polynomial has a degree, $\mathcal{P}(\R)$ is surjective.
+
+\vs
+
+(b) Prove that $\text{deg}\ Tp=\text{deg}\ p$ for every nonzero $p\in\mathcal{P}(\R)$.
+
+Suppose for contradiction $\text{deg}\ Tp< \text{deg}\ p$ for some $p\in \mathcal{P}(\R)$. Again, since every polynomial has a degree, we can restrict ourselves to the space $\mathcal{P}_m(\R)$ where $m=\deg p$. Let $p_1,\ldots,p_m$ be the standard basis of $\mathcal{P}_m(\R)$. Then $p=\alpha_1 p_1+\ldots+\alpha_m p_m$ for $\alpha_1,\ldots,\alpha_m\in\F$, and:
+\[T(p)=T(\alpha_1 p_1+\ldots+\alpha_m p_m)=\alpha_1 T(p_1)+\ldots+ \alpha_m T(p_m)\]
+
+Because $\text{deg}\ Tp< \text{deg}\ p$, it follows $\alpha_m=0$ in the co-domain. However, that implies the polynomial $p$ is of a degree $m-1$ (as by linearity $\alpha_m=0$ in the domain). Thus we have a contradiction, and $\text{deg}\ Tp = \text{deg}\ p$ as desired.
+
+\section*{Problem 20}
+Suppose $n$ is a positive integer and $A_{i,j}\in\F$ for $i,j=1,\ldots,n$. Prove that the following are equivalent (note that in both parts below, the number of equations equals the number of variables):
+
+\vs
+
+(a) The trivial solution $x_1=\ldots=x_n=0$ is the only solution to the homogeneous system of equations
+\begin{align*}
+\sum_{k=1}^{n} A_{1,k}x_k &= 0 \\
+& \vdots \\
+\sum_{k=1}^{n} A_{n,k}x_k &= 0.
+\end{align*}
+
+\vs
+
+(b) For every $c_1,\ldots,c_n\in\F$, there exists a solution to the system of equations
+\begin{align*}
+\sum_{k=1}^{n} A_{1,k}x_k &= c_1 \\
+& \vdots \\
+\sum_{k=1}^{n} A_{n,k}x_k &= c_n.
+\end{align*}
+
+\subsection*{Solution}
+Let $T\in\mathcal{L}(V)$ such that $A=\mathcal{M}(T)$ and $V$ is finite-dimensional. Then (a) states that $\nil T=\{0\}$, thus $T$ is injective. Because $T$ is an injective operator it is also surjective. The statement (b) states that for any $v\in V$, there exists an $x\in V$ such that $Tx=v$. In other words, $\range T=V$ and thus $T$ is surjective. Thus statements (a) and (b) are equivalent, as desired.
+
+\end{document}

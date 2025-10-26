@@ -1,0 +1,59 @@
+\documentclass{article}
+\usepackage{style}
+
+\title{LADR, 8.A}
+\date{30 Apr 2024}
+
+\begin{document}
+\maketitle
+
+\section*{Problem 3}
+Suppose $T\in\mathcal{L}(V)$ is invertible. Prove that $G(\lambda, T)=G(\frac{1}{\lambda}, T^{-1})$ for every $\lambda\in\F$ with $\lambda\neq0$.
+
+\subsection*{Solution}
+\textbf{TODO}
+
+\section*{Problem 4}
+Suppose $T\in\mathcal{L}(V)$ and $\alpha,\beta\in\F$ with $\alpha\neq\beta$. Prove that
+\[G(\alpha, T)\cap G(\beta, T)=\{0\}\]
+
+\subsection*{Solution}
+Let $v_1,\ldots,v_m\in V$ be a basis of $G(\alpha, T)$, and let $w\in G(\beta, T)$ with $w\neq 0$. Recall that generalized eigenvectors corresponding to distinct eigenvalues are linearly independent (lemma 8.13). Thus $v_1,\ldots,v_m,w$ are linearly independent, and $w\not\in\spn(v_1,\ldots,v_m)$. By the same reasoning, any non-zero vector in $G(\beta, T)$ isn't in $G(\alpha, T)$. Therefore $G(\alpha, T)\cap G(\beta, T)=\{0\}$ as desired.
+
+\section*{Problem 6}
+Suppose $T\in\mathcal{L}(\C^3)$ is defined by $T(z_1,z_2,z_3)=(z_2, z_3, 0)$. Prove that $T$ has no square root. More precisely, prove that there does not exist $S\in\mathcal{L}(\C^3)$ such that $S^2=T$.
+
+\subsection*{Solution}
+Observe that $T$ is a shift left operator and is thus nilpotent after three applications. Suppose there exists $S\in\mathcal{L}(\C^3)$ such that $S^2=T$. Since $T$ is nilpotent, $S$ is nilpotent. Further, $S^4=T^2$, and since $T^2$ may have a non-zero image, $S^4\neq 0$. We know nilpotent operators raised to the dimension of domain, in this case $3$, are $0$ (see lemma 8.18). Thus $S^4=S^3=0$. We have a contradiction, therefore no $S\in\mathcal{L}(\C^3)$ such that $S^2=T$ exists, as desired.
+
+\section*{Problem 8}
+Prove or give a counterexample: The set of nilpotent operators on $V$ is a subspace of $\mathcal{L}(V)$.
+
+\subsection*{Solution}
+Let $L,R\in\mathcal{L}(\R^2)$, where $L(a, b)=(b,0)$ and $R(a,b)=(0,a)$. Since $L$ is shift left and $R$ is shift right, it's easy to see that both are nilpotent. However,
+\[(L+R)(a,b)=L(a,b)+R(a,b)=(b,0)+(0, a)=(b,a)\]
+i.e. $L+R$ is a flip operator and is thus not nilpotent. Therefore the set of nilpotent operators on $V$ is not a subspace of $\mathcal{L}(V)$ since it's not closed under addition.
+
+\section*{Problem 9}
+Suppose $S, T\in\mathcal{L}(V)$ and $ST$ is nilpotent. Prove $TS$ is nilpotent.
+
+\subsection*{Solution}
+Since $ST$ is nilpotent there is a positive integer $k$ such that $(ST)^k=0$. Then
+\[(TS)^{k+1}=T(ST)^k S=T0S=0\]
+Thus $TS$ is nilpotent.
+
+\section*{Problem 11}
+Prove or give a counterexample: If $V$ is a complex vector space and $\dim V=n$ and $T\in\mathcal{L}(V)$, then $T^n$ is diagonalizable.
+
+\subsection*{Solution}
+\textbf{TODO}
+
+\section*{Problem 14}
+Suppose $V$ is an inner product space and $N\in\mathcal{L}(V)$ is nilpotent. Prove that there exists an orthonormal basis of $V$ with respect to which $N$ has an upper-triangular matrix.
+
+[\textit{If $\F=\C$, then the result above follows from Schur's Theorem (6.38) without the hypothesis that $N$ is nilpotent. Thus the exercise above needs to be proved only when $\F=\R$}.]
+
+\subsection*{Solution}
+By lemma 8.19 there is a basis of $V$ with respect to which the matrix of $N$ has all entries on and below diagonal set to $0$ (i.e. $N$ is upper triangular). By lemma 6.37 if $N$ has an upper-triangular matrix with respect to some basis of $V$, then $N$ has an upper triangular matrix with respect to some orthonormal basis of $V$. QED.
+
+\end{document}

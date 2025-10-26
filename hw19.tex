@@ -1,0 +1,164 @@
+\documentclass{article}
+\usepackage{style}
+
+\title{LADR, 7.A}
+\date{19 Apr 2024}
+
+\begin{document}
+\maketitle
+
+\section*{Problem 1}
+Suppose $n$ is a positive integer. Define $T\in\mathcal{L}(\F^n)$ by
+\[T(z_1,\ldots,z_n)=(0,z_1,\ldots,z_{n-1})\]
+
+Find a formula for $T^*(z_1,\ldots,z_n)$.
+
+\subsection*{Solution}
+$T$ is a shift-right operator that maintains dimensionality. Fix a point $(w_1, \ldots, w_n)$. Then
+\begin{align*}
+    \langle (z_1,\ldots,z_n), T^*(w_1, \ldots, w_n) \rangle&=\langle T(z_1,\ldots,z_n), (w_1, \ldots, w_n) \rangle\\
+    &=\langle (0, z_1,\ldots,z_{n-1}), (w_1, \ldots, w_n) \rangle\\
+    &=z_1w_2+\ldots+z_{n-1}w_n\\
+    &=\langle (z_1,\ldots,z_{n-1}, z_n), (w_2,\ldots,w_n, 0) \rangle
+\end{align*}
+
+Thus $T^*(w_1, \ldots, w_n)=(w_2,\ldots,w_n, 0)$, a shift left operator.
+
+\section*{Problem 3}
+Suppose $T\in\mathcal{L}(V)$ and $U$ is a subspace of $V$. Prove that $U$ is invariant under $T$ if and only if $U^\perp$ is invariant under $T^*$.
+
+\subsection*{Solution}
+Suppose $U$ is invariant under $T$, and suppose for contradiction $U^\perp$ is not invariant under $T^*$. Then there exists $v\in U^\perp$ such that $T^*v\not\in U^\perp$. Let $u\in U$. Then $\langle Tu,v\rangle=0=\langle u, T^*v \rangle\neq 0$. This is a contradiction, therefore $U^\perp$ is invariant under $T^*$ as desired. The proof in the other direction uses exactly the same logic.
+
+\section*{Problem 4}
+Suppose $T\in\mathcal{L}(V,W)$. Prove that
+
+\vs
+
+(a) $T$ is injective if and only if $T^*$ is surjective.
+
+Suppose $T$ is injective. Then $\nil T=\{0\}$. By 7.7.c $(\range T^*)^\perp=\nil T=\{0\}$. Therefore
+\[\range T^*=(\range T^*)^{\perp\perp}=\{0\}^\perp=V\]
+Therefore $T^*$ is surjective as desired.
+
+\vs
+
+Conversely, suppose $T^*$ is surjective and suppose for contradiction $T$ is not injective. Since $T$ is not injective there exists $v\in V, v\neq 0$ such that $Tv=0$. And since $T^*$ is surjective there exists $w\in W$ such that $T^*w=v$. Then
+\[\langle Tv, w\rangle=\langle 0, w\rangle=0=\langle v, T^*w\rangle=\langle v,v\rangle\neq 0\]
+This is a contradiction, therefore $T$ is injective as desired.
+
+\vs
+
+(b) $T$ is surjective if and only if $T^*$ is injective.
+
+The proof here uses exactly the same logic as above.
+
+\section*{Problem 5}
+Prove that
+\[\dim\nil T^*=\dim\nil T+\dim W-\dim V\]
+and
+\[\dim\range T^*=\dim\range T\]
+for every $T\in\mathcal{L}(V,W)$.
+
+\subsection*{Solution}
+\begin{align*}
+    \dim\nil T^*&=\dim(\range T)^\perp&&\text{lemma 7.7.a}\\
+    &=\dim W-\dim\range T&&\text{lemma 6.50}\\
+    &=\dim W-(\dim V-\dim\nil T)&&\text{rank-nullity theorem}\\
+    &=\dim\nil T+\dim W-\dim V
+\end{align*}
+
+\begin{align*}
+    \dim \range T^*&=\dim(\nil T)^\perp&&\text{lemma 7.7.b}\\
+    &=\dim V-\dim\nil T&&\text{lemma 6.50}\\
+    &=\dim\range T&&\text{rank-nullity theorem}
+\end{align*}
+
+\section*{Problem 14}
+Suppose $T$ is a normal operator on $V$. Suppose also that $v,w\in V$ satisfy the equations
+\[\|v\|=\|w\|=2,\ \ Tv=3v,\ \ Tw=4w\]
+Show that $\|T(v+w)\|=10$.
+
+\subsection*{Solution}
+\begin{align*}
+    \|T(v+w)\|^2&=\langle Tv+Tw,Tv+Tw\rangle\\
+    &=\langle 3v+4w,3v+4w\rangle\\
+    &=\|3v\|^2+\langle 3v,4w\rangle+\langle 4w,3v\rangle+\|4w\|^2\\
+    &=100+\langle 3v,4w\rangle+\langle 4w,3v\rangle&&\text{by lemma 7.22 $\langle v,w\rangle=0$}\\
+    &=100 + 0 + 0\\
+\end{align*}
+Thus $\|T(v+w)\|=10$ as desired.
+
+\section*{Problem 7*}
+Suppose $S,T\in\mathcal{L}(V)$ are self-adjoint. Prove that $ST$ is self-adjoint if and only if $ST=TS$.
+
+\subsection*{Solution}
+Suppose $ST$ is self-adjoint. Then
+\[ST=(ST)^*=T^*S^*=TS\]
+
+Conversely, suppose $ST=TS$. Then
+\[ST=TS=T^*S^*=(ST)^*\]
+
+\section*{Problem 8*}
+Suppose $V$ is a real inner product space. Show that the set of self-adjoint operators on $V$ is a subspace of $\mathcal{L}(V)$.
+
+\subsection*{Solution}
+First, observe that for all $v,w\in V, \langle 0v, w\rangle=0=\langle v, 0w\rangle$. Thus $0$ is self-adjoint.
+
+\vs
+
+Second, suppose $S$ is self-adjoint. Let $a\in\F$. Then
+\[\langle aSv, w\rangle=a\langle Sv, w\rangle=a\langle v, Sw\rangle=\langle v, aSw\rangle\]
+Thus $aS$ is self-adjoint (note that $a\langle v, Sw\rangle=\langle v, aSw\rangle$ is true because $V$ is a real space).
+
+\vs
+
+Third, suppose $S, T$ are self-adjoint. Then
+\begin{align*}
+\langle (S+T)v, w\rangle&=\langle Sv + Tv, w\rangle\\
+&=\langle Sv,w\rangle+\langle Tv,w\rangle\\
+&=\langle v,Sw\rangle+\langle v,Tw\rangle\\
+&=\langle v, Sw+Tw\rangle=\langle v, (S+T)w\rangle    
+\end{align*}
+
+Thus $S+T$ is self-adjoint.
+
+\vs
+
+Therefore the set of self-adjoint operators on $V$ is a subspace of $\mathcal{L}(V)$ as desired.
+
+\section*{Problem 12*}
+Suppose that $T$ is a normal operator on $V$ and that $3$ and $4$ are eigenvalues of $T$. Prove that there exists a vector $v\in V$ such that $\|v\|=\sqrt{2}$ and $\|Tv\|=5$.
+
+\subsection*{Solution}
+Let $u,w\in V$ be normalized vectors such that $Tu=3u, Tw=4w$. Then:
+\begin{align*}
+\|T(u+w)\|^2&=\langle 3u+4w, 3u+4w\rangle\\
+&=\langle 3u, 3u\rangle+\langle 3u,4w\rangle+\langle 4w,3u\rangle+\langle 4w,4w\rangle\\
+&=\langle 3u, 3u\rangle+\langle 4w,4w\rangle&&\text{$T$ is normal, so $\langle u,w\rangle=0$}\\
+&=9\|u\|^2+16\|w\|^2=25
+\end{align*}
+
+Thus $\|T(u+w)\|=\sqrt{25}=5$ as desired. Since $\|u\|=\|w\|=1$, by Pythagorean theorem $\|u+w\|=\sqrt{2}$ as desired.
+
+\section*{Problem 16*}
+Suppose $T\in\mathcal{L}(V)$ is normal. Prove that $\range T=\range T^*$.
+
+\subsection*{Solution}
+
+Let $v\in V$ such that $Tv=0$, i.e. $v\in\nil T$. Then $\|Tv\|=0$. By lemma 7.20 $\|T^*v\|=0$ iff $\|Tv\|=0$, and thus $\nil T=\nil T^*$. By rank-nullity theorem $\dim\range T=\dim\range T^*$, and thus $\range T=\range T^*$ as desired.
+
+\section*{Problem 17*}
+Suppose $T\in\mathcal{L}(V)$ is normal. Prove that $\nil T^k=\nil T$ and $\range T^k=\range T$ for every positive integer $k$.
+
+\subsection*{Solution}
+Obviously $\nil T^1=\nil T$. Suppose $\nil T^{k-1}=\nil T$. Let $v\in\nil T$, i.e. $Tv=T^{k-1}v=0$. Then $T^kv=TT^{k-1}v=T0=0$, so $v\in\nil T^k$. Conversely, let $w\in V$ such that $w\not\in\nil T$. Then $T^{k-1}w\neq 0$. Then
+\[\langle TT^{k-1}w, w\rangle=\langle T^{k-1}w, T^*w\rangle\]
+Recall that when $T$ is normal, $\nil T^*=\nil T$, thus the right side (and therefore the left side) of the equation above isn't $0$. Therefore $T^kw\neq 0$ and $w\not\in\nil T^k$. Thus by induction $\nil T^k=\nil T$ as desired.
+
+\vs
+
+Further, by rank-nullity theorem, $\dim \nil T^k=\dim\nil T$, and thus $\dim\range T^k=\dim\range T$. Therefore $\range T^k=\range T$ as desired.
+
+
+\end{document}

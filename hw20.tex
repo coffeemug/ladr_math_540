@@ -1,0 +1,90 @@
+\documentclass{article}
+\usepackage{style}
+
+\title{LADR, 7.B}
+\date{25 Apr 2024}
+
+\begin{document}
+\maketitle
+
+\section*{Problem 2}
+Suppose that $T$ is a self-adjoint operator on a finite-dimensional inner product space and that 2 and 3 are the only eigenvalues of $T$. Prove that $T^2-5T+6I=0$.
+
+\subsection*{Solution}
+By the spectral theorem, $V$ has an orthonormal basis consisting of eigenvectors of $T$. Let $e_1, \ldots, e_n\in V$ be such a basis. For any basis vector $e_i$, $T$ scales it either by $2$:
+
+\[(T^2-5T+6I)e_i=T^2e_i-5Te_i+6e_i=4e_i-10e_i+6e_i=0\]
+
+Or by $3$:
+\[(T^2-5T+6I)e_i=T^2e_i-5Te_i+6e_i=9e_i-15e_i+6e_i=0\]
+
+Thus $T^2-5T+6I$ maps each of the basis vectors $e_1, \ldots, e_n$ to $0$, and therefore maps any $v\in V$ to $0$ as desired.
+
+\section*{Problem 3}
+Give an example of an operator $T\in\mathcal{L}(\C^3)$ such that 2 and 3 are the only eigenvalues of $T$ and $T^2-5T+6I\neq0$.
+
+\subsection*{Solution}
+Let $T(x,y,z)=(2x + iy, 3y + iz, 2z)$, and let $A=\mathcal{M}(T)$. Then
+\[A=\begin{bmatrix}
+    2 & i & 0 \\
+    0 & 3 & i \\
+    0 & 0 & 2
+\end{bmatrix}\]
+
+Double checking the eigenvalues, since $A$ is upper triangular its diagonal entries are the eigenvalues of $T$. Thus 2 and 3 are the only eigenvalues as desired. Then
+\[(A^2-5A+6I)=\begin{bmatrix}
+    0 & 0 & -1 \\
+    0 & 0 & 0 \\
+    0 & 2i & 0
+\end{bmatrix}\]
+Thus $A$ is a non-zero matrix, and $T^2-5T+6I\neq0$ as desired.
+
+\section*{Problem 4}
+Suppose $\F=\C$ and $T\in\mathcal{L}(V)$. Prove that $T$ is normal if and only if all pairs of eigenvectors corresponding to distinct eigenvalues of $T$ are orthogonal and
+\[V=E(\lambda_1, T)\oplus\ldots\oplus E(\lambda_m, T)\]
+where $\lambda_1,\ldots,\lambda_m$ denote the distinct eigenvalues of $T$.
+
+\subsection*{Solution}
+Suppose $T$ is normal. By spectral theorem $V$ has an orthonormal basis consisting of eigenvectors of $T$, therefore all pairs of vectors corresponding to distinct eigenvalues of $T$ are orthogonal. (This is also independently proven in lemma 7.22) Further, because there exists a basis of $V$ consisting of eigenvectors of $T$, $T$ is diagonalizable (lemma 5.41.b). Therefore $V=E(\lambda_1, T)\oplus\ldots\oplus E(\lambda_m, T)$ (lemma 5.41.d) as desired.
+
+\vs
+
+Conversely suppose all pairs of eigenvectors corresponding to distinct eigenvalues of $T$ are orthogonal and
+\[V=E(\lambda_1, T)\oplus\ldots\oplus E(\lambda_m, T)\]
+Then $T$ is diagonalizable (lemma 5.41.a), and $V$ has a basis consisting of eigenvectors of $T$ (lemma 5.41.b). Since the eigenvectors are orthogonal, so is the basis. And it is easy to make it orthonormal by dividing each basis vector by its norm. Therefore $T$ is normal (lemma 7.24.c) as desired.
+
+\section*{Problem 7}
+Suppose $V$ is a complex inner product space and $T\in\mathcal{L}(V)$ is a normal operator such that $T^9=T^8$. Prove that $T$ is self-adjoint and $T^2=T$.
+
+\subsection*{Solution}
+Since $T$ is normal, it has a diagonal matrix. Let $A=\mathcal{M}(T)$. Since $T^9=T^8$, it follows $AA^8=A^8$. In order for that to be true, each element of $A$ must be either zero or one. Thus all eigenvalues are real, $T$ is self-adjoint, and $T^2=T$.
+
+\section*{Problem 9}
+Suppose $V$ is a complex inner product space. Prove that every normal operator on $V$ has a square root. (An operator $S\in\mathcal{L}(V)$ is called a \textbf{square root} of $T\in\mathcal{L}(V)$ if $S^2=T$.)
+
+\subsection*{Solution}
+Suppose $T\in\mathcal{L}(V)$ is normal. Then $T$ has a diagonal matrix with respect to some orthonormal basis of $V$ (lemma 7.24.c). Multiplying two diagonal matrices simply involves pairwise multiplication of diagonal entries. I.e. if $A=\mathcal{M}(T)$:
+\[A=\begin{bmatrix}
+a_1 & 0 & 0 \\
+0 & \ddots & 0 \\
+0 & 0 & a_n
+\end{bmatrix}
+\]
+
+Then
+\[\sqrt{A}=\begin{bmatrix}
+\sqrt{a_1} & 0 & 0 \\
+0 & \ddots & 0 \\
+0 & 0 & \sqrt{a_n}
+\end{bmatrix}
+\]
+
+\section*{Problem 12*}
+Suppose $T\in\mathcal{L}(V)$ is self-adjoint, $\lambda\in\F$, and $\epsilon>0$. Suppose there exists $v\in V$ such that $\|v\|=1$ and
+\[\|Tv-\lambda v\|<\epsilon\]
+
+Prove that $T$ has an eigenvalue $\lambda'$ such that $|\lambda-\lambda'|<\epsilon$.
+
+\subsection*{Solution}
+
+\end{document}

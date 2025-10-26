@@ -1,0 +1,82 @@
+\documentclass{article}
+\usepackage{style}
+
+\title{LADR, 4}
+
+\begin{document}
+\maketitle
+
+\section*{Problem 2}
+Suppose $m$ is a positive integer. Is the set
+\[\{0\}\cup\{p\in\mathcal{P}(\F):\deg p=m\}\]
+a subspace of $\mathcal{P}(\F)$?
+
+\subsection*{Solution}
+
+Let $p_1=x^m + 1$ and $p_2=-x^m + 1$. Both $p_1,p_2\in\{0\}\cup\{p\in\mathcal{P}(\F):\deg p=m\}$. However, $p_1+p_2=2$, a zero degree polynomial. Thus $p_1+p_2\not\in\{0\}\cup\{p\in\mathcal{P}(\F):\deg p=m\}$, the set is not closed under addition, and is therefore not a subspace of $\mathcal{P}(\F)$.
+
+\section*{Problem 3}
+Is the set
+\[\{0\}\cup\{p\in\mathcal{P}(\F):\deg p\text{ is even}\}\]
+a subspace of $\mathcal{P}(\F)$?
+
+\subsection*{Solution}
+
+Let $p_1=x^2 + x + 1$ and $p_2=-x^2 + x + 1$. Both $p_1,p_2\in\{0\}\cup\{p\in\mathcal{P}(\F):\deg p\text{ is even}\}$. However, $p_1+p_2=2x+2$, a first degree polynomial. Since $1$ is odd, $p_1+p_2\not\in\{0\}\cup\{p\in\mathcal{P}(\F):\deg p\text{ is even}\}$, the set is not closed under addition, and is therefore not a subspace of $\mathcal{P}(\F)$.
+
+\newpage
+\section*{Problem 4}
+Suppose $m$ and $n$ are positive integers with $m\leq n$, and suppose $\lambda_1,\ldots,\lambda_m\in\F$. Prove that there exists a polynomial $p\in\mathcal{P}(\F)$ with $\deg p = n$ such that $0=p(\lambda_1)=\ldots=p(\lambda_m)$ and such that $p$ has no other zeroes.
+
+\subsection*{Solution}
+
+Let $p$ be defined as follows:
+\[p=(x-\lambda_1)\ldots\underbrace{(x-\lambda_m)\ldots(x-\lambda_m)}_{1+(n-m)\text{ times}}\]
+
+We know $p(\lambda)=0$ if and only if $x-\lambda$ is a factor of $p$ (lemma 4.11). Since $x-\lambda_i:i=1,\ldots,m$ are the only factors of $p$, it follows that (a) $\lambda_1,\ldots,\lambda_m$ are zeros of $p$, and (b) there are no other zeros. Further it is easy to see that $p$ is an $m+(n-m)=n$ degree polynomial. QED.
+
+\section*{Problem 5*}
+Suppose $m$ is a non-negative integer, $z_1,\ldots,z_{m+1}$ are distinct elements of $\F$, and $w_1,\ldots,w_{m+1}\in\F$. Prove that there exists a unique polynomial $p\in\mathcal{P}(\F)$ such that
+\[p(z_j)=w_j\]
+for $j=1,\ldots,m+1$.
+
+\subsection*{Solution}
+
+
+\section*{Problem 6*}
+Suppose $p\in\mathcal{P}(\C)$ has degree $m$. Prove that $p$ has $m$ distinct zeros if and only if $p$ and its derivative $p'$ have no zeros in common.
+
+\subsection*{Solution}
+
+\section*{Problem 7}
+Prove that every polynomial of odd degree with real coefficients has a real zero.
+
+\subsection*{Solution}
+
+Let $p$ be a polynomial of odd degree. Suppose for contradiction $p$ has no real zeros. Since the degree is odd, we know $p$ is non-constant. We know a non-constant polynomial over $\R$ has a unique factorization
+\[p(x)=c(x-\lambda_1)\ldots(x-\lambda_m)(x^2+b_1x+c_1)\ldots(x^2+b_Mx+c_M)\]
+
+where $c,\lambda_1,\ldots\lambda_m,b_1,\ldots,b_M,c_1,\ldots,c_M\in\R$ (lemma 4.17). Further we know that $p(\lambda)=0$ if and only if there exists a polynomial $q$ such that $p(x)=(x-\lambda)q(x)$ (lemma 4.10). Therefore, since $p$ has no real zeros by supposition, it has a unique factorization
+\[p(x)=c(x^2+b_1x+c_1)\ldots(x^2+b_Mx+c_M)\]
+
+However, it's easy to see such a factorization is of a polynomial of an even degree. We have a contradiction, thus every polynomial of odd degree with real coefficients has a real zero as desired.
+
+\section*{Problem 9}
+Suppose $p\in\mathcal{P}(\C)$. Define $q:\C\to\C$ by
+\[q(z)=p(z)\overline{p(\overline{z})}\]
+Prove that $q$ is a polynomial with real coefficients.
+
+\subsection*{Solution}
+Every polynomial $p\in\mathcal{P}(\C)$ can be factored into $p(z)=c(z-\lambda_1)\ldots(z-\lambda_m)$, where $c,\lambda_1,\ldots,\lambda_m\in\C$ (see lemma 4.14). Therefore:
+\begin{align*}
+    q(z)&=p(z)\overline{p(\overline{z})}=c(z-\lambda_1)\ldots(z-\lambda_m)\overline{c(\overline{z}-\lambda_1)\ldots(\overline{z}-\lambda_m)}\\
+    &=c(z-\lambda_1)\ldots(z-\lambda_m)\overline{c}(z-\overline{\lambda_1})\ldots(z-\overline{\lambda_m})\\
+    &=c\overline{c}(z-\lambda_1)(z-\overline{\lambda_1})\ldots(z-\lambda_m)(z-\overline{\lambda_m})\\
+    &=\lvert c \rvert^2(z^2 -z\lambda_1 -z\overline{\lambda_1}+\lambda_1\overline{\lambda_1})\ldots(z^2 -z\lambda_m -z\overline{\lambda_m}+\lambda_m\overline{\lambda_m})\\
+    &=\lvert c \rvert^2(z^2 -z(\lambda_1+\overline{\lambda_1})+\lvert\lambda_1\rvert^2)\ldots(z^2 -z(\lambda_m+\overline{\lambda_m})+\lvert\lambda_m\rvert^2)\\
+    &=\lvert c \rvert^2(z^2 -z2 Re \lambda_1+\lvert\lambda_1\rvert^2)\ldots(z^2 -z2Re\lambda_m+\lvert\lambda_m\rvert^2)
+\end{align*}
+
+Observe that $\lvert c \rvert^2, z2 Re \lambda_i$, and $\lvert\lambda_i\rvert^2$ are all real, thus $q(z)$ is a polynomial with real coefficients as desired.
+
+\end{document}

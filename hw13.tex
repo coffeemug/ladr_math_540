@@ -1,0 +1,174 @@
+\documentclass{article}
+\usepackage{style}
+
+\title{LADR, 5.B}
+\date{18 Feb 2024}
+
+\begin{document}
+\maketitle
+
+\section*{Problem 1}
+Suppose $T\in\mathcal{L}(V)$ and there exists a positive integer $n$ such that $T^n=0$.
+
+\subsection*{Solution}
+(a) Prove that $I-T$ is invertible and that
+\[(I-T)^{-1}=I+T+\ldots+T^{n-1}\]
+
+Observe that $I-T^n=I-0=I$. Further, we can factor $I-T^n$ in two ways:
+\begin{align*}
+    I-T^n&=(I-T)(I+T+\ldots+T^{n-1})=I\\
+    I-T^n&=(I+T+\ldots+T^{n-1})(I-T)=I
+\end{align*}
+
+Therefore $I-T$ and $I+T+\ldots+T^{n-1}$ are invertible and are inverses of each other.
+
+\vs
+
+(b) Explain how you would guess the formula above.
+
+Idk, the way I did above?
+
+\section*{Problem 3}
+Suppose $T\in\mathcal{L}(V)$ and $T^2=I$ and $-1$ is not an eigenvalue of $T$. Prove that $T=I$.
+
+\subsection*{Solution}
+Let $v\in V$ such that $v\neq 0$. Then $T^2v=v$, or $(T^2-I)v=0$. Observe that
+\[(T-I)(T+I)=T^2+IT-IT-I^2=T^2-I\]
+
+Thus $(T-I)(T+I)v=0$. Since $v\neq 0$, for the equation to hold either $T+I$ or $T-I$ is not injective. It cannot be $T+I$ because $-1$ is not an eigenvalue of $T$. Therefore $T-I$ is not injective, and $1$ is an eigenvalue of $T$ for all $v\in V$ such that $v\neq 0$. Therefore $Tv=v$, and thus $T=I$ as desired.
+
+\section*{Problem 4}
+Suppose $P\in\mathcal{L}(V)$ and $P^2=P$. Prove that $V=\nil P\oplus \range P$.
+
+\subsection*{Solution}
+\textbf{NOTE:} proof below is ok, but not in the spirit of this chapter. I should instead write up proof based on $(v-Pv)+Pv$, but I spent enough time on this homework.
+
+\vs
+
+Let $v\in V$. Then $P(Pv)=Pv$. Put informally, when $P$ acts on a vector in its own range, it maps the vector to itself. Let $v_1,\ldots,v_m\in V$ be a basis of $\range P$, and let $\alpha_1,\ldots,\alpha_m\in\F$. Then
+
+\[P(\alpha_1v_1+\ldots+\alpha_m v_m)=\alpha_1v_1+\ldots+\alpha_m v_m\]
+
+Thus $P(v_i)=v_i$ for $i=1,\ldots,m$. Extend the basis to $v_1,\ldots,v_m,u_1,\ldots,u_n$, a basis of $V$. By rank nullity theorem
+\[\dim\nil P=\dim V-\dim\range P=(m+n)-m=n\]
+
+Since $P(v_i)=v_i$ for $i=1,\ldots,m$, $v_1,\ldots,v_m\not\in\nil P$. Therefore the remaining $n$ vectors in the basis of $V$, i.e. $u_1,\ldots,u_n$, form the basis of $\nil P$.
+
+\vs
+
+Obviously $\{v_1,\ldots,v_m\}\cap\{u_1,\ldots,u_n\}=\{0\}$, and any $v\in V$ can be expressed as a sum of linear combinations of $v_1,\ldots,v_m$ and $u_1,\ldots,u_n$. Recall the former is a basis of $\range P$ and the latter is a basis of $\nil P$. Therefore $V=\nil P\oplus \range P$ as desired.
+
+\section*{Problem 5}
+Suppose $S,T\in\mathcal{L}(V)$ and $S$ is invertible. Suppose $p\in\mathcal{P}(\F)$ is a polynomial. Prove that
+\[p(STS^{-1})=Sp(T)S^{-1}\]
+
+\subsection*{Solution}
+Recall that $p(T)$ is an operator defined by
+\[p(T)=a_0I + a_1T+a_2T^2+\ldots+a_n T^n\]
+
+Note that $STS^{-1}STS^{-1}=ST(S^{-1}S)TS^{-1}=ST^2S^{-1}$. Therefore:
+\begin{align*}
+p(STS^{-1})&=a_oI + a_1STS^{-1}+a_2(STS^{-1})^2+\ldots+a_n (STS^{-1})^n\\
+&=a_oI + a_1STS^{-1}+a_2ST^2S^{-1}+\ldots+a_n ST^nS^{-1}
+\end{align*}
+
+Similarly:
+\begin{align*}
+Sp(T)S^{-1}&=S(a_0I + a_1T+a_2T^2+\ldots+a_n T^n)S^{-1}\\
+&=(a_0SI + a_1ST+a_2ST^2+\ldots+a_n ST^n)S^{-1}\\
+&=a_0SIS^{-1} + a_1STS^{-1}+a_2ST^2S^{-1}+\ldots+a_n ST^nS^{-1}\\
+&=a_oI + a_1STS^{-1}+a_2ST^2S^{-1}+\ldots+a_n ST^nS^{-1}
+\end{align*}
+
+Thus $p(STS^{-1})=Sp(T)S^{-1}$ as desired.
+
+\section*{Problem 10}
+Suppose $T\in\mathcal{L}(V)$ and $v$ is an eigenvector of $T$ with an eigenvalue $\lambda$. Suppose $p\in\mathcal{P}(\F)$. Prove that $p(T)v=p(\lambda)v$.
+
+\subsection*{Solution}
+Obviously $Tv=\lambda v$, $T^2v=TTv=T\lambda v=\lambda^2 v$, and $T^n v=\lambda^n v$. Let $p$ be of the form
+\[a_1z^1+\ldots+a_n z^n\]
+
+Then
+\begin{align*}
+    p(T)v&=(a_0 + a_1T^1+\ldots+a_n T^n)v\\
+         &=a_0v+a_1T^1v+\ldots+a_n T^n v\\
+         &=a_0v+a_1\lambda^1v+\ldots+a_n\lambda^n v
+\end{align*}
+
+Similarly
+\begin{align*}
+p(\lambda)v&=(a_0+a_1\lambda^1+\ldots+a_n\lambda^n)v\\
+           &=a_0v+a_1\lambda^1v+\ldots+a_n\lambda^n v
+\end{align*}
+
+Thus $p(T)v=p(\lambda)v$ as desired.
+
+\section*{Problem 6*}
+Suppose $T\in\mathcal{L}(V)$ and $U$ is a subspace of $V$ invariant under $T$. Prove that $U$ is invariant under $p(T)$ for every polynomial $p\in\mathcal{P}(\F)$.
+
+\subsection*{Solution}
+Recall that $p(T)$ is an operator defined by
+\[p(T)=a_0I + a_1T+a_2T^2+\ldots+a_n T^n\]
+
+Observe that $U$ is invariant under every term. $I$ maps the vector to itself so $U$ is obviously invariant under $I$. Since $U$ is invariant under $T$, it is also invariant under successive applications of $T$. Since $U$ is closed under scalar multiplication, $U$ is invariant under scalar multiplication in each term. And since $U$ is closed under vector addition, $U$ is invariant under the addition of the terms. Thus $U$ is invariant under $p(T)$ for every polynomial $p\in\mathcal{P}(\F)$ as desired.
+
+\section*{Problem 8*}
+Give an example of $T\in\mathcal{L}(\R^2)$ such that $T^4=-1$.
+
+\subsection*{Solution}
+Consider a $T$ that rotates its vector clockwise by 45 degrees. Four such rotations is a 180 degree rotation clockwise, which is equivalent to $-1$.
+
+\section*{Problem 7}
+Suppose $T\in\mathcal{L}(V)$. Prove that $9$ is an eigenvalue of $T^2$ if and only if $3$ or $-3$ is an eigenvalue of $T$.
+
+\subsection*{Solution}
+Suppose that $9$ is an eigenvalue of $T^2$. Then $T^2-9I$ is not injective. Observe that $T^2-9I=(T-3I)(T+3I)$. Since $T^2-9I$ is not injective, one of the two factors must not be injective. Therefore one of $3$ or $-3$ is an eigenvalue of $T$ as desired.
+
+\vs
+
+Conversely, suppose $3$ is an eigenvalue of $T$. Then there exist $v\in V$ such that $Tv=3v$. Applying $T$ to both sides, $T^2v=3Tv$. But we know $Tv=3v$ and thus $T^2v=3\times3v=9v$. Therefore $9$ is an eigenvalue of $T$ as desired. By exactly the same chain of reasoning, if $-3$ is an eigenvalue of $T$, $9$ is also an eigenvalue of $T$.
+
+\section*{Problem 14}
+Give an example of an operator whose matrix with respect to some basis contains only 0's on the diagonal, but the operator is invertible.
+
+\vs
+
+[The exercise above and the exercise below show that 5.30 fails without the hypothesis that an upper-triangular matrix is under consideration.]
+
+\subsection*{Solution}
+Consider $T\in\mathcal{L}(\F^3)$ defined as $T(x, y, z)=(z, x, y)$. $\mathcal{M}(T)$ with respect to standard basis looks as follows:
+\[
+\begin{pmatrix}
+    0 & 1 & 0 \\
+    0 & 0 & 1 \\
+    1 & 0 & 0
+\end{pmatrix}
+\]
+
+Thus $\mathcal{M}(T)$ contains only $0$ elements on the diagonal, but $T$ is clearly invertible as it's a shift right operator with a shift left counterpart.
+
+\section*{Problem 15}
+Give an example of an operator whose matrix with respect to some basis contains only nonzero numbers on the diagonal, but the operator is not invertible.
+
+\subsection*{Solution}
+Consider $T\in\mathcal{L}(\F^3)$ defined as
+\[T(x, y, z)=(x+y+z, x+y+z, x+y+z)\]
+
+$\mathcal{M}(T)$ with respect to standard basis looks as follows:
+\[
+\begin{pmatrix}
+    1 & 1 & 1 \\
+    1 & 1 & 1 \\
+    1 & 1 & 1
+\end{pmatrix}
+\]
+
+Thus $\mathcal{M}(T)$ contains no $0$ elements on the diagonal. To see that $T$ is not invertible:
+\begin{align*}
+    T(1, 1, 0)&=(2, 2, 2)\\
+    T(0, 1, 1)&=(2, 2, 2)
+\end{align*}
+i.e. $T$ maps two different vectors to the same result.
+
+\end{document}

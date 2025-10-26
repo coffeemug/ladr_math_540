@@ -1,0 +1,42 @@
+\documentclass{article}
+\usepackage{style}
+
+\title{LADR, 8.D}
+\date{10 May 2024}
+
+\begin{document}
+\maketitle
+
+\section*{Problem 1}
+Find the characteristic polynomial and the minimal polynomial of the operator $N$ in Example 8.53.
+
+\subsection*{Solution}
+The only eigenvalue is $0$ with multiplicity $4$, thus the characteristic polynomial is
+\[(z-0)^4=z^4\]
+
+The minimal polynomial is a factor of $z^4$, and it's easy to see that only $q(T)=z^4=T^4=0$, thus the minimal polynomial is also $z^4$.
+
+\section*{Problem 3}
+Suppose $N\in\mathcal{L}(V)$ is nilpotent. Prove that the minimal polynomial of $N$ is $z^{m+1}$, where $m$ is the length of the longest consecutive string of $1$'s that appears on the line directly above the diagonal in the matrix of $N$ with respect to any Jordan basis for $N$.
+
+\subsection*{Solution}
+We know there exist vectors $v_1,\ldots,v_n\in V$ and non-negative integers $m_1,\ldots,m_n$ such that
+\[N^{m_1}v_1,\ldots,N v_1,N^{m_n}v_n,\ldots,N v_n\]
+is a Jordan basis for $N$ (lemma 8.55). For each $j\in1\ldots n$, $N$ sends the first vector in the list $N^{m_j}v_j,\ldots,N v_j$ to $0$ and every vector other than the first vector to the previous vector in the list. Thus applying $N$ $m_j+1$ times maps the corresponding list to all zero vectors. Let $m_k$ be the largest integer in the list $m_1,\ldots,m_n$. Observe that $m_k=m$, i.e. $m_k$ is the length of the longest consecutive string of $1$'s that appears on the line directly above the diagonal. Thus $N^{m_k+1}=N^{m+1}$ maps every list to all zero vectors. Therefore $z^{m+1}$ is the minimal polynomial of $N$ as desired.
+
+\section*{Problem 5}
+Suppose $T\in\mathcal{L}(V)$ and $v_1,\ldots,v_n$ is a basis of $V$ that is a Jordan basis for $T$. Describe the matrix of $T^2$ with respect to this basis.
+
+\subsection*{Solution}
+The elements on the diagonal are squared. The $1$'s in the superdiagonal are replaced with $2\lambda$, where $\lambda$ is the eigenvalue in the corresponding Jordan block.
+
+\section*{Problem 6}
+Suppose $N\in\mathcal{L}(V)$ is nilpotent and $v_1,\ldots,v_n$ and $m_1,\ldots,m_n$ are as in 8.55. Prove that $N^{m_1}v_1,\ldots,N^{m_n}v_n$ is a basis of $\nil N$.
+
+[\textit{The exercise above implies that $n$, which equals $\dim \nil N$, depends only on $N$ and not on the specific Jordan basis chosen for $N$.}]
+
+\subsection*{Solution}
+We know $N^{m_1}v_1,\ldots,N v_1,N^{m_n}v_n,\ldots,N v_n$
+is a Jordan basis for $N$ (lemma 8.55). Thus the vectors in the list, and the vectors in any subset of the list are linearly independent. For each $j\in1\ldots n$, $N$ sends the first vector in the list $N^{m_j}v_j,\ldots,N v_j$ to $0$. Therefore $N^{m_1}v_1,\ldots,N^{m_n}v_n$ spans $\nil N$, and is a basis of $\nil N$ as desired.
+
+\end{document}

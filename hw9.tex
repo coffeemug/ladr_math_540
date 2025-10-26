@@ -1,0 +1,124 @@
+\documentclass{article}
+\usepackage{style}
+
+\title{LADR, 3.C}
+
+\begin{document}
+\maketitle
+
+\section*{Problem 3}
+Suppose $V$ and $W$ are finite-dimensional and $T\in\L(V,W)$. Prove that there exist a basis of $V$ and a basis of $W$ such that with respect to these bases, all entries of $\M(T)$ are $0$ except the entries in row $j$, column $j$, equal $1$ for $1\leq j\leq \dim\range T$.
+
+\subsection*{Solution}
+Let $n=\dim\range T$, and let $v_1, \ldots, v_n$ be a list of vectors in $V$ such that $Tv_1,\ldots,Tv_n$ is linearly independent in $W$. By linearity it follows $v_1, \ldots, v_n$ is linearly independent in $V$ (for proof see hw7, problem 4). Extend each list to a basis of $V$ ($v_1, \ldots, v_n, v_{n+1}, \ldots, v_m$) and a basis of $W$ ($Tv_1,\ldots,Tv_n, w_1,\ldots,w_p$) respectively.
+
+\vs
+
+Let $A=\M(T)$ be a matrix of $T$ with respect to these bases. By matrix definition (see 3.32):
+\[Tv_k=A_{1,k}Tv_1+\ldots+A_{m,k}Tv_m\]
+
+Observe that for the equation above to hold for $k=1,\ldots,n$ we can fix each $A_{i,j}=0$, with the exception of $A_{k,k}$ which we set to $1$. Further, for $k=n+1,\ldots,m$, $Tv_k\in\nil T$, and thus we can set the coefficients $A_{.,j}$ for $j>n$ to zero. Thus there exist a basis of $V$ and a basis of $W$ such that with respect to these bases, all entries of $\M(T)$ are $0$ except the entries in row $j$, column $j$, equal $1$ for $1\leq j\leq \dim\range T$.
+
+\section*{Problem 4}
+Suppose $v_1,\ldots,v_m$ is a basis of $V$ and $W$ is finite-dimensional. Suppose $T\in\L(V,W)$. Prove that there exists a basis $w_1,\ldots,w_n$ of $W$ such that all the entries in the first column of $\M(T)$ (with respect to the bases $v_1,\ldots,v_m$ and $w_1,\ldots,w_n$) are $0$ except for possibly a $1$ in the first row, first column.
+
+\subsection*{Solution}
+Suppose $Tv_1\neq0$. Let $w_1=Tv_1$. Then $w_1$ forms a linearly independent list in $W$. Extend it to $w_1,\ldots,w_n$, a basis of $W$. Let $A=\M(T)$ be a matrix of $T$ with respect to $v_1,\ldots,v_m$ and $w_1,\ldots,w_n$. By matrix definition (see 3.32):
+\[Tv_k=A_{1,k}w_1+\ldots+A_{n,k}w_n\]
+
+Observe that $Tv_1=1w_1+\ldots+0w_n$. Thus $w_1,\ldots,w_n$ is a basis such that all the entries in the first column of $A$ are $0$ except for $1$ in the first row, first column.
+
+\vs
+
+Alternatively suppose $Tv_1=0$. Pick any basis of $W, w_1,\ldots,w_n$. Then $Tv_1=0w_1+\ldots+0w_n$. Thus $w_1,\ldots,w_n$ is a basis such that all the entries in the first column of $A$ are $0$.
+
+\vs
+
+Thus here exists a basis such of $W$ such that all the entries in the first column of $A$ are $0$ except for possibly a $1$ in the first row, first column, as desired.
+
+\section*{Problem 6*}
+Suppose $V$ and $W$ are finite-dimensional and $T\in\L(V,W)$. Prove that $\dim\range T=1$ if and only if there exist a basis of $V$ and a basis of $W$ such that with respect to these bases, all entries of $\M(T)$ equal $1$.
+
+\subsection*{Solution}
+
+Suppose $\dim\range T=1$. Then there exists $v_1\in V:v_1\not\in\nil V$. We can further extend it to $v_1, v_2,\ldots,v_n$, a basis of $V$ (where $n=\dim V$). Let's construct a new basis $v'_1,\ldots,v'_n\in V$ such that $v'_1=v_1$, $v'_2=v_1+v_2, \ldots, v'_n=v_1+v_n$. Observe that $Tv'_i\in\range T$ for $i=1,\ldots,n$.
+
+\vs
+
+Similarly, let $w_1=Tv_1$. Extend it to $w_1,\ldots,w_m$, a basis of $W$ where $m=\dim W$. Now construct a new basis $w'_1,\ldots,w'_m$ such that $w'_1=w_1+\ldots,w_m$, $w'_2=-w_2,\ldots, w'_m=-w_m$.
+
+\vs
+
+Observe that $Tv'_i=w'_1+\ldots w'_m$. Thus in a matrix $\M(T)$ with respect to $v'_1,\ldots,v'_n$ and $w'_1,\ldots,w'_m$ all entries are $1$ as desired.
+
+\vs
+
+Conversely, suppose there exist a basis of $V$ and a basis of $W$ such that with respect to these bases, all entries of $\M(T)$ equal $1$. The rank of such a matrix is $1$, therefore $\dim\range T=1$ as desired. (Alternatively consider factoring the matrix into a m,1 and 1,n matrices of all $1$s to see that $\dim\range T=1$)
+
+\section*{Problem 9}
+Suppose $A$ is an $m$-by-$n$ matrix and
+$c = \begin{pmatrix}
+c_1 \\
+\vdots \\
+c_n
+\end{pmatrix}$ is an $n$-by-$1$ matrix. Prove that:
+\[Ac = c_1 A_{\cdot,1} + \cdots + c_n A_{\cdot,n}\].
+
+\subsection*{Solution}
+Matrix multiplication is defined as follows:
+\[(AC)_{j,k} = \sum_{r=1}^{n} A_{j,r} C_{r,k}\]
+
+Thus:
+\[(Ac)_{1,1}=A_{1,1}c_1+\ldots+A_{1,n}c_n\]
+\[\vdots\]
+\[(Ac)_{m,1}=A_{m,1}c_1+\ldots+A_{m,n}c_n\]
+
+Grouping each column:
+\begin{align*}
+(Ac)_{.,1}&=(A_{1,1}c_1 + \ldots + A_{m,1}c_1)+\ldots+(A_{1,n}c_n + \ldots + A_{m,n}c_n)\\
+&=c_1 A_{\cdot,1} + \cdots + c_n A_{\cdot,n}
+\end{align*}
+
+Observe that $Ac$ has one column, and thus $Ac = c_1 A_{\cdot,1} + \cdots + c_n A_{\cdot,n}$ as desired.
+
+\section*{Problem 12}
+Give an example with a 2-by-2 matrices to show that matrix multiplication is not commutative. In other words, find 2-by-2 matrices $A$ and $C$ such that $AC\neq CA$.
+
+\subsection*{Solution}
+Consider a linear transformation $T$ that maps $(x, y)$ to $(x+y, x+y)$, and a linear transformation $S$ that maps $(x, y)$ to $(x,0)$. Then $TS(x,y)=(x,x)$ and $ST(x,y)=(x+y, 0)$. Constructing the matrices that represent these linear transformations, $A_T=\begin{pmatrix}
+1 & 1 \\
+1 & 1
+\end{pmatrix}$, and $A_S=\begin{pmatrix}
+1 & 0 \\
+0 & 0
+\end{pmatrix}$. Then $A_T A_S=\begin{pmatrix}
+1 & 1 \\
+1 & 1
+\end{pmatrix}\begin{pmatrix}
+1 & 0 \\
+0 & 0
+\end{pmatrix}=\begin{pmatrix}
+1 & 0 \\
+1 & 0
+\end{pmatrix}$, and $A_S A_T=\begin{pmatrix}
+1 & 0 \\
+0 & 0
+\end{pmatrix}\begin{pmatrix}
+1 & 1 \\
+1 & 1
+\end{pmatrix}=\begin{pmatrix}
+1 & 1 \\
+0 & 0
+\end{pmatrix}$. Thus $A_T A_S \neq A_S A_T$ as desired.
+
+\section*{Problem 13}
+Prove that the distributive property holds for matrix addition and matrix multiplication. In other words, suppose $A, B, C, D, E$ and $F$ are matrices whose sizes are such that $A(B+C)$ and $(D+E)F$ make sense. Prove that $AB+AC$ and $DF+EF$ both make sense and that $A(B+C)=AB+AC$ and $(D+E)F=DF+EF$.
+
+\subsection*{Solution}
+First we prove $A(B+C)=AB+AC$. Let $B, C$ be $m\times n$ matrices, and let $A$ be a $k\times m$ matrix. Then $B+C$ makes sense, and $A(B+C)$ makes sense. Observe that $(B+C)_{i,j}=B_{i,j}+C_{i,j}$. By definition of matrix multiplication $(A(B+C))_{i,j}=\sum_{r=1}^{m} A_{i,r} (B_{r,j} + C_{r,j})=\sum_{r=1}^{m} (A_{i,r} B_{r,j} + A_{i,r} C_{r,j})$. Similarly, $AB$ makes sense, and $AC$ makes sense. Note that $AB_{i,j}=\sum_{r=1}^{m} A_{i,r} B_{r,j}$ and $AC_{i,j}=\sum_{r=1}^{m} A_{i,r} C_{r,j}$. Thus $(AB+AC)_{i,j}=\sum_{r=1}^{m} A_{i,r} B_{r,j} + \sum_{r=1}^{m} A_{i,r} C_{r,j}=\sum_{r=1}^{m} (A_{i,r} B_{r,j} + A_{i,r} C_{r,j})$ as desired.
+
+\vs
+
+Now we prove $(D+E)F=DF+EF$. Let $D, E$ be $m\times n$ matrices, and let $F$ be a $n\times k$ matrix. Observe that $D+E$ makes sense, and that $(D+E)F$ makes sense. Observe further that $(D+E)_{i,j}=D_{i,j}+E_{i,j}$. By definition of matrix multiplication $((D+E)F_{i,j})=\sum_{r=1}^{n} (D_{i,r}+E_{i,r}) F_{r,j}=\sum_{r=1}^{n} (D_{i,r} F_{r,j}+E_{i,r} F_{r,j})$. Similarly, observe that $DF$ makes sense and $EF$ makes sense. Observe further $(DF+EF)_{i,j}=\sum_{r=1}^{n} D_{i,r} F_{r,j} + \sum_{r=1}^{n} E_{i,r} F_{r,j}=\sum_{r=1}^{n} (D_{i,r} F_{r,j} + E_{i,r} F_{r,j})$ as desired.
+
+\end{document}

@@ -1,0 +1,253 @@
+\documentclass{article}
+\usepackage{style}
+
+\title{LADR, 1.C}
+
+\begin{document}
+\maketitle
+
+\section*{Problem 1}
+For each of the following subsets of $\F^3$, determine whether it is a subspace of $\mathbf{F}^3$.
+
+\subsection*{Solution}
+(a) \qquad $\{(x_1, x_2, x_3)\in\F^3:x_1+2x_2+3x_3=0\}$
+
+Yes. Let $V$ denote subset (a).
+
+\vs
+
+First, the zero vector trivially satisfies the equation.
+
+\vs
+
+Second, let $(u_1, u_2, u_3)\in V$ and $\lambda\in\F$. We know $u_1+2u_2+3u_3=0$. Multiplying both sides by $\lambda$ we get $\lambda u_1+2 \lambda u_2+3\lambda u_3=0$. Thus $V$ is closed under scalar multiplication.
+
+\vs
+
+Third, let $(u_1, u_2, u_3)\in V$ and let $(v_1, v_2, v_3)\in V$. We know $u_1+2u_2+3u_3=0$ and $v_1+2v_2+3v_3=0$. Thus $(u_1+2u_2+3u_3)+(v_1+2v_2+3v_3)=(u_1 + v_1)+2(u_2+v_2)+3(u_3+v_3)=0$. Thus $V$ is closed under addition.
+
+\vs
+
+(b) \qquad $\{(x_1, x_2, x_3)\in\F^3:x_1+2x_2+3x_3=4\}$
+
+No, as the zero vector doesn't satisfy the equation.
+
+\vs
+
+(c) \qquad $\{(x_1, x_2, x_3)\in\F^3:x_1x_2x_3=0\}$
+
+No. Here is a counter-example: vectors $(1, 0, 0)$ and $(0, 1, 1)$ each satisfy the equation, but the vector $(1, 0, 0)+(0, 1, 1)=(1, 1, 1)$ doesn't. Thus subset (c) isn't closed under addition.
+
+\vs
+
+(d) \qquad $\{(x_1, x_2, x_3)\in\F^3:x_1=5x_3\}$
+
+Yes. Let $V$ denote subset (d).
+
+\vs
+
+First, the zero vector trivially satisfies the equation.
+
+\vs
+
+Second, let $(u_1, u_2, u_3)\in V$ and $\lambda\in\F$. We know $u_1-5u_3=0$. Multiplying both sides by $\lambda$ we get $\lambda u_1-5\lambda u_3=0$. Thus $V$ is closed under scalar multiplication.
+
+\vs
+
+Third, let $(u_1, u_2, u_3)\in V$ and let $(v_1, v_2, v_3)\in V$. We know $u_1-5u_3=0$ and $v_1-5v_3=0$. Thus $(u_1-5u_3)+(v_1-5v_3)=(u_1 + v_1)-5(u_3+v_3)=0$. Thus $V$ is closed under addition.
+
+\section*{Problem 4}
+Suppose $b\in\R$. Show that the set of continuous real-valued functions $f$ on the interval $[0, 1]$ such that $\int_0^1 f=b$ is a subspace of $\R^{[0,1]}$ if and only if $b=0$.
+
+\subsection*{Solution}
+
+I don't know any calculus so I'm going to handwave it, but let me give it a try. Let $V$ be the set of continuous real-valued functions $f$ on the interval $[0, 1]$ such that $\int_0^1 f=b$.
+
+\vs
+
+Suppose $b\neq 0$. Then $0\notin V$ as the area under the curve of a function that always maps to zero must be zero. Thus $V$ is not a subspace of $\R^3$.
+
+\vs
+
+Conversely, suppose $b=0$.
+
+\vs
+
+First, $0\in V$ as it satisfies the equation.
+
+\vs
+
+Second, let $g\in V$ and $\lambda \in \R$. We know $\int_0^1 \lambda g=\lambda\int_0^1 g=0$. Thus $V$ is closed under scalar multiplication.
+
+\vs
+
+Third, let $f, g\in V$. By problem statement $\int_0^1 f=0$ and $\int_0^1 g=0$. Since $\int_0^1 f + \int_0^1 g=\int_0^1 f+g$, $V$ is closed under addition.
+
+\vs
+
+QED.
+
+\section*{Problem 5}
+Is $\R^2$ a subspace of the complex vector space $\C^2$?
+
+\subsection*{Solution}
+
+Yes. $\R^2$ is a vector space, and thus we must only show it's a subset of $\C^2$. Let $(x, y)\in\R^2$. Then $(x+0i, y+0i)\in\C^2$, and thus $(x, y)\in\C^2$. QED.
+
+\newpage
+
+\section*{Problem 6*}
+(a) \qquad Is $\{(a, b, c)\in\R^3:a^3=b^3\}$ a subspace of $\R^3$?
+
+(b) \qquad Is $\{(a, b, c)\in\C^3:a^3=b^3\}$ a subspace of $\C^3$?
+
+\subsection*{Solution}
+(a) \qquad Is $\{(a, b, c)\in\R^3:a^3=b^3\}$ a subspace of $\R^3$?
+
+Let $V$ be $\{(a, b, c)\in\R^3:a^3=b^3\}$.
+
+\vs
+
+Yes. First, $0^3=0^3$ so $\mathbf{0}\in V$.
+
+\vs
+
+Second, let $(a, b, c)\in V$ and let $\lambda\in \R$. Since $a^3-b^3=0$ it follows $(\lambda a)^3 - (\lambda b)^3=\lambda^3 a^3 - \lambda^3 b^3=\lambda^3(a^3-b^3)=0$. Thus $V$ is closed under scalar multiplication.
+
+\vs
+
+Third, let $(a, b, c)\in V$ and $(d, e, f)\in V$. We must show $(a + d)^3=(b+e)^3$.
+
+\begin{align*}
+    (a+d)^3&=(a+d)(a+d)(a+d)=(a^2 + 2ad + d^2)(a+d)\\
+    &= a^3 + 2a^2d + ad^2 + a^2d + 2ad^2 + d^3\\
+    &= (a^3 + d^3) + 3a^2d + 3ad^2\\
+    &= 0 + 3ad(a + d)
+\end{align*}
+
+Similarly:
+
+\begin{align*}
+    (b+e)^3&=(b+e)(b+e)(b+e)=(b^2 + 2be + e^2)(b+e)\\
+    &= b^3 + 2b^2e + be^2 + b^2e + 2be^2 + e^3\\
+    &= (b^3 + e^3) + 3b^2e + 3be^2\\
+    &= 0 + 3be(b + e)
+\end{align*}
+
+Recall that $a^3=b^3$. Taking a cube root of both sides, $a=b$. Similarly, $d^3=e^3$. Taking a cube root of both sides, $d=e$. Thus $3ad(a+d)=3be(b+e)$. Therefore $V$ is closed under addition.
+
+\vs
+
+(b) \qquad Is $\{(a, b, c)\in\C^3:a^3=b^3\}$ a subspace of $\C^3$?
+
+No. Let $V$ be $\{(a, b, c)\in\C^3:a^3=b^3\}$. The exact same proof as above applies here, with one exception. For $a,b\in\C$, $a^3=b^3$ does not imply $a=b$, unlike for $a,b\in\R$. Therefore $V$ is not closed under addition and is not a subspace of $\C^3$.
+
+\section*{Problem 8*}
+Give an example of a nonempty subset $U$ of $\R^2$ such that $U$ is closed under scalar multiplication, but $U$ is not a subspace of $\R^2$.
+
+\subsection*{Solution}
+Let $V=\{(x, 0)\in\R^2 \}\cup\{(0, y)\in\R^2 \}$.
+
+\vs
+
+Let $\lambda\in\R$. If $(x,0)\in V$, clearly $\lambda(x, 0)=(\lambda x, 0)\in V$, and similarly for $\lambda(0, y)$. Thus $V$ is closed under scalar multiplication.
+
+\vs
+
+However, $V$ is not closed under addition. For example $(1, 0)$ and $(0, 1)$ are both in $V$, but $(1,0)+(0,1)=(1, 1)$ isn't. QED.
+
+\section*{Problem 10}
+Suppose $U_1$ and $U_2$ are subspaces of $V$. Prove that the intersectino of $U_1\cap U_2$ is a subspace of $V$.
+
+\subsection*{Solution}
+
+First, since $U_1$ and $U_2$ are subspaces of $V$, they must both contain the zero vector, as does their intersection.
+
+\vs
+
+Second, let $v\in U_1\cap U_2$, and let $\lambda$ be a scalar. Then $v\in U_1$ and $v\in U_2$. Since both are subspaces they are closed under scalar multiplication, and thus $\lambda v\in U_1$ and $\lambda v\in U_2$. Therefore $\lambda v \in U_1\cap U_2$, and $U_1\cap U_2$ is closed under scalar multiplication.
+
+\vs
+
+Third, let $u, v\in U_1\cap U_2$. By similar logic, $u,v\in U_1$ and $u,v\in U_2$. Since both are subspaces they are closed under addition, and thus $u+v\in U_1$ and $u+v\in U_2$. Therefore $u+v \in U_1\cap U_2$, and $U_1\cap U_2$ is closed under addition.
+
+\section*{Problem 12}
+Prove that the union of two subspaces of $V$ is a subspace of $V$ if and only if one of the subspaces is contained in the other.
+
+\subsection*{Solution}
+
+Let $U$ and $W$ be subspaces of $V$ such that neither contains the other. Then there exists a vector $u$ such that $u\in U, u\notin W$, and there exists a vector v such that $v\in W, v\notin U$.  Suppose $U\cup W$ is a subspace of $V$. Then there must exist a vector $z\in U\cup W$ such that $z=u+v$.
+
+\vs
+
+Suppose $z\in U$. Since $z-u=v$, then $v\in U$ by additive closure. But that is a contradiction as we assumed $v\notin U$. By the same reasoning $z\notin W$, and thus $z\notin U\cup W$. Therefore $U\cup W$ is not closed under addition and is thus not a subspace of $V$.
+
+\vs
+
+Conversely, let $U$ and $W$ be subspaces of $V$, and let $U\subset W$. Then $U\cup W=W$, and since $W$ is a subspace of $V$, so is $U\cup W$.
+
+\vs
+
+QED.
+
+\section*{Problem 13*}
+Prove that the union of three subspaces of $V$ is a subspace of $V$ if and only if one of the subspaces contains the other two.
+
+\subsection*{Solution}
+Let $R, S, T$ be subspaces of $V$.
+
+\vs
+
+Suppose one of the subspaces contains the other two, that is $R\subset T$ and $S\subset T$. Then $R\cup S\cup T=T$. $T$ is a subspace of $V$, therefore $R\cup S\cup T$ is a subspace of $V$.
+
+\vs
+
+Conversely, suppose none of the subspaces contains the other two. Then there exist three points:
+\begin{itemize}
+    \item $r\in R$ such that $r\not\in T, S$
+    \item $s\in S$ such that $s\not\in R, T$
+    \item $t\in T$ such that $t\not\in R, S$
+\end{itemize}
+
+Suppose $R\cup S\cup T$ is a subspace of $V$. Consider two sums. By proof in pr. 12, $r+s\not\in R, S$, and is therefore in $T$. Similarly $r+t\not\in R, T$, and is therefore in $S$.
+
+\vs
+
+Since $r+s, t\in T$, so is $r+s+t$. Similarly since $r+t, s\in S$, so is $r+t+s$. But these equations are equivalent and we have a contradiction. Therefore $R\cup S\cup T$ is not a subspace of $V$.
+
+\vs
+
+\section*{Problem 15}
+Suppose $U$ is a subspace of $V$. What is $U+U$?
+
+\subsection*{Solution}
+
+By definition $U+U=\{ u + v : u, v\in U \}$. Since $U$ is a subspace of $V$ it's closed under addition, and thus $u+v\in U$. Therefore $U+U=U$.
+
+\section*{Problem 19}
+Prove or give a counterexample: if $U_1, U_2, W$ are subspaces of $V$ such that
+\[U_1+W=U_2+W,\]
+
+then $U_1=U_2$.
+
+\subsection*{Solution}
+
+Here is a counterexample. Consider the following subspaces of $\R^2$:
+
+\begin{align*}
+    U_1&=\{(a, a)\in\R^2\}\\
+    U_2&=\{(a, -a)\in\R^2\}\\
+    W&=\{(0, b)\in\R^2\}
+\end{align*}
+
+Here $U_1+W=U_2+W=\R^2$, but $U_1\neq U_2$.
+
+\vs
+
+To show that $U_1+W=\R^2$, consider a point $(x, y)\in\R^2$. Not that $(x, y)=(x, x)+(0,-x+y)$, and that $(x,x)\in U_1$ and $(0,-x+y)\in W$.
+
+\vs
+
+The proof $U_2+W=\R^2$ is similar.
+
+\end{document}

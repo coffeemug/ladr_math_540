@@ -1,0 +1,153 @@
+\documentclass{article}
+\usepackage{style}
+
+\title{LADR, 2.C}
+
+\begin{document}
+\maketitle
+
+\section*{Problem 1}
+Suppose $V$ is finite-dimensional and $U$ is a subspace of $V$ such that $\dim U=\dim V$. Prove that $U=V$.
+
+\subsection*{Solution}
+Let $u_1,\ldots,u_{\dim U}$ be a basis for $U$. Since it's a basis of a subspace of $V$, it's a linearly independent list of vectors in $V$. And since linearly independent list of the right length is a basis (by lemma 2.39), and the length of the list id $\dim U=\dim V$, it is a basis of $V$. Thus $U$ and $V$ share a basis, therefore $U=V$.
+
+\section*{Problem 3}
+Show that the subspaces of $\R^3$ are precisely $\{0\}, \R^3$, all lines in $\R^3$ through origin, and all planes in $\R^3$ through origin.
+
+\subsection*{Solution}
+If $V$ is finite-dimensional and $U$ is a subspace of $V$, then $\dim U\leq\dim V$ (see lemma 2.38). Thus dimensions of subspaces of $\R^3$ are $\leq 3$. There are four such possible dimensions:
+\begin{itemize}
+    \item 0: the only subspace with the dimension 0 is $\{0\}$
+    \item 1: these are all lines in $\R^3$
+    \item 2: these are all planes in $\R^3$
+    \item 3: this is $\R^3$
+\end{itemize}
+
+Additionally, all subspaces of $\R^3$ contain $0$, and thus go through the origin as desired.
+
+\newpage
+\section*{Problem 6}
+Let $U=\{p\in\mathcal{P}_4(\F):p(2)=p(5)\}$.
+
+\subsection*{Solution}
+(a) Find a basis of $U$.
+
+Here are polynomials up to degree 4 that are in $U$ (note that no such first degree polynomial exists): $1, x^2-7x, x^3-39x, x^4-203x$. They are obviously linearly independent. $U$ consists of polynomials of 0th, 2nd, 3rd, and 4th degree, thus it's a four-dimensional space. By lemma 2.39 a linearly independent list of length $\dim U$ is a basis of $U$. Thus $1, x^2-7x, x^3-39x, x^4-203x$ is a basis of $U$.
+
+\vs
+
+(b) Extend the basis in part (a) to a basis of $\mathcal{P}_4(\F)$.
+
+Adding $x$ to the basis in (a) extends it to $\mathcal{P}_4(\F)$.
+
+\vs
+
+(c) Find a subspace $W$ of $\mathcal{P}_4(\F)$ such that $\mathcal{P}_4(\F)=U\oplus W$.
+
+$W=\spn(x)$.
+
+\section*{Problem 7*}
+Let $U=\{p\in\mathcal{P}_4(\F):p(2)=p(5)=p(6)\}$.
+
+\subsection*{Solution}
+(a) Find a basis of $U$.
+
+\vs
+
+(b) Extend the basis in part (a) to a basis of $\mathcal{P}_4(\F)$.
+
+\vs
+
+(c) Find a subspace $W$ of $\mathcal{P}_4(\F)$ such that $\mathcal{P}_4(\F)=U\oplus W$.
+
+\subsection*{Solution}
+
+\section*{Problem 8*}
+Let $U=\{p\in\mathcal{P}_4(\F):\int_{-1}^{1}{p=0}\}$.
+
+\subsection*{Solution}
+(a) Find a basis of $U$.
+
+\vs
+
+(b) Extend the basis in part (a) to a basis of $\mathcal{P}_4(\F)$.
+
+\vs
+
+(c) Find a subspace $W$ of $\mathcal{P}_4(\F)$ such that $\mathcal{P}_4(\F)=U\oplus W$.
+
+\subsection*{Solution}
+
+\section*{Problem 12}
+Suppose $U$ and $W$ are both five-dimensional subspaces of $\R^9$. Prove that $U\cap W\neq\{0\}$.
+
+\subsection*{Solution}
+We know $\dim(U+W)=\dim U + \dim W-\dim(U\cap W)$ by lemma 2.43. Since $U$ and $W$ are both subspaces of $\R^9$, $\dim(U+W)\leq 9$. Therefore:
+\[n=10-\dim(U\cap W)\]
+where $n\leq 9$.
+
+\vs
+
+Thus $\dim(U\cap W)\geq 1$. Therefore it cannot be equal to $\{0\}$, as that would require $\dim(U\cap W) = 0$ which we've proven is impossible.
+
+\section*{Problem 13*}
+Suppose $U$ and $W$ are both 4-dimensional subspaces of $\C^6$. Prove that there exist two vectors in $U\cap W$ such that neither of these vectors is a scalar multiple of the other.
+
+\subsection*{Solution}
+By lemma 2.43 $\dim(U+W)=\dim U + \dim W - \dim(U\cap W)$, and thus $\dim(U+W)=8 - \dim(U\cap W)$. Since $U$ and $W$ are subspaces of $\C^6$, $\dim(U+W)\leq 6$. Therefore $\dim(U\cap W)\geq 2$. Put differently, any basis for $U\cap W$ has at least two vectors, and since bases are linearly independent by definition, these two vectors cannot be scalar multiples of each other, as desired.
+
+\section*{Problem 14}
+Suppose $U_1,\ldots,U_m$ are finite-dimensional subspaces of $V$. Prove that $U_1+\ldots+U_m$ is finite-dimensional and
+\[\dim(U_1+\ldots+U_m)\leq\dim U_1+\ldots+\dim U_m\].
+
+\subsection*{Solution}
+We prove this by induction. First consider the base case $U_1$. It is finite-dimensional (as stated in the problem), and $\dim(U_1)\leq\dim(U_1)$ since obviously $\dim(U_1)=\dim(U_1)$.
+
+\vs
+
+Now consider the induction step. Let $W=U_1+\ldots+U_{k}$. Suppose $W$ is finite-dimensional, and $\dim(W)\leq\dim U_1+\ldots+\dim U_k$. Then $W+U_{k+1}$ is finite-dimensional as the sum of two finite-dimensional subspaces is finite-dimensional. Further, by lemma 2.43 $\dim(W+U_{k+1})=\dim W+\dim U_{k+1}-\dim(W\cap U_{k+1})$. As dimension is non-negative by definition, $\dim(W\cap U_{k+1})\geq 0$, and thus $\dim(W+U_{k+1})\leq\dim W+\dim U_{k+1}$. Recall we've assumed $\dim(W)\leq\dim U_1+\ldots+\dim U_k$, and thus $\dim(W+U_{k+1})\leq\dim U_1+\ldots+\dim U_k+\dim U_{k+1}$.
+
+\vs
+
+Therefore by induction $U_1+\ldots+U_m$ is finite-dimensional and
+$\dim(U_1+\ldots+U_m)\leq\dim U_1+\ldots+\dim U_m$.
+
+\section*{Problem 16*}
+Suppose $U_1,\ldots,U_m$ are finite-dimensional subspaces of $V$ such that $U_1+\ldots+U_m$ is a direct sum. Prove that $U_1\oplus\ldots\oplus U_m$ is finite-dimensional and
+\[\dim(U_1\oplus\ldots\oplus U_m)=\dim U_1+\ldots+\dim U_m\].
+
+\subsection*{Solution}
+We prove this by induction. First consider the base case $U_1$. It is finite-dimensional (as stated in the problem), and obviously $\dim(U_1)=\dim(U_1)$.
+
+\vs
+
+Now consider the induction step. Let $W=U_1\oplus\ldots\oplus U_{k}$. Suppose $W$ is finite-dimensional, and $\dim(W)=\dim U_1\oplus\ldots\oplus\dim U_k$. Then $W\oplus U_{k+1}$ is finite-dimensional as the sum of two finite-dimensional subspaces is finite-dimensional. Further, by lemma 2.43 $\dim(W+U_{k+1})=\dim W+\dim U_{k+1}-\dim(W\cap U_{k+1})$. As we're dealing with direct sums $W\cap U_{k+1}=\{0\}$ and thus $\dim(W\cap U_{k+1})=0$. Therefore $\dim(W\oplus U_{k+1})=\dim W+\dim U_{k+1}$.
+
+\vs
+
+Therefore by induction $U_1\oplus\ldots\oplus U_m$ is finite-dimensional and $\dim(U_1\oplus\ldots\oplus U_m)=\dim U_1+\ldots+\dim U_m$.
+
+\section*{Problem 17*}
+You might guess, by analogy with the formula for the number of elements in the union of three subsets of a finite set, that if $U_1, U_2, U_3$ are subspaces of a finite-dimensional vector space, then
+\begin{align*}
+    \dim(U_1+U_2&+U_3)\\
+    =&\dim U_1 + \dim U_2 + \dim U_3\\
+    &-\dim(U_1\cap U_2)-\dim(U_1\cap U_3)-\dim(U_2\cap U_3)\\
+    &+\dim(U_1\cap U_2\cap U_3).
+\end{align*}
+
+Prove this or give a counterexample.
+
+\subsection*{Solution}
+This is not true. Consider a counterexample in which $U_1, U_2, U_3$ are subsets of $\R^3$, $U_1$ is a plane in $\R^3$, $U_2$ is a line normal to $U_1$, and $U_3$ is a line not contained by $U_1$ or $U_2$.
+
+\vs
+
+Then $U_1\cap U_2=U_1\cap U_3=U_2\cap U_3=U_1\cap U_2\cap U_3=\{0\}$. Therefore $\dim(U_1\cap U_2)=\dim(U_1\cap U_3)=\dim(U_2\cap U_3)=\dim(U_1\cap U_2\cap U_3)=0$.
+
+\vs
+
+It's also easy to see $U_1+U_2+U_3=\R^3$, and thus $\dim(U_1+U_2+U_3)=3$. Substituting we get $3=4$, which is of course false.
+
+\end{document}
